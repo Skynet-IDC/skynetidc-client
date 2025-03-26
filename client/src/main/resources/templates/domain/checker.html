@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'cloud-vps')}">
+<body>
+<div class="main ">
+
+
+  <section class="ptb-120 gradient-bg">
+    <div class="container-fluid plr-100">
+      <div class="row align-items-center justify-content-lg-between">
+        <div class="col-md-6 col-lg-5">
+          <div class="hero-content-wrap text-white position-relative">
+            <h1 class="text-white">Tìm kiếm tên miền của bạn!</h1>
+            <p class="lead">Bắt đầu ý tưởng kinh doanh của bạn bằng một tên miền chuyên nghiệp.</p>
+            <div class="domain-checker-wrap">
+              <form action="" class="domain-transfer-form newsletter-form position-relative w-75">
+                <input type="text" name="domain" id="domain" class="form-control rounded-pill" placeholder="domain.com" />
+                <button type="submit" class="btn btn-tertiary">Kiểm tra ngay</button>
+              </form>
+              <div class="domain-list-wrap mt-4">
+                <ul class="list-inline domain-search-list">
+                  <li class="list-inline-item border rounded"><a href="#"><img th:src="@{/img/com-w.png}" alt="com" width="60" class="img-fluid">
+                    <span>$8.99</span></a>
+                  </li>
+                  <li class="list-inline-item border rounded"><a href="#"><img th:src="@{/img/online-w.png}" alt="com" width="60" class="img-fluid">
+                    <span>$0.99</span></a>
+                  </li>
+                  <li class="list-inline-item border rounded"><a href="#"><img th:src="@{/img/net-w.png}" alt="com" width="60" class="img-fluid">
+                    <span>$4.99</span></a>
+                  </li>
+                  <li class="list-inline-item border rounded"><a href="#"><img th:src="@{/img/org-w.png}" alt="com" width="60" class="img-fluid">
+                    <span>$2.99</span></a>
+                  </li>
+                  <li class="list-inline-item border rounded"><a href="#"><img th:src="@{/img/store-w.png}" alt="com" width="60" class="img-fluid">
+                    <span>$0.99</span></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+          <div class="img-wrap text-lg-end">
+            <img th:src="@{/img/domain-checker.svg}" alt="domain registration" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--hero section end-->
+
+  <!--popular domain block start-->
+  <section class="popular-domain-list ptb-100  gray-light-bg">
+    <div class="container-fluid plr-100">
+      <div class="row justify-content-center">
+        <div class="col-md-9 col-lg-8">
+          <div class="section-heading text-center mb-2">
+            <h2>Popular Top Level Domains Fit For You</h2>
+            <p>Assertively benchmark bricks-and-clicks opportunities and process-centric supply
+              chains vortals whereas cross-unit innovation. Credibly deliver extensible growth strategies.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-lg-3">
+          <div class="single-popular-domain position-relative bg-white rounded p-4 mt-sm-4 mt-md-5 mt-lg-4">
+            <img th:src="@{/img/com.png}" alt="domain" class="img-fluid" />
+            <div class="domain-info-wrap">
+              <span class="position-absolute badge bg-warning">Most Popular</span>
+              <p>Holisticly parallel task team building results and bleeding-edge.</p>
+              <ul class="list-inline domain-price-list">
+                <li class="list-inline-item domain-old-price">
+                  <del>$10.99</del>
+                </li>
+                <li class="list-inline-item domain-new-price">$8.99</li>
+              </ul>
+            </div>
+            <div class="action-btns mt-3">
+              <a href="#" class="btn btn-primary btn-sm me-2">Register</a>
+              <a href="#" class="btn btn-outline-primary btn-sm">Transfer</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="single-popular-domain position-relative bg-white rounded p-4 mt-sm-4 mt-md-5 mt-lg-4">
+            <img th:src="@{/img/online.png}" alt="domain" class="img-fluid" />
+            <div class="domain-info-wrap">
+              <p>Uniquely synergize cost effective it is technologies after performance.</p>
+              <ul class="list-inline domain-price-list">
+                <li class="list-inline-item domain-old-price">
+                  <del>$12.99</del>
+                </li>
+                <li class="list-inline-item domain-new-price">$0.99</li>
+              </ul>
+            </div>
+            <div class="action-btns mt-3">
+              <a href="#" class="btn btn-primary btn-sm me-2">Register</a>
+              <a href="#" class="btn btn-outline-primary btn-sm">Transfer</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="single-popular-domain position-relative bg-white rounded p-4 mt-sm-4 mt-md-5 mt-lg-4">
+            <img th:src="@{/img/club.png}" alt="domain" class="img-fluid" />
+            <div class="domain-info-wrap">
+              <p>Competently fabricate leveraged methods of empowerment vis-a-vis.</p>
+              <ul class="list-inline domain-price-list">
+                <li class="list-inline-item domain-old-price">
+                  <del>$16.99</del>
+                </li>
+                <li class="list-inline-item domain-new-price">$6.99</li>
+              </ul>
+            </div>
+            <div class="action-btns mt-3">
+              <a href="#" class="btn btn-primary btn-sm me-2">Register</a>
+              <a href="#" class="btn btn-outline-primary btn-sm">Transfer</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="single-popular-domain position-relative bg-white rounded p-4 mt-sm-4 mt-md-5 mt-lg-4">
+            <img th:src="@{/img/net.png}" alt="domain" class="img-fluid" />
+            <div class="domain-info-wrap">
+              <p>Dynamically network front results for compaile methods empowerment. </p>
+              <ul class="list-inline domain-price-list">
+                <li class="list-inline-item domain-old-price">
+                  <del>$15.99</del>
+                </li>
+                <li class="list-inline-item domain-new-price">$4.99</li>
+              </ul>
+            </div>
+            <div class="action-btns mt-3">
+              <a href="#" class="btn btn-primary btn-sm me-2">Register</a>
+              <a href="#" class="btn btn-outline-primary btn-sm">Transfer</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="single-popular-domain position-relative bg-white rounded p-4 mt-sm-4 mt-md-5 mt-lg-4">
+            <img th:src="@{/img/pro.png}" alt="domain" class="img-fluid" />
+            <div class="domain-info-wrap">
+              <p>Synergistically create visionary for our multifunctional schemas. </p>
+              <ul class="list-inline domain-price-list">
+                <li class="list-inline-item domain-old-price">
+                  <del>$10.99</del>
+                </li>
+                <li class="list-inline-item domain-new-price">$0.99</li>
+              </ul>
+            </div>
+            <div class="action-btns mt-3">
+              <a href="#" class="btn btn-primary btn-sm me-2">Register</a>
+              <a href="#" class="btn btn-outline-primary btn-sm">Transfer</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="single-popular-domain position-relative bg-white rounded p-4 mt-sm-4 mt-md-5 mt-lg-4">
+            <img th:src="@{/img/org.png}" alt="domain" class="img-fluid" />
+            <div class="domain-info-wrap">
+              <p>Quickly promote B2B markets rather than impactful results.</p>
+              <ul class="list-inline domain-price-list">
+                <li class="list-inline-item domain-old-price">
+                  <del>$10.99</del>
+                </li>
+                <li class="list-inline-item domain-new-price">$8.99</li>
+              </ul>
+            </div>
+            <div class="action-btns mt-3">
+              <a href="#" class="btn btn-primary btn-sm me-2">Register</a>
+              <a href="#" class="btn btn-outline-primary btn-sm">Transfer</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--popular domain block end-->
+
+  <!--domain price list start-->
+  <section class="domain-pricing-section ptb-100 ">
+    <div class="container-fluid plr-100">
+      <div class="row justify-content-center">
+        <div class="col-md-9 col-lg-6">
+          <div class="section-heading text-center mb-5">
+            <h2>Top Level Domains Price List</h2>
+            <p>Completely negotiate focused applications with optimal functionalities. Conveniently impact state of the art technologies vis-a-vis innovative internal backward-compatible deliverables</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="table-responsive-lg">
+            <table class="table table-bordered domain-price-table">
+              <thead>
+              <tr>
+                <td class="dp-title">Extensions (TLD)</td>
+                <td class="dp-title">Register</td>
+                <td class="dp-title">Renew</td>
+                <td class="dp-title">Transfer</td>
+              </tr>
+              </thead>
+              <tbody class="domain-price-body">
+              <tr>
+                <td><span class="domain-extension">.com</span> <span class="badge bg-success"> popular
+                                    </span></td>
+                <td>$12.00</td>
+                <td>$14.90</td>
+                <td>$14.90</td>
+              </tr>
+              <tr>
+                <td><span class="domain-extension">.info</span>
+                  <span class="badge bg-danger">sale</span>
+                </td>
+                <td><del>$11.90</del> <b class="color-accent">$7.99</b></td>
+                <td>$11.90</td>
+                <td>$14.00</td>
+              </tr>
+              <tr>
+                <td><span class="domain-extension">.org</span></td>
+                <td>$8.00</td>
+                <td>$10.90</td>
+                <td>$10.90</td>
+              </tr>
+              <tr>
+                <td> <span class="domain-extension">.co.uk</span></td>
+                <td>$25.00</td>
+                <td>$30.90</td>
+                <td>$30.90</td>
+              </tr>
+              <tr>
+                <td><span class="domain-extension">.gov</span></td>
+                <td>$45.24</td>
+                <td>$50.24</td>
+                <td>$50.00</td>
+              </tr>
+              <tr>
+                <td><span class="domain-extension">.store</span></td>
+                <td>$32.00</td>
+                <td>$35.90</td>
+                <td>$35.90</td>
+              </tr>
+              <tr>
+                <td><span class="domain-extension">.blog</span> <span class="badge bg-danger">sale
+                                    </span></td>
+                <td><del>$45.10</del> <b class="color-accent">$26.00</b></td>
+                <td>$55.10</td>
+                <td>$55.10</td>
+              </tr>
+              <tr>
+                <td><span class="domain-extension">.online</span></td>
+                <td>$22.00</td>
+                <td>$46.90</td>
+                <td>$46.90</td>
+              </tr>
+              <tr>
+                <td><span class="domain-extension">.eu</span></td>
+                <td>$3.80</td>
+                <td>$5.80</td>
+                <td>$6.00</td>
+              </tr>
+              <tr>
+                <td><span class="domain-extension">.pt</span></td>
+                <td>$10.00</td>
+                <td>$12.00</td>
+                <td>$15.90</td>
+              </tr>
+              <tr>
+                <td> <span class="domain-extension">.company</span>
+                  <span class="badge bg-warning">new</span>
+                </td>
+                <td>$13.00</td>
+                <td>$13.00</td>
+                <td>$19.90</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

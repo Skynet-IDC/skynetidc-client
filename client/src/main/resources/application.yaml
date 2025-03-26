@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+database: h2
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: true
+  sql:
+    init:
+      schema-locations: classpath*:db/${database}/schema.sql
+      data-locations: classpath*:db/${database}/data.sql
+  thymeleaf:
+    mode: HTML
+  messages:
+    basename: messages/messages
+
+logging:
+  level:
+    org:
+      springframework: INFO
+      web: DEBUG
+      context:
+        annotation: TRACE
