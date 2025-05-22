@@ -1,0 +1,5 @@
+module.exports = {
+   REGISTER_OTP_TYPE: 1,
+   FORGOT_PASSWORD_OTP_TYPE: 2,
+   PHONE_VERIFICATION: 3
+}
