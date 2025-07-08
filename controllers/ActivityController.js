@@ -2,13 +2,21 @@ const utils = require("../utils/CommonUtils");
 const activityService = require("../services/ActivityService");
 const PracticeService = require("../services/PracticeService");
 const questionService = require("../services/QuestionService");
+const ErrorCode = require("../constants/ErrorCode");
 
 module.exports = {
 
     getInfo: async function (req, res) {
         const id = req.params.id;
-        const response = await activityService.getActivityInfo(id);
-        res.json(response);
+        try {
+            const response = await activityService.getActivityInfo(id);
+            res.json(response);
+        } catch (e) {
+            res.status(404).json({
+                success: false,
+                message: 'Không tồn tại dữ liệu',
+            });
+        }
     },
 
     buildQuestionData: async function (req, res) {
