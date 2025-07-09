@@ -62,6 +62,11 @@ const Package = sequelize.define("Package", {
     updatedAt: {
         field: 'updated_at',
         type: DataTypes.DATE
+    },
+    appId: {
+        field: 'app_id',
+        type: DataTypes.INTEGER,
+        defaultValue: 1
     }
 }, {
     tableName: 'gb_package',
