@@ -54,7 +54,7 @@ const Activity = sequelize.define("Activity", {
     updatedAt: {
         field: 'updated_at',
         type: DataTypes.DATE
-    }, 
+    }
 }, {
     tableName: 'gb_activities',
     timestamps: false
