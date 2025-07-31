@@ -11,6 +11,7 @@ let grammarController = require('../controllers/GrammarController');
 let ticketController = require('../controllers/TicketController');
 let SpeechaceController = require('../controllers/SpeechaceController');
 let CompetitionController = require('../controllers/CompetitionController');
+let testResultController = require('../controllers/TestResultController');
 
 // Rules
 let requestValidation = require('../validators/RequestValidation');
@@ -40,6 +41,7 @@ let getConversationRules = require('../validators/grammar/GetConversationRules')
 let CompetitionRules = require('../validators/grammar/CompetitionRules');
 let phoneVerificationGetOtpRules = require('../validators/user/PhoneVerificationGetOtpRules');
 let phoneVerificationConfirmRules = require('../validators/user/PhoneVerificationConfirmRules');
+let submitTestResultRules = require('../validators/test/SubmitTestResultRules');
 
 let checkOtpTokenMiddleware = require('../middlewares/CheckOtpTokenMiddleware');
 let checkTokenMiddleware = require('../middlewares/CheckTokenMiddleware');
@@ -69,6 +71,8 @@ router.get('/course/level-list', checkTokenMiddleware, courseController.getLevel
 router.get('/course/unit-list', checkTokenMiddleware, requestValidation(getUnitListRules), courseController.getUnitList);
 router.get('/course/activity-list', checkTokenMiddleware, requestValidation(getActivityListRules), courseController.getActivityList);
 router.get('/course/test-list', checkTokenMiddleware, courseController.getTestList);
+router.post('/course/test-list/submit-result', checkTokenMiddleware, requestValidation(submitTestResultRules), testResultController.submitTestResult);
+router.get('/course/test-list/results', checkTokenMiddleware, testResultController.getTestResults);
 
 // Danh sách từ của unit
 router.get('/course/unit/words', checkTokenMiddleware, requestValidation(getWordsRules), courseController.getWords);
