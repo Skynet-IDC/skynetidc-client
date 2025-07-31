@@ -12,6 +12,14 @@ module.exports = {
         try {
             const { type, questions, user_id, level } = req.body;
             
+            // Check if the user_id in the request body matches the authenticated user's ID
+            if (user_id !== req.body.user.id) {
+                return res.json({
+                    errorCode: errorCode.COMMON_FAIL,
+                    message: 'Không được phép lưu kết quả bài kiểm tra cho người dùng khác'
+                });
+            }
+            
             // Save test result to database
             const testResult = await testResultRepository.save({
                 userId: user_id,
