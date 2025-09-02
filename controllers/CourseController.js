@@ -18,6 +18,11 @@ module.exports = {
         const response = await activityService.getActivityList(req.query.part_id);
         res.json(response);
     },
+    
+    getTestList: async function (req, res) {
+        const response = await activityService.getActivityList(0); // Assuming 0 is used for test activities
+        res.json(response);
+    },
 
     getWords: async function (req, res) {
         const response = await unitService.getWords(req.query.unit_id);

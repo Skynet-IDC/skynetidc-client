@@ -39,6 +39,10 @@ const Activity = sequelize.define("Activity", {
         type: DataTypes.INTEGER,
         allowNull: false
     },
+    type: {
+        type: DataTypes.STRING(100),
+        allowNull: false
+    },
     deletedAt: {
         field: 'deleted_at',
         type: DataTypes.DATE
