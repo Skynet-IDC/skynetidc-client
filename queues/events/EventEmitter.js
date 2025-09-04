@@ -5,5 +5,6 @@ const eventEmitter = new EventEmitter();
 // Events
 eventEmitter.on("userUpdateLevelSuccess", addSyncUserInfo2Queue);
 eventEmitter.on("saveScoreSuccess", addSyncUserInfo2Queue);
+eventEmitter.on("saveTestResultSuccess", addSyncUserInfo2Queue);
 
 module.exports = eventEmitter;

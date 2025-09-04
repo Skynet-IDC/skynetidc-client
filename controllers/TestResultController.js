@@ -1,6 +1,7 @@
 const testResultRepository = require('../repositories/TestResultRepository');
 const errorCode = require('../constants/ErrorCode');
-
+const { redis } = require('../utils/RedisUtils');
+const eventEmitter = require('../utils/EventEmitterUtils');
 module.exports = {
     /**
      * Submit a test result
@@ -28,6 +29,14 @@ module.exports = {
                 level: level
             });
             
+            const profile = req.body.user.profiles.find(item => item.isDefault == 1);
+            // Emit event using EventEmitter after saving test result
+            eventEmitter.emit('saveTestResultSuccess', {
+                profileId: profile.id,
+                levelId: testResult.level,
+                score: 10000000,
+            });
+
             res.json({
                 errorCode: errorCode.SUCCESS,
                 message: 'Lưu kết quả bài kiểm tra thành công',
