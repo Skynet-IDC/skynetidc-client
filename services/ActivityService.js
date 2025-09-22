@@ -42,6 +42,11 @@ module.exports = {
         return {errorCode: ErrorCode.SUCCESS, message: 'Thành công', data: {items: partList}};
     },
 
+    getTestResults: async function (levelCd) {
+        const testResults = await activityRepository.getTestResults(levelCd);
+        return {errorCode: ErrorCode.SUCCESS, message: 'Thành công', data: testResults};
+    },
+
     saveScore: async function (params) {
         const result = await activityScoreRepository.save(params);
         // Save score success event

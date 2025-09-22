@@ -1,6 +1,7 @@
 const levelService = require('../services/LevelService');
 const unitService = require('../services/UnitService');
 const activityService = require('../services/ActivityService');
+const { getTestResults } = require('./TestResultController');
 
 module.exports = {
 
@@ -21,6 +22,11 @@ module.exports = {
     
     getTestList: async function (req, res) {
         const response = await activityService.getActivityList(0); // Assuming 0 is used for test activities
+        res.json(response);
+    },
+
+    getTestResults: async function (req, res) {
+        const response = await activityService.getTestResults(req.query.level_cd);
         res.json(response);
     },
 

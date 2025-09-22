@@ -26,6 +26,17 @@ module.exports = {
             },
             order: [['position']]
         });
+    },
+
+    getTestResults: async function (levelCd) {
+        return await Activity.findAll({
+            where: {
+                is_active: true,
+                part_id: -1, // Assuming -1 is used for test results activities
+                type: levelCd
+            },
+            order: [['position']]
+        });
     }
 
 }

@@ -25,6 +25,9 @@ const UserLearningInfo = sequelize.define("UserLearningInfo", {
     activities: {
         type: DataTypes.STRING(1023)
     },
+    test_results: {
+        type: DataTypes.STRING(1023)
+    },
     createdAt: {
         field: 'created_at',
         type: DataTypes.DATE

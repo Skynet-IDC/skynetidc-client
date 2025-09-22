@@ -46,6 +46,7 @@ let submitTestResultRules = require('../validators/test/SubmitTestResultRules');
 let checkOtpTokenMiddleware = require('../middlewares/CheckOtpTokenMiddleware');
 let checkTokenMiddleware = require('../middlewares/CheckTokenMiddleware');
 let checkIpMiddleware = require('../middlewares/CheckIpMiddleware');
+let getListTestResultRules = require('../validators/test/GetListTestResultRules');
 
 router.get('/', function (req, res) {
     res.send('Hello World');
@@ -71,6 +72,7 @@ router.get('/course/level-list', checkTokenMiddleware, courseController.getLevel
 router.get('/course/unit-list', checkTokenMiddleware, requestValidation(getUnitListRules), courseController.getUnitList);
 router.get('/course/activity-list', checkTokenMiddleware, requestValidation(getActivityListRules), courseController.getActivityList);
 router.get('/course/test-list', checkTokenMiddleware, courseController.getTestList);
+router.get('/course/test-results', checkTokenMiddleware, requestValidation(getListTestResultRules), courseController.getTestResults);
 router.post('/course/test-list/submit-result', checkTokenMiddleware, requestValidation(submitTestResultRules), testResultController.submitTestResult);
 router.get('/course/test-list/results', checkTokenMiddleware, testResultController.getTestResults);
 
