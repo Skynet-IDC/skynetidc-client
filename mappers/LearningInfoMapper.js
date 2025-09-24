@@ -7,6 +7,6 @@ module.exports = (model) => {
         parts: JSON.parse(model.parts),
         activities: JSON.parse(model.activities),
         createdAt: model.created_at,
-        testResults: JSON.parse(model.test_results)
+        testResults: JSON.parse(model.testResults)
     }
 }

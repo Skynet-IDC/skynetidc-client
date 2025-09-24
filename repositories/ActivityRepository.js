@@ -28,12 +28,12 @@ module.exports = {
         });
     },
 
-    getTestResults: async function (levelCd) {
+    getTestResults: async function (levelId) {
         return await Activity.findAll({
             where: {
                 is_active: true,
                 part_id: -1, // Assuming -1 is used for test results activities
-                type: levelCd
+                type: levelId
             },
             order: [['position']]
         });

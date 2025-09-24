@@ -30,6 +30,7 @@ let disableAccountRules = require('../validators/user/DisableAccountRules');
 let getActivityListRules = require('../validators/course/GetActivityListRules');
 let getUnitListRules = require('../validators/course/GetUnitListRules');
 let submitActivityScoreRules = require('../validators/activity/SubmitActivityScoreRules');
+let submitTestResultRules = require('../validators/activity/SubmitTestResults');
 let GetActivityRules = require('../validators/activity/GetActivityRules');
 let getWordsRules = require('../validators/unit/GetWordsRules');
 let updateVipRules = require('../validators/license/UpdateVipRules');
@@ -41,7 +42,7 @@ let getConversationRules = require('../validators/grammar/GetConversationRules')
 let CompetitionRules = require('../validators/grammar/CompetitionRules');
 let phoneVerificationGetOtpRules = require('../validators/user/PhoneVerificationGetOtpRules');
 let phoneVerificationConfirmRules = require('../validators/user/PhoneVerificationConfirmRules');
-let submitTestResultRules = require('../validators/test/SubmitTestResultRules');
+let submitBeginTestResultRules = require('../validators/test/SubmitTestResultRules');
 
 let checkOtpTokenMiddleware = require('../middlewares/CheckOtpTokenMiddleware');
 let checkTokenMiddleware = require('../middlewares/CheckTokenMiddleware');
@@ -73,7 +74,7 @@ router.get('/course/unit-list', checkTokenMiddleware, requestValidation(getUnitL
 router.get('/course/activity-list', checkTokenMiddleware, requestValidation(getActivityListRules), courseController.getActivityList);
 router.get('/course/test-list', checkTokenMiddleware, courseController.getTestList);
 router.get('/course/test-results', checkTokenMiddleware, requestValidation(getListTestResultRules), courseController.getTestResults);
-router.post('/course/test-list/submit-result', checkTokenMiddleware, requestValidation(submitTestResultRules), testResultController.submitTestResult);
+router.post('/course/test-list/submit-result', checkTokenMiddleware, requestValidation(submitBeginTestResultRules), testResultController.submitTestResult);
 router.get('/course/test-list/results', checkTokenMiddleware, testResultController.getTestResults);
 
 // Danh sách từ của unit
@@ -92,6 +93,7 @@ router.get('/license/check-active-code', checkIpMiddleware, requestValidation(ch
 router.get('/activity/:id', requestValidation(GetActivityRules), activityController.getInfo);
 router.post('/question/build/:id', activityController.buildQuestionData);
 router.post('/activity/submit-score', checkTokenMiddleware, requestValidation(submitActivityScoreRules), activityController.submitActivityScore);
+router.post('/activity/submit-test-results', checkTokenMiddleware, requestValidation(submitTestResultRules), activityController.submitTestResult);
 
 // Ngữ pháp + Từ vựng
 router.get('/practice/grammar/words', checkTokenMiddleware, requestValidation(getGrammarRules), grammarController.getWords);

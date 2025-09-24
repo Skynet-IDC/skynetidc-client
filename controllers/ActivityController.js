@@ -3,6 +3,7 @@ const activityService = require("../services/ActivityService");
 const PracticeService = require("../services/PracticeService");
 const questionService = require("../services/QuestionService");
 const ErrorCode = require("../constants/ErrorCode");
+const { submitTestResult } = require("./TestResultController");
 
 module.exports = {
 
@@ -22,6 +23,20 @@ module.exports = {
     buildQuestionData: async function (req, res) {
         const id = req.params.id;
         const response = await questionService.build(id);
+        res.json(response);
+    },
+
+    submitTestResult: async function (req, res) {
+        utils.log(`submitTestResult|Start execute, headers: ${JSON.stringify(req.headers)}, `
+            + `body: ${JSON.stringify(req.body)}`);
+        const profile = req.body.user.profiles.find(item => item.isDefault == 1);
+        let levelId = req.body.level_id ? parseInt(req.body.level_id) : null;
+        let fields = {};
+        if (req.body.results) {
+            fields.test_results = parseInt(req.body.results);
+        }
+
+        let response = await activityService.updateTestResults(profile.id, levelId, fields);
         res.json(response);
     },
 

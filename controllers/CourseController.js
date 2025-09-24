@@ -26,7 +26,7 @@ module.exports = {
     },
 
     getTestResults: async function (req, res) {
-        const response = await activityService.getTestResults(req.query.level_cd);
+        const response = await activityService.getTestResults(req.query.level_id);
         res.json(response);
     },
 

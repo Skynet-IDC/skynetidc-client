@@ -1,8 +1,10 @@
+const userLearningInfoRepository = require('../repositories/UserLearningInfoRepository');
 const activityRepository = require('../repositories/ActivityRepository');
 const activityScoreRepository = require('../repositories/ActivityScoreRepository');
 const questionRepository = require('../repositories/QuestionRepository');
 const ErrorCode = require('../constants/ErrorCode');
 const eventEmitter = require("../queues/events/EventEmitter");
+const { update } = require('../repositories/UserRepository');
 
 module.exports = {
     getActivityInfo: async function (id) {
@@ -42,9 +44,17 @@ module.exports = {
         return {errorCode: ErrorCode.SUCCESS, message: 'Thành công', data: {items: partList}};
     },
 
-    getTestResults: async function (levelCd) {
-        const testResults = await activityRepository.getTestResults(levelCd);
+    getTestResults: async function (levelId) {
+        const testResults = await activityRepository.getTestResults(levelId);
         return {errorCode: ErrorCode.SUCCESS, message: 'Thành công', data: testResults};
+    },
+
+    updateTestResults: async function (profileId, levelId, fields) {
+        const result = await userLearningInfoRepository.update(profileId, levelId, fields);
+         if (result) {
+            return {errorCode: ErrorCode.SUCCESS, message: 'Lưu thông tin thành công'};
+        }
+        return {errorCode: ErrorCode.COMMON_FAIL, message: 'Lưu thông tin thất bại'};
     },
 
     saveScore: async function (params) {
