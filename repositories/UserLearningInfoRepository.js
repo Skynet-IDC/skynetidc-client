@@ -14,16 +14,17 @@ module.exports = {
 
     update: async function (profileId, levelId, fields = {}) {
         return new Promise(async resolve => {
-            let learningInfo = await this.findByProfileIdAndLevelId(profileId, levelId);
-            if (learningInfo) {
-                // Update
-                learningInfo.update(fields).then(result => {
-                    resolve(result);
-                }).catch((e) => {
-                    utils.log(`[UserLearningInfoRepository] Error when executing "update", detail: ${e}`);
-                    resolve(false);
-                });
-            }
+            UserLearningInfo.update(fields, {
+                where: {
+                    profile_id: profileId,
+                    level_id: levelId
+                }
+            }).then(result => {
+                resolve(result);
+            }).catch((e) => {
+                utils.log(`[UserLearningInfoRepository] Error when executing "update", detail: ${e}`);
+                resolve(false);
+            });
         });
     }
 

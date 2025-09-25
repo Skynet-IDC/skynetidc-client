@@ -32,8 +32,8 @@ module.exports = {
         const profile = req.body.user.profiles.find(item => item.isDefault == 1);
         let levelId = req.body.level_id ? parseInt(req.body.level_id) : null;
         let fields = {};
-        if (req.body.results) {
-            fields.test_results = parseInt(req.body.results);
+       if (req.body.results) {
+            fields.testResults = JSON.stringify(req.body.results);
         }
 
         let response = await activityService.updateTestResults(profile.id, levelId, fields);
