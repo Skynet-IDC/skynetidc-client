@@ -1,4 +1,5 @@
 const testResultRepository = require('../repositories/TestResultRepository');
+const userLearningInfoRepository = require('../repositories/UserLearningInfoRepository');
 const errorCode = require('../constants/ErrorCode');
 const { redis } = require('../utils/RedisUtils');
 const eventEmitter = require('../utils/EventEmitterUtils');
@@ -90,5 +91,35 @@ module.exports = {
                 message: 'Có lỗi xảy ra khi lấy kết quả bài kiểm tra'
             });
         }
+    },
+
+    /**
+     * Get report for test result by levelId
+     * @param {Object} req - Express request object
+     * @param {Object} res - Express response object
+     * @returns {Promise<void>}
+     */
+    getReportForTestResults: async function (req, res) {
+        try {
+            // Use the authenticated user's ID from req.body.user instead of query parameter
+            // This ensures users can only access their own test results
+            const levelId = req.query.levelId;
+            const activityId = req.query.activityId;
+
+            let userLearningInfo = await userLearningInfoRepository.findByLevelIdAndActivityId(levelId, activityId);
+
+            res.json({
+                errorCode: errorCode.SUCCESS,
+                message: 'Lấy báo cáo bài kiểm tra thành công',
+                data: JSON.parse(userLearningInfo.testResults)
+            });
+        } catch (error) {
+            console.error('Error getting test results:', error);
+            res.json({
+                errorCode: errorCode.COMMON_FAIL,
+                message: 'Có lỗi xảy ra khi lấy báo cáo bài kiểm tra'
+            });
+        }
     }
 };
+

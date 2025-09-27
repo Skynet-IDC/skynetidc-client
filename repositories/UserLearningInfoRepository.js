@@ -12,6 +12,15 @@ module.exports = {
         });
     },
 
+    findByLevelIdAndActivityId: async function (levelId, activityId) {
+        return await UserLearningInfo.findOne({
+            where: {
+                level_id: levelId,
+                profile_id: activityId
+            }
+        });
+    },
+
     update: async function (profileId, levelId, fields = {}) {
         return new Promise(async resolve => {
             UserLearningInfo.update(fields, {
