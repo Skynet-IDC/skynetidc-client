@@ -1,5 +1,6 @@
 const testResultRepository = require('../repositories/TestResultRepository');
 const userLearningInfoRepository = require('../repositories/UserLearningInfoRepository');
+const testResultService = require("../services/TestResultService");
 const errorCode = require('../constants/ErrorCode');
 const { redis } = require('../utils/RedisUtils');
 const eventEmitter = require('../utils/EventEmitterUtils');
@@ -103,15 +104,12 @@ module.exports = {
         try {
             // Use the authenticated user's ID from req.body.user instead of query parameter
             // This ensures users can only access their own test results
-            const levelId = req.query.levelId;
-            const activityId = req.query.activityId;
+            const profile = req.body.user.profiles.find(item => item.isDefault == 1);
 
-            let userLearningInfo = await userLearningInfoRepository.findByLevelIdAndActivityId(levelId, activityId);
-
+            let reportResponse = await testResultService.getReport(req.query.levelId, profile.id);
             res.json({
                 errorCode: errorCode.SUCCESS,
-                message: 'Lấy báo cáo bài kiểm tra thành công',
-                data: JSON.parse(userLearningInfo.testResults)
+                data: reportResponse
             });
         } catch (error) {
             console.error('Error getting test results:', error);

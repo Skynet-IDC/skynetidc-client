@@ -12,11 +12,11 @@ module.exports = {
         });
     },
 
-    findByLevelIdAndActivityId: async function (levelId, activityId) {
+    findByLevelIdAndProfileId: async function (levelId, profileId) {
         return await UserLearningInfo.findOne({
             where: {
                 level_id: levelId,
-                profile_id: activityId
+                profile_id: profileId
             }
         });
     },
