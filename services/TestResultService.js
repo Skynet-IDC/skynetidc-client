@@ -31,13 +31,13 @@ module.exports = {
         }
 
         return {
-            percent: 80, // Tối đa 100%
+            percent: percent, // Tối đa 100%
             overview: {
-                gramma: 10, // Tối đa 10 điểm
-                listening: 3, // Tối đa 3 điểm
-                speaking: 5, // Tối đa 5 điểm
-                reading: 2, // Tối đa 3 điểm
-                writing: 3 // Tối đa 3 điểm
+                gramma: scoreGramma, // Tối đa 10 điểm
+                listening: scoreListening, // Tối đa 3 điểm
+                speaking: scoreSpeaking, // Tối đa 5 điểm
+                reading: scoreReading, // Tối đa 3 điểm
+                writing: scoreWriting // Tối đa 3 điểm
             },
             detailReview: {
                 gramma: "Nắm chắc cơ bản, còn vài lỗi nhỏ cần cải thiện.",
