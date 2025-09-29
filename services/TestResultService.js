@@ -1,50 +1,118 @@
 const userLearningInfoRepository = require("../repositories/UserLearningInfoRepository");
-
+const utils = require("../utils/CommonUtils");
+const reviewConst = require("../constants/ReviewConstant");
+const knowledgeConst = require("../constants/KnowledgeConstant");
 module.exports = {
     getReport: async function (levelId, profileId) {
         let percent = 0;
-        let scoreGramma = 0;
-        let scoreListening = 0;
-        let scoreSpeaking = 0;
-        let scoreReading = 0;
-        let scoreWriting = 0;
-        let userLearningInfo = await userLearningInfoRepository.findByLevelIdAndProfileId(levelId, profileId);
-        // const activity = JSON.parse(userLearningInfo.activities);
-        // if (activity) {
-        //
-        // }
+        let vocabularyScore = 0;
+        let grammaScore = 0;
+        let listeningScore = 0;
+        let speakingScore = 0;
+        let readingScore = 0;
+        let writingScore = 0;
+        let totalScore = 0;
+        let writingReview = '';
+        let readingReview = '';
+        let speakingReview = '';
+        let listeningReview = '';
+        let grammaReview = '';
+        let vocabularyReview = '';
+        let model = await userLearningInfoRepository.findByLevelIdAndProfileId(levelId, profileId);
 
-        if (userLearningInfo.skill === 'GRAMMAR') {
-            scoreGramma += 1;
-        }
-        if (userLearningInfo.skill === 'SPEAKING') {
-            scoreSpeaking += 1;
-        }
-        if (userLearningInfo.skill === 'LISTENING') {
-            scoreListening += 1;
-        }
-        if (userLearningInfo.skill === 'READING') {
-            scoreReading += 1;
-        }
-        if (userLearningInfo.skill === 'WRITING') {
-            scoreWriting += 1;
+        if (!utils.isEmpty(model) && !utils.isEmpty(model.testResults) ) {
+            let testResults = JSON.parse(model.testResults);
+            let results =  testResults.results;
+
+            results.forEach(function(result) {
+                if (result.skill === knowledgeConst.VOCABULARY && result.score >= 0) {
+                    vocabularyScore += 1;
+                }
+                if (result.skill === knowledgeConst.GRAMMAR && result.score >= 0) {
+                    grammaScore += 1;
+                }
+                if (result.skill === knowledgeConst.LISTENING && result.score >= 0) {
+                    listeningScore += 1;
+                }
+                if (result.skill === knowledgeConst.SPEAKING && result.score >= 60) {
+                    speakingScore += 1;
+                }
+                if (result.skill === knowledgeConst.READING && result.score >= 0) {
+                    readingScore += 1;
+                }
+                if (result.skill === knowledgeConst.WRITING && result.score >= 0) {
+                    writingScore += 1;
+                }
+            });
+            if (vocabularyScore > 0 && vocabularyScore <= 2) {
+                vocabularyReview = reviewConst.ELEMENTARY;
+            } else if (vocabularyScore > 2 && vocabularyScore <= 4) {
+                vocabularyReview = reviewConst.INTERMEDIATE;
+            } else if (vocabularyScore === 5) {
+                vocabularyReview = reviewConst.PROFICIENT;
+            }
+
+            if (grammaScore > 0 && grammaScore <= 2) {
+                grammaReview = reviewConst.ELEMENTARY;
+            } else if (grammaScore > 2 && grammaScore <= 4) {
+                grammaReview = reviewConst.INTERMEDIATE;
+            } else if (grammaScore === 5) {
+                grammaReview = reviewConst.PROFICIENT;
+            }
+
+            if (listeningScore > 0 && listeningScore <= 1) {
+                listeningReview = reviewConst.ELEMENTARY;
+            } else if (listeningScore === 2) {
+                listeningReview = reviewConst.INTERMEDIATE;
+            } else if (listeningScore === 3) {
+                listeningReview = reviewConst.PROFICIENT;
+            }
+
+            if (speakingScore > 0 && speakingScore <= 2) {
+                speakingReview = reviewConst.ELEMENTARY;
+            } else if (speakingScore > 2 && speakingScore <= 4) {
+                speakingReview = reviewConst.INTERMEDIATE;
+            } else if (speakingScore === 5) {
+                speakingReview = reviewConst.PROFICIENT;
+            }
+
+            if (readingScore > 0 && readingScore <= 1) {
+                readingReview = reviewConst.ELEMENTARY;
+            } else if (readingScore === 2) {
+                readingReview = reviewConst.INTERMEDIATE;
+            } else if (readingScore === 3) {
+                readingReview = reviewConst.PROFICIENT;
+            }
+
+            if (writingScore > 0 && writingScore <= 1) {
+                writingReview = reviewConst.ELEMENTARY;
+            } else if (writingScore === 2) {
+                writingReview = reviewConst.INTERMEDIATE;
+            } else if (writingScore === 3) {
+                writingReview = reviewConst.PROFICIENT;
+            }
+
+            totalScore = vocabularyScore + grammaScore + listeningScore + speakingScore + readingScore + writingScore;
+            percent = (totalScore/24) * 100;
         }
 
         return {
-            percent: percent, // Tối đa 100%
+            percent: percent,
             overview: {
-                gramma: scoreGramma, // Tối đa 10 điểm
-                listening: scoreListening, // Tối đa 3 điểm
-                speaking: scoreSpeaking, // Tối đa 5 điểm
-                reading: scoreReading, // Tối đa 3 điểm
-                writing: scoreWriting // Tối đa 3 điểm
+                vocabulary: vocabularyScore, // Tối đa 5 điểm
+                gramma: grammaScore, // Tối đa 5 điểm
+                listening: listeningScore, // Tối đa 3 điểm
+                speaking: speakingScore, // Tối đa 5 điểm
+                reading: readingScore, // Tối đa 3 điểm
+                writing: writingScore // Tối đa 3 điểm
             },
             detailReview: {
-                gramma: "Nắm chắc cơ bản, còn vài lỗi nhỏ cần cải thiện.",
-                listening: "Hiểu nội dung chính, phản xạ nhanh.",
-                speaking: "Phát âm chưa rõ, diễn đạt còn hạn chế.",
-                reading: "Đọc chưa chuẩn ở một số âm tiết, cần cải thiện thêm",
-                writing: "Bố cục chưa rõ ràng, cần cải thiện ngữ pháp và mạch lạc."
+                vocabulary: vocabularyReview,
+                gramma: grammaReview,
+                listening: listeningReview,
+                speaking: speakingReview,
+                reading: readingReview,
+                writing: writingReview
             }
         };
     }
