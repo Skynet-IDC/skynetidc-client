@@ -6,6 +6,8 @@ let userController = require('../controllers/UserController');
 let courseController = require('../controllers/CourseController');
 let licenseController = require('../controllers/LicenseController');
 let activityController = require('../controllers/ActivityController')
+let questionController = require('../controllers/QuestionController')
+let missionController = require('../controllers/MissionController')
 let packageController = require('../controllers/PackageController');
 let grammarController = require('../controllers/GrammarController');
 let ticketController = require('../controllers/TicketController');
@@ -90,11 +92,21 @@ router.post('/license/buy-package', checkTokenMiddleware, requestValidation(buyP
 router.post('/license/gen-code', checkIpMiddleware, requestValidation(genCodeRules), licenseController.genCode);
 router.post('/license/active-code', checkTokenMiddleware, licenseController.activeCode);
 router.get('/license/check-active-code', checkIpMiddleware, requestValidation(checkActiveCodeRules), licenseController.checkActiveCode);
- 
+
 router.get('/activity/:id', requestValidation(GetActivityRules), activityController.getInfo);
 router.post('/question/build/:id', activityController.buildQuestionData);
 router.post('/activity/submit-score', checkTokenMiddleware, requestValidation(submitActivityScoreRules), activityController.submitActivityScore);
 router.post('/activity/submit-test-results', checkTokenMiddleware, requestValidation(submitTestResultRules), activityController.submitTestResult);
+
+// get writing question
+router.get('/questions/:id', questionController.getQuestionById);
+
+// writing submit
+router.post('/writing/submit', checkTokenMiddleware, questionController.submitAnswer);
+
+// Mission
+router.get('/missions', missionController.getMissionBySkill);
+
 
 // Ngữ pháp + Từ vựng
 router.get('/practice/grammar/words', checkTokenMiddleware, requestValidation(getGrammarRules), grammarController.getWords);

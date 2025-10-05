@@ -45,51 +45,51 @@ module.exports = {
                 }
             });
             if (vocabularyScore > 0 && vocabularyScore <= 2) {
-                vocabularyReview = reviewConst.ELEMENTARY;
+                vocabularyReview = reviewConst.VOCABULARY_ELEMENTARY;
             } else if (vocabularyScore > 2 && vocabularyScore <= 4) {
-                vocabularyReview = reviewConst.INTERMEDIATE;
+                vocabularyReview = reviewConst.VOCABULARY_INTERMEDIATE;
             } else if (vocabularyScore === 5) {
-                vocabularyReview = reviewConst.PROFICIENT;
+                vocabularyReview = reviewConst.VOCABULARY_PROFICIENT;
             }
 
             if (grammaScore > 0 && grammaScore <= 2) {
-                grammaReview = reviewConst.ELEMENTARY;
+                grammaReview = reviewConst.GRAMMA_ELEMENTARY;
             } else if (grammaScore > 2 && grammaScore <= 4) {
-                grammaReview = reviewConst.INTERMEDIATE;
+                grammaReview = reviewConst.GRAMMA_INTERMEDIATE;
             } else if (grammaScore === 5) {
-                grammaReview = reviewConst.PROFICIENT;
+                grammaReview = reviewConst.GRAMMA_PROFICIENT;
             }
 
             if (listeningScore > 0 && listeningScore <= 1) {
-                listeningReview = reviewConst.ELEMENTARY;
+                listeningReview = reviewConst.LISTENING_ELEMENTARY;
             } else if (listeningScore === 2) {
-                listeningReview = reviewConst.INTERMEDIATE;
+                listeningReview = reviewConst.LISTENING_INTERMEDIATE;
             } else if (listeningScore === 3) {
-                listeningReview = reviewConst.PROFICIENT;
+                listeningReview = reviewConst.LISTENING_PROFICIENT;
             }
 
             if (speakingScore > 0 && speakingScore <= 2) {
-                speakingReview = reviewConst.ELEMENTARY;
+                speakingReview = reviewConst.SPEAKING_ELEMENTARY;
             } else if (speakingScore > 2 && speakingScore <= 4) {
-                speakingReview = reviewConst.INTERMEDIATE;
+                speakingReview = reviewConst.SPEAKING_INTERMEDIATE;
             } else if (speakingScore === 5) {
-                speakingReview = reviewConst.PROFICIENT;
+                speakingReview = reviewConst.SPEAKING_PROFICIENT;
             }
 
             if (readingScore > 0 && readingScore <= 1) {
-                readingReview = reviewConst.ELEMENTARY;
+                readingReview = reviewConst.READING_ELEMENTARY;
             } else if (readingScore === 2) {
-                readingReview = reviewConst.INTERMEDIATE;
+                readingReview = reviewConst.READING_INTERMEDIATE;
             } else if (readingScore === 3) {
-                readingReview = reviewConst.PROFICIENT;
+                readingReview = reviewConst.READING_PROFICIENT;
             }
 
             if (writingScore > 0 && writingScore <= 1) {
-                writingReview = reviewConst.ELEMENTARY;
+                writingReview = reviewConst.WRITING_ELEMENTARY;
             } else if (writingScore === 2) {
-                writingReview = reviewConst.INTERMEDIATE;
+                writingReview = reviewConst.WRITING_INTERMEDIATE;
             } else if (writingScore === 3) {
-                writingReview = reviewConst.PROFICIENT;
+                writingReview = reviewConst.WRITING_PROFICIENT;
             }
 
             totalScore = vocabularyScore + grammaScore + listeningScore + speakingScore + readingScore + writingScore;

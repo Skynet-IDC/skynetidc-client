@@ -1,5 +1,20 @@
 module.exports = {
-   ELEMENTARY: 'Còn hạn chế',
-   INTERMEDIATE: 'Đang tiến bộ',
-   PROFICIENT: 'Thành thạo'
+   VOCABULARY_ELEMENTARY: 'Bạn đã ghi nhớ được một số từ vựng cơ bản, tuy nhiên vẫn còn nhiều hạn chế trong việc mở rộng và sử dụng từ vựng.',
+   VOCABULARY_INTERMEDIATE: 'Bạn đã trả lời đúng phần lớn câu hỏi từ vựng, cho thấy vốn từ của bạn đang được cải thiện và mở rộng dần.',
+   VOCABULARY_PROFICIENT: 'Bạn nhận diện và sử dụng từ vựng khá chính xác, thể hiện sự ổn định trong khả năng ghi nhớ và áp dụng vào các tình huống cụ thể.',
+   GRAMMA_ELEMENTARY: 'Bạn đã nhận diện được một số cấu trúc ngữ pháp cơ bản, nhưng khả năng vận dụng vào tình huống cụ thể vẫn còn chưa được linh hoạt.',
+   GRAMMA_INTERMEDIATE: 'Bạn đã nắm được nhiều chủ điểm ngữ pháp, tuy nhiên việc áp dụng ở một số chỗ vẫn chưa thật chính xác.',
+   GRAMMA_PROFICIENT: 'Bạn sử dụng các cấu trúc ngữ pháp khá thành thạo và duy trì độ chính xác cao.',
+   LISTENING_ELEMENTARY: 'Bạn mới nghe hiểu được một phần nội dung, khả năng nắm ý chính còn hạn chế nên cần tiếp tục luyện tập để hiểu trọn vẹn hơn.',
+   LISTENING_INTERMEDIATE: 'Bạn đã nghe hiểu được phần lớn nội dung, tuy nhiên đôi khi vẫn bỏ sót một vài chi tiết nên thông tin tiếp nhận chưa thật đầy đủ.',
+   LISTENING_PROFICIENT: 'Bạn đã nghe và nắm bắt nội dung một cách đầy đủ, rõ ràng và chính xác, thể hiện khả năng tiếp nhận thông tin rất ổn định.',
+   SPEAKING_ELEMENTARY: 'Bạn đã có nhiều cố gắng trong phần phát âm, tuy nhiên vẫn cần chú ý thêm đến các âm cơ bản và đặc biệt là âm cuối để rõ ràng hơn.',
+   SPEAKING_INTERMEDIATE: 'Bạn phát âm khá rõ ràng, chỉ còn một số âm nhất định cần luyện tập thêm để đạt độ chuẩn xác hơn.',
+   SPEAKING_PROFICIENT: 'Phát âm của bạn rất rõ ràng và có độ chính xác cao, thể hiện sự ổn định trong cách phát âm.',
+   READING_ELEMENTARY: 'Bạn đọc hiểu được một phần nội dung, nhưng khả năng phân tích và khai thác thông tin vẫn cần được cải thiện hơn nữa.',
+   READING_INTERMEDIATE: 'Bạn đã đọc hiểu được phần lớn nội dung, tuy nhiên vẫn còn bỏ sót một số chi tiết nên thông tin tiếp nhận chưa thật trọn vẹn.',
+   READING_PROFICIENT: 'Bạn đã đọc và phân tích văn bản một cách chính xác, đầy đủ và rõ ràng.',
+   WRITING_ELEMENTARY: 'Bạn đã có sự cố gắng và viết lại được một phần nhỏ nội dung, nhưng vẫn cần tiếp tục rèn luyện để hoàn thiện hơn.',
+   WRITING_INTERMEDIATE: 'Phần viết của bạn khá chính xác, chỉ còn xuất hiện một vài lỗi nhỏ cần điều chỉnh.',
+   WRITING_PROFICIENT: 'Bạn trình bày nội dung chính xác và đầy đủ, hầu như không bỏ sót chi tiết quan trọng nào.',
 }
