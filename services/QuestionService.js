@@ -55,7 +55,6 @@ module.exports = {
             }
             arr.push(subQuestionData)
         }
-
         return arr
     },
     build: async function (id) {
@@ -96,7 +95,6 @@ module.exports = {
             },
             subQuestions: this.convertSubQuestionInfo(subQuestionInfo, filesContent, botsContent)
         }
-
         utils.log(`Build Question Data : ${id}`);
 
         return await questionRepository.syncQuestionResource({
@@ -105,6 +103,17 @@ module.exports = {
             createdAt: new Date(),
             updatedAt: new Date()
         })
+    },
+    getById: async function (id) {
+        const question = await questionRepository.findOne(id);
+
+        utils.log(`Get question with id : ${id}`);
+
+        return {
+            id: question.id,
+            name: question.name,
+            content: JSON.parse(question.questionContent).text.value
+        }
 
     },
 
