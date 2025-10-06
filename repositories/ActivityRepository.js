@@ -32,8 +32,9 @@ module.exports = {
         return await Activity.findAll({
             where: {
                 is_active: true,
-                part_id: -1, // Assuming -1 is used for test results activities
-                type: levelId
+                part_id: 0, // Assuming 0 is used for test results activities
+                type: "TEST_RESULTS",
+                levelId: levelId
             },
             order: [['position']]
         });

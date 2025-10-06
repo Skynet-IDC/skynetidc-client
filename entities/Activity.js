@@ -54,6 +54,10 @@ const Activity = sequelize.define("Activity", {
     updatedAt: {
         field: 'updated_at',
         type: DataTypes.DATE
+    },
+    levelId: {
+        field: 'level_id',
+        type: DataTypes.INTEGER
     }
 }, {
     tableName: 'gb_activities',
