@@ -15,6 +15,11 @@ module.exports = {
         res.json(response);
     },
 
+    getUnitListByGrammar: async function (req, res) {
+        const response = await unitService.getUnitsByGrammar(req.query.grammarId, req.query.page, req.query.reverse);
+        res.json(response);
+    },
+
     getActivityList: async function (req, res) {
         const response = await activityService.getActivityList(req.query.part_id);
         res.json(response);

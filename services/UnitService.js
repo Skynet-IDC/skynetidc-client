@@ -15,6 +15,11 @@ module.exports = {
         return {errorCode: ErrorCode.SUCCESS, message: 'Thành công', data: {items: unitList}};
     },
 
+    getUnitsByGrammar: async function (grammarId, page, reverse) {
+        const unitList = await unitRepository.findAllByGrammarId(grammarId, page, reverse);
+        return {errorCode: ErrorCode.SUCCESS, message: 'Thành công', data: {items: unitList}};
+    },
+
     getByLevel: async function (levelId) {
         return await unitRepository.findByLevelId(levelId);
     },

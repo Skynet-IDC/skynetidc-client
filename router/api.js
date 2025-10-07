@@ -73,6 +73,7 @@ router.post('/user/phone-verification/confirm', checkTokenMiddleware, requestVal
 
 router.get('/course/level-list', checkTokenMiddleware, courseController.getLevelList);
 router.get('/course/unit-list', checkTokenMiddleware, requestValidation(getUnitListRules), courseController.getUnitList);
+router.get('/course/units', checkTokenMiddleware, courseController.getUnitListByGrammar);
 router.get('/course/activity-list', checkTokenMiddleware, requestValidation(getActivityListRules), courseController.getActivityList);
 router.get('/course/test-list', checkTokenMiddleware, courseController.getTestList);
 router.get('/course/test-results', checkTokenMiddleware, requestValidation(getListTestResultRules), courseController.getTestResults);
@@ -99,14 +100,15 @@ router.post('/activity/submit-score', checkTokenMiddleware, requestValidation(su
 router.post('/activity/submit-test-results', checkTokenMiddleware, requestValidation(submitTestResultRules), activityController.submitTestResult);
 
 // get writing question
-router.get('/questions/:id', questionController.getQuestionById);
+router.get('/questions/:id', checkTokenMiddleware, questionController.getQuestionById);
 
 // writing submit
 router.post('/writing/submit', checkTokenMiddleware, questionController.submitWriting);
 
-// Mission
-router.get('/missions', missionController.getMissionBySkill);
+router.get('/writing/notify', checkTokenMiddleware, questionController.submitWriting);
 
+// Mission
+router.get('/missions', checkTokenMiddleware, missionController.getMissionBySkill);
 
 // Ngữ pháp + Từ vựng
 router.get('/practice/grammar/words', checkTokenMiddleware, requestValidation(getGrammarRules), grammarController.getWords);
