@@ -93,7 +93,7 @@ module.exports = {
             }
 
             totalScore = vocabularyScore + grammaScore + listeningScore + speakingScore + readingScore + writingScore;
-            percent = (totalScore/24) * 100;
+            percent = (totalScore/results.length) * 100;
             utils.log(`vocabularyScore : ${vocabularyScore}`);
             utils.log(`grammaScore : ${grammaScore}`);
             utils.log(`listeningScore : ${listeningScore}`);
