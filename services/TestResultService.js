@@ -25,22 +25,22 @@ module.exports = {
             let results =  testResults.results;
 
             results.forEach(function(result) {
-                if (result.skill === knowledgeConst.VOCABULARY && result.score >= 0) {
+                if (result.skill === knowledgeConst.VOCABULARY && result.score > 0) {
                     vocabularyScore += 1;
                 }
-                if (result.skill === knowledgeConst.GRAMMAR && result.score >= 0) {
+                if (result.skill === knowledgeConst.GRAMMAR && result.score > 0) {
                     grammaScore += 1;
                 }
-                if (result.skill === knowledgeConst.LISTENING && result.score >= 0) {
+                if (result.skill === knowledgeConst.LISTENING && result.score > 0) {
                     listeningScore += 1;
                 }
                 if (result.skill === knowledgeConst.SPEAKING && result.score >= 60) {
                     speakingScore += 1;
                 }
-                if (result.skill === knowledgeConst.READING && result.score >= 0) {
+                if (result.skill === knowledgeConst.READING && result.score > 0) {
                     readingScore += 1;
                 }
-                if (result.skill === knowledgeConst.WRITING && result.score >= 0) {
+                if (result.skill === knowledgeConst.WRITING && result.score > 0) {
                     writingScore += 1;
                 }
             });
@@ -93,7 +93,14 @@ module.exports = {
             }
 
             totalScore = vocabularyScore + grammaScore + listeningScore + speakingScore + readingScore + writingScore;
-            percent = (totalScore/24) * 100;
+            percent = (totalScore/results.length) * 100;
+            utils.log(`vocabularyScore : ${vocabularyScore}`);
+            utils.log(`grammaScore : ${grammaScore}`);
+            utils.log(`listeningScore : ${listeningScore}`);
+            utils.log(`speakingScore : ${speakingScore}`);
+            utils.log(`readingScore : ${readingScore}`);
+            utils.log(`writingScore : ${writingScore}`);
+            utils.log(`percent : ${percent}`);
         }
 
         return {
