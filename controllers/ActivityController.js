@@ -2,8 +2,6 @@ const utils = require("../utils/CommonUtils");
 const activityService = require("../services/ActivityService");
 const PracticeService = require("../services/PracticeService");
 const questionService = require("../services/QuestionService");
-const ErrorCode = require("../constants/ErrorCode");
-const { submitTestResult } = require("./TestResultController");
 
 module.exports = {
 
@@ -32,7 +30,7 @@ module.exports = {
         const profile = req.body.user.profiles.find(item => item.isDefault == 1);
         let levelId = req.body.level_id ? parseInt(req.body.level_id) : null;
         let fields = {};
-       if (req.body.results) {
+        if (req.body.results) {
             fields.testResults = JSON.stringify(req.body.results);
         }
 

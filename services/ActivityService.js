@@ -1,10 +1,11 @@
 const userLearningInfoRepository = require('../repositories/UserLearningInfoRepository');
 const activityRepository = require('../repositories/ActivityRepository');
 const activityScoreRepository = require('../repositories/ActivityScoreRepository');
+const writingResultRepository = require('../repositories/WritingResultRepository');
 const questionRepository = require('../repositories/QuestionRepository');
 const ErrorCode = require('../constants/ErrorCode');
 const eventEmitter = require("../queues/events/EventEmitter");
-const { update } = require('../repositories/UserRepository');
+const utils = require("../utils/CommonUtils");
 
 module.exports = {
     getActivityInfo: async function (id) {
@@ -52,6 +53,32 @@ module.exports = {
     updateTestResults: async function (profileId, levelId, fields) {
         const result = await userLearningInfoRepository.update(profileId, levelId, fields);
          if (result) {
+            return {errorCode: ErrorCode.SUCCESS, message: 'Lưu thông tin thành công'};
+        }
+        return {errorCode: ErrorCode.COMMON_FAIL, message: 'Lưu thông tin thất bại'};
+    },
+
+    saveWritingResult: async function (profile, fields) {
+        const levelId = fields.level_id ? parseInt(fields.level_id) : null;
+        const topicId = fields.topic_id ? parseInt(fields.topic_id) : null;
+        const questionResponses = fields.question_responses_holders;
+        const questionId = questionResponses[0].question_id;
+        const writingAnswer = questionResponses[0].responses.map(writingAnswer => writingAnswer.response).filter(Boolean).join(",");
+        utils.log(`body: ${JSON.stringify(fields)}`);
+
+        const request = {
+            userId: profile.id,
+            questionId: questionId,
+            topicId: topicId,
+            levelId: levelId,
+            answers: `[${writingAnswer}]`,
+            view: 0,
+            status: 0
+        }
+        utils.log(`request: ${JSON.stringify(request)}`);
+
+        const result = await writingResultRepository.save(request);
+        if (result) {
             return {errorCode: ErrorCode.SUCCESS, message: 'Lưu thông tin thành công'};
         }
         return {errorCode: ErrorCode.COMMON_FAIL, message: 'Lưu thông tin thất bại'};
