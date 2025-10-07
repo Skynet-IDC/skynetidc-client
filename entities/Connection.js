@@ -4,6 +4,9 @@ const sequelize = new Sequelize(config.mysqlConnection.db, config.mysqlConnectio
     host: config.mysqlConnection.host,
     port: config.mysqlConnection.port,
     dialect: 'mariadb',
+    dialectOptions: {
+        allowPublicKeyRetrieval: true
+    },
     pool: {
         max: 5,
         min: 0,

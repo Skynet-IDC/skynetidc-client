@@ -102,7 +102,7 @@ router.post('/activity/submit-test-results', checkTokenMiddleware, requestValida
 router.get('/questions/:id', questionController.getQuestionById);
 
 // writing submit
-router.post('/writing/submit', checkTokenMiddleware, questionController.submitAnswer);
+router.post('/writing/submit', checkTokenMiddleware, questionController.submitWriting);
 
 // Mission
 router.get('/missions', missionController.getMissionBySkill);

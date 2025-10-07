@@ -1,5 +1,6 @@
 const errorCode = require('../constants/ErrorCode');
 const questionService = require("../services/QuestionService");
+const activityService = require("../services/ActivityService");
 module.exports = {
     /**
      * Get a Question By Id
@@ -19,15 +20,13 @@ module.exports = {
         }
     },
 
-    submitAnswer: async function (req, res) {
+    submitWriting: async function (req, res) {
         try {
             // Use the authenticated user's ID from req.body.user instead of query parameter
             // This ensures users can only access their own test results
             const profile = req.body.user.profiles.find(item => item.isDefault == 1);
-            console.log('submit answer:', req.body);
-            res.json({
-                errorCode: errorCode.SUCCESS,
-            });
+            let response = await activityService.saveWritingResult(profile, req.body);
+            res.json(response);
         } catch (error) {
             console.error('Error submit test result writing:', error);
             res.json({
