@@ -2,6 +2,7 @@ const levelService = require('../services/LevelService');
 const unitService = require('../services/UnitService');
 const activityService = require('../services/ActivityService');
 const { getTestResults } = require('./TestResultController');
+const errorCode = require("../constants/ErrorCode");
 
 module.exports = {
 
@@ -17,7 +18,11 @@ module.exports = {
 
     getUnitListByGrammar: async function (req, res) {
         const response = await unitService.getUnitsByGrammar(req.query.grammarId, req.query.page, req.query.reverse);
-        res.json(response);
+        res.json({
+            errorCode: errorCode.SUCCESS,
+            message: 'Success get unit by grammar.',
+            data: response
+        });
     },
 
     getActivityList: async function (req, res) {

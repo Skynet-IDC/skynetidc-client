@@ -14,6 +14,7 @@ let ticketController = require('../controllers/TicketController');
 let SpeechaceController = require('../controllers/SpeechaceController');
 let CompetitionController = require('../controllers/CompetitionController');
 let testResultController = require('../controllers/TestResultController');
+let writingResultController = require('../controllers/WritingResultController');
 
 // Rules
 let requestValidation = require('../validators/RequestValidation');
@@ -105,7 +106,9 @@ router.get('/questions/:id', checkTokenMiddleware, questionController.getQuestio
 // writing submit
 router.post('/writing/submit', checkTokenMiddleware, questionController.submitWriting);
 
-router.get('/writing/notify', checkTokenMiddleware, questionController.submitWriting);
+router.get('/writing/notify', checkTokenMiddleware, writingResultController.getWritingNotify);
+router.get('/writing/notify/:id', checkTokenMiddleware, writingResultController.getWritingNotifyDetail);
+router.post('/writing/notify', checkTokenMiddleware, writingResultController.updateViewWritingNotify);
 
 // Mission
 router.get('/missions', checkTokenMiddleware, missionController.getMissionBySkill);
