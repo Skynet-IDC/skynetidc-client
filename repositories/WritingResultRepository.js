@@ -13,12 +13,12 @@ module.exports = {
         });
     },
 
-    update: async function (profileId, levelId, fields = {}) {
+    update: async function (profileId, questionId, fields) {
         return new Promise(async resolve => {
             WritingResult.update(fields, {
                 where: {
                     user_id: profileId,
-                    level_id: levelId
+                    question_id: questionId
                 }
             }).then(result => {
                 resolve(result);
@@ -27,5 +27,20 @@ module.exports = {
                 resolve(false);
             });
         });
+    },
+
+    findAllByProfile: async function (profileId) {
+        let query = {
+            user_id: profileId,
+            view: 0
+        };
+        return await WritingResult.findAll({ where: query });
+    },
+
+    findAllById: async function (id) {
+        let query = {
+            id: id
+        };
+        return await WritingResult.findOne({ where: query });
     }
 }

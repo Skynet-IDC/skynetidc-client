@@ -16,8 +16,7 @@ module.exports = {
     },
 
     getUnitsByGrammar: async function (grammarId, page, reverse) {
-        const unitList = await unitRepository.findAllByGrammarId(grammarId, page, reverse);
-        return {errorCode: ErrorCode.SUCCESS, message: 'Thành công', data: {items: unitList}};
+        return await unitRepository.findAllByGrammarId(grammarId, page, reverse);
     },
 
     getByLevel: async function (levelId) {

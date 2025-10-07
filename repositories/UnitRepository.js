@@ -49,25 +49,22 @@ module.exports = {
     findAllByGrammarId: async function (grammarId, page, reverse) {
         const limit = 10;
         const offset = (page - 1) * limit;
-        const order = (reverse == 0 ? [['position']] : [['position', 'DESC']]);
-        let query = {
-            is_active: true,
-            level_id: grammarId
-        };
+        const order = (reverse === 0 ? [['position']] : [['position', 'DESC']]);
 
         const units = await Unit.findAll({
             attributes: {exclude: ['grammar']},
-            where: query,
             limit,
             offset,
             order,
-            include: {
-                model: Part,
-                as: 'parts',
-                where: {
-                    isActive: true
+            include: [
+                {
+                    model: Part,
+                    as: 'parts',
+                    where: {
+                        isActive: true
+                    }
                 }
-            }
+            ]
         });
         return units.map(unit => {
             unit.parts = unit.parts.sort((a, b) => a.position - b.position)
