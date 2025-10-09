@@ -10,6 +10,7 @@ module.exports = {
     },
 
     getWritingNotifyById: async function (id) {
+        await writingResultRepository.updateById(id, {view: 1});
         return await writingResultRepository.findAllById(id);
     }
 }

@@ -106,9 +106,9 @@ router.get('/questions/:id', checkTokenMiddleware, questionController.getQuestio
 // writing submit
 router.post('/writing/submit', checkTokenMiddleware, questionController.submitWriting);
 
-router.get('/writing/notify', checkTokenMiddleware, writingResultController.getWritingNotify);
-router.get('/writing/notify/:id', checkTokenMiddleware, writingResultController.getWritingNotifyDetail);
-router.post('/writing/notify', checkTokenMiddleware, writingResultController.updateViewWritingNotify);
+router.get('/writing/count-notify', checkTokenMiddleware, writingResultController.countWritingNotify);
+router.get('/writing/notifications', checkTokenMiddleware, writingResultController.getWritingNotify);
+router.get('/writing/notification/:id', checkTokenMiddleware, writingResultController.getWritingNotifyDetail);
 
 // Mission
 router.get('/missions', checkTokenMiddleware, missionController.getMissionBySkill);

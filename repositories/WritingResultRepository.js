@@ -29,6 +29,21 @@ module.exports = {
         });
     },
 
+    updateById: async function (id, fields) {
+        return new Promise(async resolve => {
+            WritingResult.update(fields, {
+                where: {
+                    id: id
+                }
+            }).then(result => {
+                resolve(result);
+            }).catch((e) => {
+                utils.log(`[WritingResultRepository] Error when executing "update", detail: ${e}`);
+                resolve(false);
+            });
+        });
+    },
+
     findAllByProfile: async function (profileId) {
         let query = {
             user_id: profileId,
