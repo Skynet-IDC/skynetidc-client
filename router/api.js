@@ -74,7 +74,7 @@ router.post('/user/phone-verification/confirm', checkTokenMiddleware, requestVal
 
 router.get('/course/level-list', checkTokenMiddleware, courseController.getLevelList);
 router.get('/course/unit-list', checkTokenMiddleware, requestValidation(getUnitListRules), courseController.getUnitList);
-router.get('/course/units', checkTokenMiddleware, courseController.getUnitListByGrammar);
+router.get('/course/units', checkTokenMiddleware, courseController.getUnitListByLevel);
 router.get('/course/activity-list', checkTokenMiddleware, requestValidation(getActivityListRules), courseController.getActivityList);
 router.get('/course/test-list', checkTokenMiddleware, courseController.getTestList);
 router.get('/course/test-results', checkTokenMiddleware, requestValidation(getListTestResultRules), courseController.getTestResults);

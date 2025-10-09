@@ -16,11 +16,11 @@ module.exports = {
         res.json(response);
     },
 
-    getUnitListByGrammar: async function (req, res) {
-        const response = await unitService.getUnitsByGrammar(req.query.grammarId, req.query.page, req.query.reverse);
+    getUnitListByLevel: async function (req, res) {
+        const response = await unitService.getUnitList(req.query.level_id, null, req.query.page, req.query.reverse);
         res.json({
             errorCode: errorCode.SUCCESS,
-            message: 'Success get unit by grammar.',
+            message: 'Success get unit by level.',
             data: response
         });
     },
