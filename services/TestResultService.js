@@ -106,12 +106,12 @@ module.exports = {
         return {
             percent: percent,
             overview: {
-                vocabulary: vocabularyScore, // Tối đa 5 điểm
-                gramma: grammaScore, // Tối đa 5 điểm
-                listening: listeningScore, // Tối đa 3 điểm
-                speaking: speakingScore, // Tối đa 5 điểm
-                reading: readingScore, // Tối đa 3 điểm
-                writing: writingScore // Tối đa 3 điểm
+                vocabulary: (vocabularyScore/5)*10, // Tối đa 5 điểm
+                gramma: (grammaScore/5)*10, // Tối đa 5 điểm
+                listening: (listeningScore/3)*10, // Tối đa 3 điểm
+                speaking: (speakingScore/5)*10, // Tối đa 5 điểm
+                reading: (readingScore/3)*10, // Tối đa 3 điểm
+                writing: (writingScore/3)*10 // Tối đa 3 điểm
             },
             detailReview: {
                 vocabulary: vocabularyReview,
