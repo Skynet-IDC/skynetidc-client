@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/statics', express.static('statics'));
 
-const apiRouter = require('./router/routes');
+const apiRouter = require('./router/api');
 // swagger.serveSwagger(app, "/swagger", options, {routePath : './router/', requestModelPath: './request', responseModelPath: './response'});
 
 app.use('/services', apiRouter);
