@@ -1,5 +1,6 @@
 let WritingResult = require('../entities/WritingResult');
 const utils = require("../utils/CommonUtils");
+const Activity = require("../entities/Activity");
 
 module.exports = {
     save: function save(fields = {}) {
@@ -29,11 +30,12 @@ module.exports = {
         });
     },
 
-    updateById: async function (id, fields) {
+    updateById: async function (profileId, topicId, fields) {
         return new Promise(async resolve => {
             WritingResult.update(fields, {
                 where: {
-                    id: id
+                    userId: profileId,
+                    topicId: topicId
                 }
             }).then(result => {
                 resolve(result);
@@ -52,10 +54,19 @@ module.exports = {
         return await WritingResult.findAll({ where: query });
     },
 
-    findAllById: async function (id) {
+    countAllWritingNotify: async function (profileId) {
         let query = {
-            id: id
+            user_id: profileId,
+            view: 0
         };
-        return await WritingResult.findOne({ where: query });
+        return await WritingResult.findAndCountAll({ where: query });
+    },
+
+    findAllByTopicId: async function (profileId, topicId) {
+        let query = {
+            userId: profileId,
+            topicId: topicId,
+        };
+        return await WritingResult.findAll({ where: query });
     }
 }

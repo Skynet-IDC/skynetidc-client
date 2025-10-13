@@ -17,4 +17,7 @@ module.exports = {
    WRITING_ELEMENTARY: 'Bạn đã có sự cố gắng và viết lại được một phần nhỏ nội dung, nhưng vẫn cần tiếp tục rèn luyện để hoàn thiện hơn.',
    WRITING_INTERMEDIATE: 'Phần viết của bạn khá chính xác, chỉ còn xuất hiện một vài lỗi nhỏ cần điều chỉnh.',
    WRITING_PROFICIENT: 'Bạn trình bày nội dung chính xác và đầy đủ, hầu như không bỏ sót chi tiết quan trọng nào.',
+   EVALUATE_ELEMENTARY: 'Đừng bỏ cuộc nhé! Bạn đã rất cố gắng làm bài rồi, chỉ cần rèn luyện thêm một chút để tiến bộ hơn nữa. Để cải thiện, bạn hãy ôn tập Từ vựng, Ngữ pháp và luyện các đoạn hội thoại cùng AI của Gobiz để tự tin hơn. Gobiz sẽ luôn đồng hành cùng bạn, từng bước giúp bạn vượt khó và chinh phục tiếng Anh!',
+   EVALUATE_INTERMEDIATE: 'Khá hơn rồi đấy! Năng lực của bạn đã tiến bộ rõ rệt và chắc chắn còn có thể bứt phá hơn nữa. Tiếp tục trau dồi Từ vựng, Ngữ pháp và luyện nói cùng AI của Gobiz để ngày càng tự tin hơn nhé. Gobiz sẽ luôn đồng hành cùng bạn trên hành trình học tiếng Anh, giúp bạn tiến bộ mỗi ngày!',
+   EVALUATE_PROFICIENT: 'Xuất sắc! Kết quả này chính là minh chứng cho sự chăm chỉ và nỗ lực không ngừng của bạn. Hành trình học tập phía trước còn rất nhiều triển vọng, hãy tiếp tục luyện tập tiếng Anh cùng Gobiz nhé. Gobiz sẽ luôn đồng hành cùng bạn để chinh phục những mục tiêu cao hơn và đạt được những bước tiến vượt bậc!',
 }

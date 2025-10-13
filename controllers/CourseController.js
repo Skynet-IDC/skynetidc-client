@@ -3,6 +3,7 @@ const unitService = require('../services/UnitService');
 const activityService = require('../services/ActivityService');
 const { getTestResults } = require('./TestResultController');
 const errorCode = require("../constants/ErrorCode");
+const writingResultService = require("../services/WritingResultService");
 
 module.exports = {
 
@@ -17,12 +18,24 @@ module.exports = {
     },
 
     getUnitListByLevel: async function (req, res) {
-        const response = await unitService.getUnitList(req.query.level_id, null, req.query.page, req.query.reverse);
-        res.json({
-            errorCode: errorCode.SUCCESS,
-            message: 'Success get unit by level.',
-            data: response
-        });
+        try {
+            const response = await unitService.getUnitList(req.query.level_id, null, req.query.page, req.query.reverse);
+            const profile = req.body.user.profiles.find(item => item.isDefault == 1);
+            let responseWritingNotify = await writingResultService.getWritingNotify(profile.id);
+            res.json({
+                errorCode: errorCode.SUCCESS,
+                message: 'Success get unit by level id',
+                units: response.data.items,
+                notifications: responseWritingNotify
+            });
+        } catch (error) {
+            console.error('Error get unit by level id:', error);
+            res.json({
+                errorCode: errorCode.COMMON_FAIL,
+                message: 'Error get unit by level id!'
+            });
+        }
+
     },
 
     getActivityList: async function (req, res) {
