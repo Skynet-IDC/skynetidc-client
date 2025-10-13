@@ -1,4 +1,5 @@
 const writingResultRepository = require("../repositories/WritingResultRepository");
+const WritingResult = require("../entities/WritingResult");
 
 module.exports = {
     updateWritingNotify: async function (profileId, questionId, request) {
@@ -9,7 +10,12 @@ module.exports = {
         return await writingResultRepository.findAllByProfile(profileId);
     },
 
-    getWritingNotifyById: async function (id) {
-        return await writingResultRepository.findAllById(id);
+    countAllWritingNotify: async function (profileId) {
+        return await writingResultRepository.countAllWritingNotify(profileId);
+    },
+
+    getWritingNotifyByTopicId: async function (profileId, topicId) {
+        await writingResultRepository.updateById(profileId, topicId, {view: 1});
+        return await writingResultRepository.findAllByTopicId(profileId, topicId);
     }
 }
