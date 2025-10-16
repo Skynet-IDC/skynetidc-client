@@ -18,6 +18,13 @@ module.exports = {
             },
         });
     },
+    findAllByQuestionId: async function (questionId) {
+        return await ActivityQuestion.findAll({
+            where: {
+                questionId: questionId
+            },
+        });
+    },
     findAllByPartId: async function (partId) {
         return await Activity.findAll({
             where: {

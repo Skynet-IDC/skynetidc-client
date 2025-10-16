@@ -1,5 +1,6 @@
 const questionRepository = require('../repositories/QuestionRepository');
 const fileRepository = require('../repositories/FileRepository');
+const activityRepository = require('../repositories/ActivityRepository');
 const ErrorCode = require('../constants/ErrorCode');
 const utils = require("../utils/CommonUtils");
 
@@ -106,11 +107,13 @@ module.exports = {
     },
     getById: async function (id) {
         const question = await questionRepository.findOne(id);
-
+        const activities = await activityRepository.findAllByQuestionId(id);
+        const activity = activities[0];
         utils.log(`Get question with id : ${id}`);
 
         return {
             id: question.id,
+            activityId: activity.activityId,
             name: question.name,
             content: JSON.parse(question.questionContent).text.value
         }
