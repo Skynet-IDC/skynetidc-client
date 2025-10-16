@@ -1,6 +1,7 @@
 let WritingResult = require('../entities/WritingResult');
 const utils = require("../utils/CommonUtils");
 const Activity = require("../entities/Activity");
+const TestResult = require("../entities/TestResult");
 
 module.exports = {
     save: function save(fields = {}) {
@@ -67,6 +68,6 @@ module.exports = {
             userId: profileId,
             topicId: topicId,
         };
-        return await WritingResult.findAll({ where: query });
+        return await WritingResult.findAll({ where: query, order: [['id', 'DESC']]});
     }
 }
