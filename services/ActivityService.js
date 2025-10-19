@@ -63,7 +63,7 @@ module.exports = {
         const topicId = fields.topic_id ? parseInt(fields.topic_id) : null;
         const questionResponses = fields.question_responses_holders;
         const questionId = questionResponses[0].question_id;
-        const writingAnswer = questionResponses[0].responses.map(writingAnswer => writingAnswer.response).filter(Boolean).join(",");
+        const writingAnswer = questionResponses[0].responses.map(writingAnswer => writingAnswer.response).filter(Boolean).join("|");
         utils.log(`body: ${JSON.stringify(fields)}`);
 
         const request = {
