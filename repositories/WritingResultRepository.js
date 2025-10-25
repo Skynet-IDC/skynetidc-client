@@ -62,6 +62,7 @@ module.exports = {
             topicId: topicId,
             feedback: {
                 [Op.not]: null,
+                [Op.not]: '',
             },
             view: 0
         };
