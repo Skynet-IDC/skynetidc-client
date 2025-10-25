@@ -15,7 +15,7 @@ module.exports = {
     },
 
     getWritingNotifyByTopicId: async function (profileId, topicId) {
-        await writingResultRepository.updateById(profileId, topicId, {view: 1});
+        // await writingResultRepository.updateById(profileId, topicId, {view: 1});
         return await writingResultRepository.findAllByTopicId(profileId, topicId);
     }
 }
