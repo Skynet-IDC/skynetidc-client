@@ -2,6 +2,7 @@ let WritingResult = require('../entities/WritingResult');
 const utils = require("../utils/CommonUtils");
 const Activity = require("../entities/Activity");
 const TestResult = require("../entities/TestResult");
+const {Op} = require("sequelize");
 
 module.exports = {
     save: function save(fields = {}) {
@@ -50,6 +51,18 @@ module.exports = {
     findAllByProfile: async function (profileId) {
         let query = {
             user_id: profileId,
+            view: 0
+        };
+        return await WritingResult.findAll({ where: query });
+    },
+
+    countHaveFeedback: async function (profileId, topicId) {
+        let query = {
+            user_id: profileId,
+            topicId: topicId,
+            feedback: {
+                [Op.not]: null,
+            },
             view: 0
         };
         return await WritingResult.findAll({ where: query });
