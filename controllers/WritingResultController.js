@@ -8,7 +8,8 @@ module.exports = {
             // Use the authenticated user's ID from req.body.user instead of query parameter
             // This ensures users can only access their own test results
             const profile = req.body.user.profiles.find(item => item.isDefault == 1);
-            let response = await writingResultService.countAllWritingNotify(profile.id);
+            const topicId = req.query.topicId;
+            let response = await writingResultService.countHaveFeedbackByTopicId(profile.id, topicId);
             res.json({
                 errorCode: errorCode.SUCCESS,
                 message: 'Success get writing result notify!',
