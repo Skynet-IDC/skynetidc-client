@@ -66,7 +66,9 @@ module.exports = {
             },
             view: 0
         };
-        return await WritingResult.findAll({ where: query });
+        return await WritingResult.findOne({ where: query , order: [
+                ['id', 'DESC']
+            ]});
     },
 
     countAllWritingNotify: async function (profileId) {
