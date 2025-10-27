@@ -48,9 +48,10 @@ module.exports = {
         try {
             // Use the authenticated user's ID from req.body.user instead of query parameter
             // This ensures users can only access their own test results
-            const writingResultId = req.params.id;
+            const topicId = req.params.id;
             const profile = req.body.user.profiles.find(item => item.isDefault == 1);
-            let writingResult = await writingResultService.getWritingNotifyByTopicId(profile.id, writingResultId);
+            let writingResults = await writingResultService.getWritingNotifyByTopicId(profile.id, topicId);
+            let writingResult = writingResults[0];
             let question = await questionService.getById(writingResult.questionId);
             res.json({
                 errorCode: errorCode.SUCCESS,

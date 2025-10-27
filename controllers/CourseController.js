@@ -1,9 +1,9 @@
 const levelService = require('../services/LevelService');
 const unitService = require('../services/UnitService');
 const activityService = require('../services/ActivityService');
-const { getTestResults } = require('./TestResultController');
 const errorCode = require("../constants/ErrorCode");
 const writingResultService = require("../services/WritingResultService");
+const UserLearningInfoRepository = require("../repositories/UserLearningInfoRepository");
 
 module.exports = {
 
@@ -19,8 +19,16 @@ module.exports = {
 
     getUnitListByLevel: async function (req, res) {
         try {
-            const response = await unitService.getUnitList(req.query.level_id, null, req.query.page, req.query.reverse);
             const profile = req.body.user.profiles.find(item => item.isDefault == 1);
+            const response = await unitService.getUnitList(req.query.level_id, null, req.query.page, req.query.reverse);
+
+            const learningInfo = await UserLearningInfoRepository.findByProfileIdAndLevelId(profile.id, req.query.level_id)
+            const units = response.data.items;
+            const unitLearningInfos = JSON.parse(learningInfo?.units) || [];
+            units.forEach(unit => {
+                const unitLearningInfo = unitLearningInfos[`${unit.id}`];
+                unit.isActive = !!unitLearningInfo;
+            })
             let responseWritingNotify = await writingResultService.countHaveFeedbackByTopicId(profile.id, null);
             res.json({
                 errorCode: errorCode.SUCCESS,
