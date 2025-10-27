@@ -63,7 +63,7 @@ module.exports = {
     countHaveFeedback: async function (profileId, topicId) {
         let query = {
             user_id: profileId,
-            topicId: topicId,
+            // topicId: topicId,
             feedback: {
                 [Op.not]: null,
                 [Op.not]: '',

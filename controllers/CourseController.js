@@ -21,7 +21,7 @@ module.exports = {
         try {
             const response = await unitService.getUnitList(req.query.level_id, null, req.query.page, req.query.reverse);
             const profile = req.body.user.profiles.find(item => item.isDefault == 1);
-            let responseWritingNotify = await writingResultService.getWritingNotify(profile.id);
+            let responseWritingNotify = await writingResultService.countHaveFeedbackByTopicId(profile.id, null);
             res.json({
                 errorCode: errorCode.SUCCESS,
                 message: 'Success get unit by level id',
