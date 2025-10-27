@@ -37,7 +37,11 @@ module.exports = {
             WritingResult.update(fields, {
                 where: {
                     userId: profileId,
-                    topicId: topicId
+                    topicId: topicId,
+                    feedback: {
+                        [Op.not]: null,
+                        [Op.not]: '',
+                    },
                 }
             }).then(result => {
                 resolve(result);
@@ -66,7 +70,7 @@ module.exports = {
             },
             view: 0
         };
-        return await WritingResult.findOne({ where: query , order: [
+        return await WritingResult.findAll({ where: query , order: [
                 ['id', 'DESC']
             ]});
     },
