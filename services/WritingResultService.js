@@ -17,8 +17,8 @@ module.exports = {
         return await writingResultRepository.countAllWritingNotify(profileId);
     },
 
-    getWritingNotifyByTopicId: async function (profileId, topicId) {
-        await writingResultRepository.updateById(profileId, topicId, {view: 1});
-        return await writingResultRepository.findAllByTopicId(profileId, topicId);
+    getWritingNotifyByTopicId: async function (profileId, writingResultId) {
+        await writingResultRepository.updateById(writingResultId, {view: 1});
+        return await writingResultRepository.findById(profileId, writingResultId);
     }
 }

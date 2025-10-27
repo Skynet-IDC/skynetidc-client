@@ -32,12 +32,11 @@ module.exports = {
         });
     },
 
-    updateById: async function (profileId, topicId, fields) {
+    updateById: async function (writingResultId, fields) {
         return new Promise(async resolve => {
             WritingResult.update(fields, {
                 where: {
-                    userId: profileId,
-                    topicId: topicId,
+                    id: writingResultId,
                     feedback: {
                         [Op.not]: null,
                         [Op.not]: '',
@@ -83,11 +82,10 @@ module.exports = {
         return await WritingResult.findAndCountAll({ where: query });
     },
 
-    findAllByTopicId: async function (profileId, topicId) {
+    findById: async function (profileId, writingResultId) {
         let query = {
-            userId: profileId,
-            topicId: topicId,
+            id: writingResultId,
         };
-        return await WritingResult.findAll({ where: query, order: [['id', 'DESC']]});
-    }
+        return await WritingResult.findOne({ where: query, order: [['id', 'DESC']]});
+    },
 }
