@@ -52,12 +52,35 @@ module.exports = {
         });
     },
 
+    updateForReAnswer: async function (writingResultId, fields) {
+        return new Promise(async resolve => {
+            WritingResult.update(fields, {
+                where: {
+                    id: writingResultId
+                }
+            }).then(result => {
+                resolve(result);
+            }).catch((e) => {
+                utils.log(`[WritingResultRepository] Error when executing "update", detail: ${e}`);
+                resolve(false);
+            });
+        });
+    },
+
     findAllByProfile: async function (profileId) {
         let query = {
             user_id: profileId,
             view: 0
         };
         return await WritingResult.findAll({ where: query });
+    },
+
+    findAllByProfileAndQuestionId: async function (profileId, questionId) {
+        let query = {
+            user_id: profileId,
+            question_id: questionId
+        };
+        return await WritingResult.findOne({ where: query });
     },
 
     countHaveFeedback: async function (profileId, topicId) {

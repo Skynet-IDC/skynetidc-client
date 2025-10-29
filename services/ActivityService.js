@@ -77,11 +77,17 @@ module.exports = {
         }
         utils.log(`request: ${JSON.stringify(request)}`);
 
-        const result = await writingResultRepository.save(request);
+        const writingResultExit = await writingResultRepository.findAllByProfileAndQuestionId(profile.id, questionId);
+        let result;
+        if (writingResultExit && Object.keys(writingResultExit).length > 0) {
+            result = await writingResultRepository.updateForReAnswer(writingResultExit.id, {answers: `[${writingAnswer}]`});
+        } else {
+            result = await writingResultRepository.save(request);
+        }
         if (result) {
             return {errorCode: ErrorCode.SUCCESS, message: 'Lưu thông tin thành công'};
         }
-        return {errorCode: ErrorCode.COMMON_FAIL, message: 'Lưu thông tin thất bại'};
+        return {errorCode: ErrorCode.COMMON_FAIL, message: 'Lư  u thông tin thất bại'};
     },
 
     saveScore: async function (params) {
