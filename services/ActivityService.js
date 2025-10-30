@@ -97,6 +97,21 @@ module.exports = {
             return {errorCode: ErrorCode.SUCCESS, message: 'Lưu thông tin thành công'};
         }
         return {errorCode: ErrorCode.COMMON_FAIL, message: 'Lưu thông tin thất bại'};
+    },
+
+    updateScore: async function (profileId, activityId, levelId, score) {
+        const result = await activityScoreRepository.updateScore(profileId, activityId, levelId, score);
+
+        eventEmitter.emit("saveScoreSuccess", {
+            profileId: profileId,
+            activityId: activityId,
+            levelId: levelId,
+            score: score,
+        });
+        if (result) {
+            return {errorCode: ErrorCode.SUCCESS, message: 'Cập nhật thông tin thành công'};
+        }
+        return {errorCode: ErrorCode.COMMON_FAIL, message: 'Cập nhật thông tin thất bại'};
     }
 
 }

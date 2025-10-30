@@ -2,6 +2,7 @@ const utils = require("../utils/CommonUtils");
 const activityService = require("../services/ActivityService");
 const PracticeService = require("../services/PracticeService");
 const questionService = require("../services/QuestionService");
+const { update } = require("./UserController");
 
 module.exports = {
 
@@ -61,5 +62,17 @@ module.exports = {
         }
         res.json(response);
     },
+
+    updateActivityScore: async function (req, res) {
+        utils.log(`updateActivityScore|Start execute, headers: ${JSON.stringify(req.headers)}, `
+            + `body: ${JSON.stringify(req.body)}`);
+        const profileId = req.body.profile_id ? parseInt(req.body.profile_id) : null;
+        const activityId = req.body.activity_id ? parseInt(req.body.activity_id) : null;
+        const levelId = req.body.level_id ? parseInt(req.body.level_id) : null;
+        const score = req.body.score ? parseInt(req.body.score) : null;
+
+        let response = await activityService.updateScore(profileId, activityId, levelId, score);
+        res.json(response);
+    }
 
 }

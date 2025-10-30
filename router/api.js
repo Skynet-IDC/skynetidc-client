@@ -98,6 +98,7 @@ router.get('/license/check-active-code', checkIpMiddleware, requestValidation(ch
 router.get('/activity/:id', requestValidation(GetActivityRules), activityController.getInfo);
 router.post('/question/build/:id', activityController.buildQuestionData);
 router.post('/activity/submit-score', checkTokenMiddleware, requestValidation(submitActivityScoreRules), activityController.submitActivityScore);
+router.post('/activity/update-score', checkIpMiddleware, activityController.updateActivityScore);
 router.post('/activity/submit-test-results', checkTokenMiddleware, requestValidation(submitTestResultRules), activityController.submitTestResult);
 
 // get writing question
