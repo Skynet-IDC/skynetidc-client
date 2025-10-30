@@ -33,6 +33,7 @@ let disableAccountRules = require('../validators/user/DisableAccountRules');
 let getActivityListRules = require('../validators/course/GetActivityListRules');
 let getUnitListRules = require('../validators/course/GetUnitListRules');
 let submitActivityScoreRules = require('../validators/activity/SubmitActivityScoreRules');
+let updateActivityScore = require('../validators/activity/UpdateActivityScore');
 let submitTestResultRules = require('../validators/activity/SubmitTestResults');
 let GetActivityRules = require('../validators/activity/GetActivityRules');
 let getWordsRules = require('../validators/unit/GetWordsRules');
@@ -51,6 +52,7 @@ let checkOtpTokenMiddleware = require('../middlewares/CheckOtpTokenMiddleware');
 let checkTokenMiddleware = require('../middlewares/CheckTokenMiddleware');
 let checkIpMiddleware = require('../middlewares/CheckIpMiddleware');
 let getListTestResultRules = require('../validators/test/GetListTestResultRules');
+
 
 router.get('/', function (req, res) {
     res.send('Hello World');
@@ -98,6 +100,7 @@ router.get('/license/check-active-code', checkIpMiddleware, requestValidation(ch
 router.get('/activity/:id', requestValidation(GetActivityRules), activityController.getInfo);
 router.post('/question/build/:id', activityController.buildQuestionData);
 router.post('/activity/submit-score', checkTokenMiddleware, requestValidation(submitActivityScoreRules), activityController.submitActivityScore);
+router.post('/activity/update-score', checkIpMiddleware, requestValidation(updateActivityScore), activityController.updateActivityScore);
 router.post('/activity/submit-test-results', checkTokenMiddleware, requestValidation(submitTestResultRules), activityController.submitTestResult);
 
 // get writing question
