@@ -37,7 +37,26 @@ module.exports = {
             WritingResult.update(fields, {
                 where: {
                     userId: profileId,
-                    topicId: topicId
+                    topicId: topicId,
+                    feedback: {
+                        [Op.not]: null,
+                        [Op.not]: '',
+                    },
+                }
+            }).then(result => {
+                resolve(result);
+            }).catch((e) => {
+                utils.log(`[WritingResultRepository] Error when executing "update", detail: ${e}`);
+                resolve(false);
+            });
+        });
+    },
+
+    updateForReAnswer: async function (writingResultId, fields) {
+        return new Promise(async resolve => {
+            WritingResult.update(fields, {
+                where: {
+                    id: writingResultId
                 }
             }).then(result => {
                 resolve(result);
@@ -56,17 +75,25 @@ module.exports = {
         return await WritingResult.findAll({ where: query });
     },
 
+    findAllByProfileAndQuestionId: async function (profileId, questionId) {
+        let query = {
+            user_id: profileId,
+            question_id: questionId
+        };
+        return await WritingResult.findOne({ where: query });
+    },
+
     countHaveFeedback: async function (profileId, topicId) {
         let query = {
             user_id: profileId,
-            topicId: topicId,
+            // topicId: topicId,
             feedback: {
                 [Op.not]: null,
                 [Op.not]: '',
             },
             view: 0
         };
-        return await WritingResult.findOne({ where: query , order: [
+        return await WritingResult.findAll({ where: query , order: [
                 ['id', 'DESC']
             ]});
     },
@@ -82,7 +109,7 @@ module.exports = {
     findAllByTopicId: async function (profileId, topicId) {
         let query = {
             userId: profileId,
-            topicId: topicId,
+            topicId: parseInt(topicId),
         };
         return await WritingResult.findAll({ where: query, order: [['id', 'DESC']]});
     }
