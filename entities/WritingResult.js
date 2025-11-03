@@ -24,6 +24,9 @@ const WritingResult = sequelize.define("WritingResult", {
     levelId: {
         field: 'level_id', type: DataTypes.INTEGER
     },
+    activityId: {
+        field: 'activity_id', type: DataTypes.INTEGER
+    },
     answers: {
         type: DataTypes.STRING(1023)
     },

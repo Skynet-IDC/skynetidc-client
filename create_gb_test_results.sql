@@ -47,3 +47,5 @@ CREATE TABLE `gb_writing_results` (
   PRIMARY KEY (`id`),
   KEY `idx_gb_writing_results_user_id` (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Stores test result writing for users';
+
+ALTER TABLE gb_writing_results ADD activity_id INT(11) NOT NULL;

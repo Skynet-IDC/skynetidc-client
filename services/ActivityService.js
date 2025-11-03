@@ -60,6 +60,7 @@ module.exports = {
 
     saveWritingResult: async function (profile, fields) {
         const levelId = fields.level_id ? parseInt(fields.level_id) : null;
+        const activityId = fields.activity_id  ? parseInt(fields.activity_id) : null;
         const topicId = fields.topic_id ? parseInt(fields.topic_id) : null;
         const questionResponses = fields.question_responses_holders;
         const questionId = questionResponses[0].question_id;
@@ -71,6 +72,7 @@ module.exports = {
             questionId: questionId,
             topicId: topicId,
             levelId: levelId,
+            activityId: activityId,
             answers: `[${writingAnswer}]`,
             view: 0,
             status: 0
