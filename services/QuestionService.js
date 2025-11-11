@@ -3,6 +3,7 @@ const fileRepository = require('../repositories/FileRepository');
 const activityRepository = require('../repositories/ActivityRepository');
 const ErrorCode = require('../constants/ErrorCode');
 const utils = require("../utils/CommonUtils");
+const { getQuestionById } = require('../controllers/QuestionController');
 
 module.exports = {
     convertSubQuestionInfo: function (subQuestionsInfo, filesContent, botsContent) {
@@ -120,4 +121,15 @@ module.exports = {
 
     },
 
+    getByIdAndActivity: async function (id, activityId) {
+        const question = await questionRepository.findOne(id);;
+
+        return {
+            id: question.id,
+            activityId: activityId,
+            name: question.name,
+            content: JSON.parse(question.questionContent).text.value
+        }
+
+    },
 }

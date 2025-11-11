@@ -52,7 +52,7 @@ module.exports = {
             const profile = req.body.user.profiles.find(item => item.isDefault == 1);
             let writingResults = await writingResultService.getWritingNotifyByTopicId(profile.id, topicId);
             let writingResult = writingResults[0];
-            let question = await questionService.getById(writingResult.questionId);
+            let question = await questionService.getByIdAndActivity(writingResult.questionId, writingResult.activityId);
             res.json({
                 errorCode: errorCode.SUCCESS,
                 message: 'Success get writing result notify detail!',
