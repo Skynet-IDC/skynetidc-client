@@ -128,7 +128,8 @@ module.exports = {
             id: question.id,
             activityId: activityId,
             name: question.name,
-            content: JSON.parse(question.questionContent).text.value
+            content: JSON.parse(question.questionContent).text.value,
+            title: JSON.parse(question.questionContent).title.value,
         }
 
     },
