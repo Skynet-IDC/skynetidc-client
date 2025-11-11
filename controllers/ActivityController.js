@@ -9,7 +9,7 @@ module.exports = {
     getInfo: async function (req, res) {
         const id = req.params.id;
         try {
-            const response = await activityService.getActivityInfo(id);
+            const response = await activityService.getActivityInfo(id, req.headers);
             res.json(response);
         } catch (e) {
             res.status(404).json({

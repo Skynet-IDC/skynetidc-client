@@ -8,7 +8,7 @@ const eventEmitter = require("../queues/events/EventEmitter");
 const utils = require("../utils/CommonUtils");
 
 module.exports = {
-    getActivityInfo: async function (id) {
+     getActivityInfo: async function (id, headers) {
 
         let activity = await activityRepository.findOne(id);
 
@@ -18,12 +18,29 @@ module.exports = {
 
         const questions = await questionRepository.getQuestionsInfo(questionIds)
 
-        let questionsInfoWithOrder = [];
-        questionIds.forEach(id => {
-            const qInfo = questions.find(item => item.id == id)
-            questionsInfoWithOrder.push(qInfo)
-        })
+        const clientVersion = headers["version-client"];
+        const excludeName = clientVersion ? "15" : "22";
 
+        const questionsInfoWithOrder = questionIds
+            .map(qId => {
+                const qInfo = questions.find(item => item.id === qId);
+                let qName;
+                try {
+                    qName = qInfo.platform.code.toString();
+                } catch (e) {
+                    console.warn(`Invalid JSON in question content: ${qId}`, e);
+                    return qInfo; 
+                }
+                
+                if (qName === excludeName) {
+                    return null;
+                }
+
+                return qInfo;
+            })
+            .filter(Boolean); 
+
+            
         activity = activity.toJSON()
         activity.questions = questionsInfoWithOrder
 
