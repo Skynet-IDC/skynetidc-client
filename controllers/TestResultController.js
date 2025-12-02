@@ -95,40 +95,6 @@ module.exports = {
     },
 
     /**
-     * Get test results by user ID
-     * @param {Object} req - Express request object
-     * @param {Object} res - Express response object
-     * @returns {Promise<void>}
-     */
-    getTestResults: async function (req, res) {
-        try {
-            // Use the authenticated user's ID from req.body.user instead of query parameter
-            // This ensures users can only access their own test results
-            const userId = req.body.user.id;
-            const type = req.query.type;
-
-            let testResults;
-            if (type) {
-                testResults = await testResultRepository.findByUserIdAndType(userId, type);
-            } else {
-                testResults = await testResultRepository.findByUserId(userId);
-            }
-
-            res.json({
-                errorCode: errorCode.SUCCESS,
-                message: 'Lấy kết quả bài kiểm tra thành công',
-                data: testResults
-            });
-        } catch (error) {
-            console.error('Error getting test results:', error);
-            res.json({
-                errorCode: errorCode.COMMON_FAIL,
-                message: 'Có lỗi xảy ra khi lấy kết quả bài kiểm tra'
-            });
-        }
-    },
-
-    /**
      * Get report for test result by levelId
      * @param {Object} req - Express request object
      * @param {Object} res - Express response object
