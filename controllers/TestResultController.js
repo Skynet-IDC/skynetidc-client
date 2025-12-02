@@ -66,7 +66,7 @@ module.exports = {
      * @param {Object} res - Express response object
      * @returns {Promise<void>}
      */
-    filterTestResults: async function (req, res) {
+    findTestResults: async function (req, res) {
         try {
             // Use the authenticated user's ID from req.body.user instead of query parameter
             // This ensures users can only access their own test results
@@ -75,7 +75,7 @@ module.exports = {
 
             let testResults;
             if (type) {
-                testResults = await testResultRepository.findByUserIdAndType(userId, type);
+                testResults = await testResultRepository.findAllByUserIdAndType(userId, type);
             } else {
                 testResults = await testResultRepository.findByUserId(userId);
             }

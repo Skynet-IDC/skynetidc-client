@@ -52,6 +52,22 @@ module.exports = {
     },
 
     /**
+     * Find all test results by user ID and type
+     * @param {number} userId - User ID
+     * @param {string} type - Test type (TEST_BASIC or TEST_ADVANCED)
+     * @returns {Promise<Array<Object>>} - Array of test results
+     */
+    findAllByUserIdAndType: async function (userId, type) {
+        return await TestResult.findAll({
+            where: {
+                userId: userId,
+                type: type
+            },
+            order: [['createdAt', 'DESC']]
+        });
+    },
+
+    /**
      * Find a test result by ID
      * @param {number} id - Test result ID
      * @returns {Promise<Object>} - Test result

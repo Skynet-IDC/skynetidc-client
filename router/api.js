@@ -81,7 +81,7 @@ router.get('/course/activity-list', checkTokenMiddleware, requestValidation(getA
 router.get('/course/test-list', checkTokenMiddleware, courseController.getTestList);
 router.get('/course/test-results', checkTokenMiddleware, requestValidation(getListTestResultRules), courseController.getTestResults);
 router.post('/course/test-list/submit-result', checkTokenMiddleware, requestValidation(submitBeginTestResultRules), testResultController.submitTestResult);
-router.get('/course/test-list/results', checkTokenMiddleware, testResultController.filterTestResults);
+router.get('/course/test-list/results', checkTokenMiddleware, testResultController.findTestResults);
 router.get('/course/test-result/report', checkTokenMiddleware, testResultController.getReportForTestResults);
 
 // Danh sách từ của unit
