@@ -77,7 +77,7 @@ module.exports = {
             if (type) {
                 testResults = await testResultRepository.findAllByUserIdAndType(userId, type);
             } else {
-                testResults = await testResultRepository.findByUserId(userId);
+                testResults = await testResultRepository.finAllByUserId(userId);
             }
 
             res.json({
