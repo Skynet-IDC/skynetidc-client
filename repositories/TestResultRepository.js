@@ -22,20 +22,6 @@ module.exports = {
     },
 
     /**
-     * Find test results by user ID
-     * @param {number} userId - User ID
-     * @returns {Promise<Array<Object>>} - Array of test results
-     */
-    findByUserId: async function (userId) {
-        return await TestResult.findAll({
-            where: {
-                userId: userId
-            },
-            order: [['createdAt', 'DESC']]
-        });
-    },
-
-    /**
      * Find all test results by user ID
      * @param {number} userId - User ID
      * @returns {Promise<Array<Object>>} - Array of test results
@@ -64,13 +50,4 @@ module.exports = {
             order: [['createdAt', 'DESC']]
         });
     },
-
-    /**
-     * Find a test result by ID
-     * @param {number} id - Test result ID
-     * @returns {Promise<Object>} - Test result
-     */
-    findById: async function (id) {
-        return await TestResult.findByPk(id);
-    }
 };
