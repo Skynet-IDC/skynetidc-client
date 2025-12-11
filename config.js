@@ -1,5 +1,4 @@
 require('dotenv').config();
-console.log(process.env.LOG_ENABLED)
 module.exports = {
     mysqlConnection: {
         host: process.env.DB_HOST,
