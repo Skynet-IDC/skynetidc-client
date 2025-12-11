@@ -6,12 +6,15 @@ let userController = require('../controllers/UserController');
 let courseController = require('../controllers/CourseController');
 let licenseController = require('../controllers/LicenseController');
 let activityController = require('../controllers/ActivityController')
+let questionController = require('../controllers/QuestionController')
+let missionController = require('../controllers/MissionController')
 let packageController = require('../controllers/PackageController');
 let grammarController = require('../controllers/GrammarController');
 let ticketController = require('../controllers/TicketController');
 let SpeechaceController = require('../controllers/SpeechaceController');
 let CompetitionController = require('../controllers/CompetitionController');
 let testResultController = require('../controllers/TestResultController');
+let writingResultController = require('../controllers/WritingResultController');
 
 // Rules
 let requestValidation = require('../validators/RequestValidation');
@@ -30,6 +33,8 @@ let disableAccountRules = require('../validators/user/DisableAccountRules');
 let getActivityListRules = require('../validators/course/GetActivityListRules');
 let getUnitListRules = require('../validators/course/GetUnitListRules');
 let submitActivityScoreRules = require('../validators/activity/SubmitActivityScoreRules');
+let updateActivityScore = require('../validators/activity/UpdateActivityScore');
+let submitTestResultRules = require('../validators/activity/SubmitTestResults');
 let GetActivityRules = require('../validators/activity/GetActivityRules');
 let getWordsRules = require('../validators/unit/GetWordsRules');
 let updateVipRules = require('../validators/license/UpdateVipRules');
@@ -41,11 +46,13 @@ let getConversationRules = require('../validators/grammar/GetConversationRules')
 let CompetitionRules = require('../validators/grammar/CompetitionRules');
 let phoneVerificationGetOtpRules = require('../validators/user/PhoneVerificationGetOtpRules');
 let phoneVerificationConfirmRules = require('../validators/user/PhoneVerificationConfirmRules');
-let submitTestResultRules = require('../validators/test/SubmitTestResultRules');
+let submitBeginTestResultRules = require('../validators/test/SubmitTestResultRules');
 
 let checkOtpTokenMiddleware = require('../middlewares/CheckOtpTokenMiddleware');
 let checkTokenMiddleware = require('../middlewares/CheckTokenMiddleware');
 let checkIpMiddleware = require('../middlewares/CheckIpMiddleware');
+let getListTestResultRules = require('../validators/test/GetListTestResultRules');
+
 
 router.get('/', function (req, res) {
     res.send('Hello World');
@@ -69,10 +76,13 @@ router.post('/user/phone-verification/confirm', checkTokenMiddleware, requestVal
 
 router.get('/course/level-list', checkTokenMiddleware, courseController.getLevelList);
 router.get('/course/unit-list', checkTokenMiddleware, requestValidation(getUnitListRules), courseController.getUnitList);
+router.get('/course/units', checkTokenMiddleware, courseController.getUnitListByLevel);
 router.get('/course/activity-list', checkTokenMiddleware, requestValidation(getActivityListRules), courseController.getActivityList);
 router.get('/course/test-list', checkTokenMiddleware, courseController.getTestList);
-router.post('/course/test-list/submit-result', checkTokenMiddleware, requestValidation(submitTestResultRules), testResultController.submitTestResult);
-router.get('/course/test-list/results', checkTokenMiddleware, testResultController.getTestResults);
+router.get('/course/test-results', checkTokenMiddleware, requestValidation(getListTestResultRules), courseController.getTestResults);
+router.post('/course/test-list/submit-result', checkTokenMiddleware, requestValidation(submitBeginTestResultRules), testResultController.submitTestResult);
+router.get('/course/test-list/results', checkTokenMiddleware, testResultController.findTestResults);
+router.get('/course/test-result/report', checkTokenMiddleware, testResultController.getReportForTestResults);
 
 // Danh sách từ của unit
 router.get('/course/unit/words', checkTokenMiddleware, requestValidation(getWordsRules), courseController.getWords);
@@ -86,10 +96,25 @@ router.post('/license/buy-package', checkTokenMiddleware, requestValidation(buyP
 router.post('/license/gen-code', checkIpMiddleware, requestValidation(genCodeRules), licenseController.genCode);
 router.post('/license/active-code', checkTokenMiddleware, licenseController.activeCode);
 router.get('/license/check-active-code', checkIpMiddleware, requestValidation(checkActiveCodeRules), licenseController.checkActiveCode);
- 
+
 router.get('/activity/:id', requestValidation(GetActivityRules), activityController.getInfo);
 router.post('/question/build/:id', activityController.buildQuestionData);
 router.post('/activity/submit-score', checkTokenMiddleware, requestValidation(submitActivityScoreRules), activityController.submitActivityScore);
+router.post('/activity/update-score', checkIpMiddleware, requestValidation(updateActivityScore), activityController.updateActivityScore);
+router.post('/activity/submit-test-results', checkTokenMiddleware, requestValidation(submitTestResultRules), activityController.submitTestResult);
+
+// get writing question
+router.get('/questions/:id', checkTokenMiddleware, questionController.getQuestionById);
+
+// writing submit
+router.post('/writing/submit', checkTokenMiddleware, questionController.submitWriting);
+
+router.get('/writing/count-notify', checkTokenMiddleware, writingResultController.countWritingNotify);
+router.get('/writing/notifications', checkTokenMiddleware, writingResultController.getWritingNotify);
+router.get('/writing/notification/:id', checkTokenMiddleware, writingResultController.getWritingNotifyDetail);
+
+// Mission
+router.get('/missions', checkTokenMiddleware, missionController.getMissionBySkill);
 
 // Ngữ pháp + Từ vựng
 router.get('/practice/grammar/words', checkTokenMiddleware, requestValidation(getGrammarRules), grammarController.getWords);

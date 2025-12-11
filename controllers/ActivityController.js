@@ -2,14 +2,14 @@ const utils = require("../utils/CommonUtils");
 const activityService = require("../services/ActivityService");
 const PracticeService = require("../services/PracticeService");
 const questionService = require("../services/QuestionService");
-const ErrorCode = require("../constants/ErrorCode");
+const { update } = require("./UserController");
 
 module.exports = {
 
     getInfo: async function (req, res) {
         const id = req.params.id;
         try {
-            const response = await activityService.getActivityInfo(id);
+            const response = await activityService.getActivityInfo(id, req.headers);
             res.json(response);
         } catch (e) {
             res.status(404).json({
@@ -22,6 +22,20 @@ module.exports = {
     buildQuestionData: async function (req, res) {
         const id = req.params.id;
         const response = await questionService.build(id);
+        res.json(response);
+    },
+
+    submitTestResult: async function (req, res) {
+        utils.log(`submitTestResult|Start execute, headers: ${JSON.stringify(req.headers)}, `
+            + `body: ${JSON.stringify(req.body)}`);
+        const profile = req.body.user.profiles.find(item => item.isDefault == 1);
+        let levelId = req.body.level_id ? parseInt(req.body.level_id) : null;
+        let fields = {};
+        if (req.body.results) {
+            fields.testResults = JSON.stringify(req.body.results);
+        }
+
+        let response = await activityService.updateTestResults(profile.id, levelId, fields);
         res.json(response);
     },
 
@@ -48,5 +62,17 @@ module.exports = {
         }
         res.json(response);
     },
+
+    updateActivityScore: async function (req, res) {
+        utils.log(`updateActivityScore|Start execute, headers: ${JSON.stringify(req.headers)}, `
+            + `body: ${JSON.stringify(req.body)}`);
+        const profileId = req.body.profile_id ? parseInt(req.body.profile_id) : null;
+        const activityId = req.body.activity_id ? parseInt(req.body.activity_id) : null;
+        const levelId = req.body.level_id ? parseInt(req.body.level_id) : null;
+        const score = req.body.score ? parseInt(req.body.score) : null;
+
+        let response = await activityService.updateScore(profileId, activityId, levelId, score);
+        res.json(response);
+    }
 
 }

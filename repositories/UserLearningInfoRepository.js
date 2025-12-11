@@ -1,4 +1,5 @@
 let UserLearningInfo = require('../entities/UserLearningInfo');
+const { update } = require('./UserRepository');
 
 module.exports = {
 
@@ -8,6 +9,31 @@ module.exports = {
                 profile_id: profileId,
                 level_id: levelId
             }
+        });
+    },
+
+    findByLevelIdAndProfileId: async function (levelId, profileId) {
+        return await UserLearningInfo.findOne({
+            where: {
+                level_id: levelId,
+                profile_id: profileId
+            }
+        });
+    },
+
+    update: async function (profileId, levelId, fields = {}) {
+        return new Promise(async resolve => {
+            UserLearningInfo.update(fields, {
+                where: {
+                    profile_id: profileId,
+                    level_id: levelId
+                }
+            }).then(result => {
+                resolve(result);
+            }).catch((e) => {
+                utils.log(`[UserLearningInfoRepository] Error when executing "update", detail: ${e}`);
+                resolve(false);
+            });
         });
     }
 

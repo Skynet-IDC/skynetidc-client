@@ -31,3 +31,21 @@ CREATE INDEX idx_gb_test_results_user_id_type ON gb_test_results(user_id, type);
 
 -- Add comment to the table
 ALTER TABLE gb_test_results COMMENT 'Stores test results for users';
+
+CREATE TABLE `gb_writing_results` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `question_id` int(11) NOT NULL,
+  `level_id` int(11) DEFAULT NULL,
+  `topic_id` int(11) DEFAULT NULL,
+  `answers` text NOT NULL,
+  `feedback` text DEFAULT NULL,
+  `view` int NOT NULL,
+  `status` int NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `idx_gb_writing_results_user_id` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Stores test result writing for users';
+
+ALTER TABLE gb_writing_results ADD activity_id INT(11) NOT NULL;

@@ -1,7 +1,9 @@
 const questionRepository = require('../repositories/QuestionRepository');
 const fileRepository = require('../repositories/FileRepository');
+const activityRepository = require('../repositories/ActivityRepository');
 const ErrorCode = require('../constants/ErrorCode');
 const utils = require("../utils/CommonUtils");
+const { getQuestionById } = require('../controllers/QuestionController');
 
 module.exports = {
     convertSubQuestionInfo: function (subQuestionsInfo, filesContent, botsContent) {
@@ -55,7 +57,6 @@ module.exports = {
             }
             arr.push(subQuestionData)
         }
-
         return arr
     },
     build: async function (id) {
@@ -96,7 +97,6 @@ module.exports = {
             },
             subQuestions: this.convertSubQuestionInfo(subQuestionInfo, filesContent, botsContent)
         }
-
         utils.log(`Build Question Data : ${id}`);
 
         return await questionRepository.syncQuestionResource({
@@ -105,7 +105,32 @@ module.exports = {
             createdAt: new Date(),
             updatedAt: new Date()
         })
+    },
+    getById: async function (id) {
+        const question = await questionRepository.findOne(id);
+        const activities = await activityRepository.findAllByQuestionId(id);
+        const activity = activities[0];
+        utils.log(`Get question with id : ${id}`);
+
+        return {
+            id: question.id,
+            activityId: activity.activityId,
+            name: question.name,
+            content: JSON.parse(question.questionContent).text.value
+        }
 
     },
 
+    getByIdAndActivity: async function (id, activityId) {
+        const question = await questionRepository.findOne(id);;
+
+        return {
+            id: question.id,
+            activityId: activityId,
+            name: question.name,
+            content: JSON.parse(question.questionContent).text.value,
+            title: JSON.parse(question.questionContent).title.value,
+        }
+
+    },
 }

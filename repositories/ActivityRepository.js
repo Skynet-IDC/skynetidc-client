@@ -18,11 +18,30 @@ module.exports = {
             },
         });
     },
+    findAllByQuestionId: async function (questionId) {
+        return await ActivityQuestion.findAll({
+            where: {
+                questionId: questionId
+            },
+        });
+    },
     findAllByPartId: async function (partId) {
         return await Activity.findAll({
             where: {
                 is_active: true,
                 part_id: partId
+            },
+            order: [['position']]
+        });
+    },
+
+    getTestResults: async function (levelId) {
+        return await Activity.findAll({
+            where: {
+                is_active: true,
+                part_id: 0, // Assuming 0 is used for test results activities
+                type: "TEST_RESULTS",
+                levelId: levelId
             },
             order: [['position']]
         });
