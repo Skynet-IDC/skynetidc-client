@@ -67,6 +67,15 @@ const Package = sequelize.define("Package", {
         field: 'app_id',
         type: DataTypes.INTEGER,
         defaultValue: 1
+    },
+    packageCode: {
+        field: 'package_code',
+        type: DataTypes.STRING(255)
+    },
+    telco: {
+        field: 'telco',
+        type: DataTypes.INTEGER,
+        defaultValue: 4 // 1: Viettel, 2: Mobifone, 3: Vinaphone, 4: Vietnamobile, 5: Vietnammobile
     }
 }, {
     tableName: 'gb_package',

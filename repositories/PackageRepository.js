@@ -31,7 +31,7 @@ module.exports = {
         let query = {
             iosProductId: productId,
         }
-        if(channel === 2){
+        if (channel === 2) {
             query = {
                 androidProductId: productId,
             }
@@ -41,5 +41,17 @@ module.exports = {
             where: query
         });
     },
+
+    findByPackageCode: async function (packageCode, telco = null) {
+        let whereClause = {
+            packageCode: packageCode,
+        }
+        if (telco) {
+            whereClause.telco = telco
+        }
+        return await Package.findOne({
+            where: whereClause
+        });
+    }
 
 }

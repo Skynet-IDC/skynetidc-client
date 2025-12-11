@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+console.log(process.env.LOG_ENABLED)
 module.exports = {
     mysqlConnection: {
         host: process.env.DB_HOST,
@@ -46,5 +46,10 @@ module.exports = {
         privateKey: process.env.GOOGLE_PRIVATE_KEY.split(String.raw`\n`).join('\n'),
         ticketSheetId: process.env.GOOGLE_TICKET_SHEET_ID
     },
-    whiteListIp: process.env.WHITE_LIST_IP.split(',')
+    whiteListIp: process.env.WHITE_LIST_IP.split(','),
+    logging: {
+        enabled: process.env.LOG_ENABLED === 'true',
+        path: process.env.LOG_PATH || './logs',
+        consoleOutput: process.env.LOG_CONSOLE === 'true'
+    }
 }

@@ -5,11 +5,15 @@ module.exports = {
 
     getPackageList: async function (params) {
         const packageList = await packageRepository.findAllActivePackage(params);
-        return {errorCode: ErrorCode.SUCCESS, message: 'Thành công', data: {items: packageList}};
+        return { errorCode: ErrorCode.SUCCESS, message: 'Thành công', data: { items: packageList } };
     },
 
     findByProductID: async function (productId, channel) {
         return await packageRepository.findByProductId(productId, channel)
+    },
+
+    findByPackageCode: async function (packageCode, telco = null) {
+        return await packageRepository.findByPackageCode(packageCode, telco)
     }
 
 }

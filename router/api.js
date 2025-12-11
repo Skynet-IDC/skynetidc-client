@@ -52,6 +52,7 @@ let checkOtpTokenMiddleware = require('../middlewares/CheckOtpTokenMiddleware');
 let checkTokenMiddleware = require('../middlewares/CheckTokenMiddleware');
 let checkIpMiddleware = require('../middlewares/CheckIpMiddleware');
 let getListTestResultRules = require('../validators/test/GetListTestResultRules');
+const SyncVipTelcoRules = require('../validators/license/SyncVipTelcoRules');
 
 
 router.get('/', function (req, res) {
@@ -121,8 +122,8 @@ router.get('/practice/grammar/words', checkTokenMiddleware, requestValidation(ge
 router.get('/practice/grammar/sentences', checkTokenMiddleware, requestValidation(getGrammarRules), grammarController.getSentences);
 
 // Game hoi thoai AI.
-router.get('/practice/conversation',checkTokenMiddleware, requestValidation(getConversationRules),  grammarController.getConversation);
-router.get('/practice/conversation/learning-info',checkTokenMiddleware, requestValidation(getConversationRules),  grammarController.getConversationLearningInfo);
+router.get('/practice/conversation', checkTokenMiddleware, requestValidation(getConversationRules), grammarController.getConversation);
+router.get('/practice/conversation/learning-info', checkTokenMiddleware, requestValidation(getConversationRules), grammarController.getConversationLearningInfo);
 // Game thi dau
 router.get('/practice/competition/bot-list', checkTokenMiddleware, CompetitionController.botList); // Chon bot
 router.get('/practice/competition/play', checkTokenMiddleware, requestValidation(CompetitionRules), CompetitionController.play); // Play game
@@ -131,6 +132,8 @@ router.get('/practice/competition/play', checkTokenMiddleware, requestValidation
 router.post('/ticket/submit', checkTokenMiddleware, requestValidation(submitTicketRules), ticketController.submitTicket);
 
 // Speechace
-router.post('/speechace',checkTokenMiddleware, SpeechaceController.speakAI);
+router.post('/speechace', checkTokenMiddleware, SpeechaceController.speakAI);
 
+// Sync vip telco
+router.post('/license/sync-vip-telco', checkIpMiddleware, requestValidation(SyncVipTelcoRules), licenseController.syncVipTelco);
 module.exports = router;
