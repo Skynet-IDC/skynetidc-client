@@ -2,7 +2,6 @@ const licenseService = require('../services/LicenseService');
 const packageService = require('../services/PackageService');
 const ErrorCode = require("../constants/ErrorCode");
 const activeCodeService = require("../services/ActiveCodeService");
-const logger = require("../utils/LoggerUtils");
 
 module.exports = {
 
@@ -70,21 +69,20 @@ module.exports = {
         try {
             const { telco, days, isdn, package, command } = req.body;
             // Log request
-            logger.log('info', `Request: ${JSON.stringify(req.body)}`, 'sync-vip-telco');
+            utils.log(`Sync Vip Telco Request: ${JSON.stringify(req.body)}`);
 
             const response = await licenseService.syncVipTelco(isdn, days, package, command, telco);
 
             // Log response
             if (response.errorCode === ErrorCode.SUCCESS) {
-                logger.log('info', `Success: ${isdn} - ${package}`, 'sync-vip-telco');
+                utils.log(`Sync Vip Telco Success: ${isdn} - ${package}`);
             } else {
-                logger.log('error', `Failed: ${response.message} - ${JSON.stringify(req.body)}`, 'sync-vip-telco');
+                utils.log(`Sync Vip Telco Failed: ${response.message} - ${JSON.stringify(req.body)}`);
             }
 
             res.json(response);
         } catch (error) {
-            logger.log('error', `Exception: ${error.message}`, 'sync-vip-telco');
-            console.error('Error in syncVipTelco:', error);
+            utils.log(`Sync Vip Telco Exception: ${error.message}`);
             res.json({ errorCode: ErrorCode.COMMON_FAIL, message: 'Lỗi hệ thống', data: null });
         }
     }
