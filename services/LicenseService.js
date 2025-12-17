@@ -115,56 +115,67 @@ module.exports = {
     syncVipTelco: async function (isdn, days, packageCode, command, telco) {
 
         try {
+            switch (command) {
+                case 'dk':
+                case 'gh':
+                    const passwordDefault = 'gobiz'
+                    // get package by package code and telco
+                    const packageInfo = await packageRepository.findByPackageCode(packageCode, telco);
+                    if (!packageInfo) {
+                        return { errorCode: ErrorCode.COMMON_FAIL, message: 'Package Not Found !', data: null };
+                    }
+                    let duration = days
+                    let isCreateNewUser = false;
+                    if (utils.isEmpty(days)) {
+                        duration = packageInfo.duration
+                    }
 
-            const passwordDefault = 'gobiz'
-            // get package by package code and telco
-            const packageInfo = await packageRepository.findByPackageCode(packageCode, telco);
-            if (!packageInfo) {
-                return { errorCode: ErrorCode.COMMON_FAIL, message: 'Package Not Found !', data: null };
-            }
-            let duration = days
-            if (utils.isEmpty(days)) {
-                duration = packageInfo.duration
-            }
+                    // get profile by isdn
+                    const isdnConverted = utils.convertPhoneNumber(isdn, utils.PHONE_NOT_PREFIX);
+                    let account = await UserRepository.findActiveUserByPhone(isdnConverted);
+                    if (!account) {
+                        // create new user
+                        const responseRegister = await UserService.register({
+                            phone: isdnConverted,
+                            password: passwordDefault,
+                            phone_validated: true,
+                        });
+                        // if create new user failed
+                        if (responseRegister.errorCode !== ErrorCode.SUCCESS) {
+                            return responseRegister;
+                        }
+                        account = responseRegister.data.user;
+                    }
 
-            // get profile by isdn
-            const isdnConverted = utils.convertPhoneNumber(isdn, utils.PHONE_NOT_PREFIX);
-            let account = await UserRepository.findActiveUserByPhone(isdnConverted);
-            if (!account) {
-                // create new user
-                const responseRegister = await UserService.register({
-                    phone: isdnConverted,
-                    password: passwordDefault,
-                    phone_validated: true,
-                });
-                // if create new user failed
-                if (responseRegister.errorCode !== ErrorCode.SUCCESS) {
-                    return responseRegister;
-                }
-                account = responseRegister.data.user;
+                    const profile = account.profiles.find(item => item.is_default == 1);
+                    if (!profile) {
+                        return { errorCode: ErrorCode.COMMON_FAIL, message: 'Profile Not Found !', data: null };
+                    }
+                    // Add profile package
+                    const currentDateTime = moment();
+                    const profilePackage = {
+                        profileId: profile.id,
+                        packageId: packageInfo.id,
+                        code: packageCode,
+                        isActive: 1,
+                        startTime: currentDateTime.format('YYYY-MM-DD HH:mm:ss'),
+                        endTime: currentDateTime.add(duration, 'days').format('YYYY-MM-DD HH:mm:ss'),
+                        createdAt: currentDateTime.format('YYYY-MM-DD HH:mm:ss'),
+                        updatedAt: currentDateTime.format('YYYY-MM-DD HH:mm:ss'),
+                    }
+                    const addPackageResult = await profilePackageRepository.save(profilePackage);
+                    if (addPackageResult) {
+                        return { errorCode: ErrorCode.SUCCESS, message: 'Thành công', data: { username: account.phone, password: isCreateNewUser ? passwordDefault : '', createNewUser: isCreateNewUser } }
+                    };
+                    return { errorCode: ErrorCode.COMMON_FAIL, message: 'Thất bại' };
+                    break;
+                case 'huy':
+                    return { errorCode: ErrorCode.SUCCESS, message: 'Hủy kích hoạt thành công' }
+                    break;
+                default:
+                    return { errorCode: ErrorCode.COMMON_FAIL, message: 'Lệnh không hợp lệ', data: null };
+                    break;
             }
-
-            const profile = account.profiles.find(item => item.isDefault == 1);
-            if (!profile) {
-                return { errorCode: ErrorCode.COMMON_FAIL, message: 'Profile Not Found !', data: null };
-            }
-            // Add profile package
-            const currentDateTime = moment();
-            const profilePackage = {
-                profileId: profile.id,
-                packageId: packageInfo.id,
-                code: packageCode,
-                isActive: 1,
-                startTime: currentDateTime.format('YYYY-MM-DD HH:mm:ss'),
-                endTime: currentDateTime.add(duration, 'days').format('YYYY-MM-DD HH:mm:ss'),
-                createdAt: currentDateTime.format('YYYY-MM-DD HH:mm:ss'),
-                updatedAt: currentDateTime.format('YYYY-MM-DD HH:mm:ss'),
-            }
-            const addPackageResult = await profilePackageRepository.save(profilePackage);
-            if (addPackageResult) {
-                return { errorCode: ErrorCode.SUCCESS, message: 'Thành công' };
-            }
-            return { errorCode: ErrorCode.COMMON_FAIL, message: 'Thất bại' };
 
         } catch (error) {
             return { errorCode: ErrorCode.COMMON_FAIL, message: 'Thất bại', data: null };

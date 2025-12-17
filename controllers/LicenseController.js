@@ -2,6 +2,7 @@ const licenseService = require('../services/LicenseService');
 const packageService = require('../services/PackageService');
 const ErrorCode = require("../constants/ErrorCode");
 const activeCodeService = require("../services/ActiveCodeService");
+const utils = require("../utils/CommonUtils");
 
 module.exports = {
 
@@ -72,7 +73,6 @@ module.exports = {
             utils.log(`Sync Vip Telco Request: ${JSON.stringify(req.body)}`);
 
             const response = await licenseService.syncVipTelco(isdn, days, package, command, telco);
-
             // Log response
             if (response.errorCode === ErrorCode.SUCCESS) {
                 utils.log(`Sync Vip Telco Success: ${isdn} - ${package}`);
