@@ -15,6 +15,7 @@ let SpeechaceController = require('../controllers/SpeechaceController');
 let CompetitionController = require('../controllers/CompetitionController');
 let testResultController = require('../controllers/TestResultController');
 let writingResultController = require('../controllers/WritingResultController');
+let fcmTokenController = require('../controllers/FcmTokenController');
 
 // Rules
 let requestValidation = require('../validators/RequestValidation');
@@ -132,5 +133,11 @@ router.post('/ticket/submit', checkTokenMiddleware, requestValidation(submitTick
 
 // Speechace
 router.post('/speechace',checkTokenMiddleware, SpeechaceController.speakAI);
+
+// FCM Token
+router.post('/fcm-token', checkTokenMiddleware, fcmTokenController.createFcmToken);
+
+// Get FCM Token by user id
+router.get('/fcm-token', checkTokenMiddleware, fcmTokenController.getByUser);
 
 module.exports = router;
