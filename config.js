@@ -1,5 +1,4 @@
 require('dotenv').config();
-
 module.exports = {
     mysqlConnection: {
         host: process.env.DB_HOST,
