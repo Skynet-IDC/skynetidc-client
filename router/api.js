@@ -16,6 +16,7 @@ let CompetitionController = require('../controllers/CompetitionController');
 let testResultController = require('../controllers/TestResultController');
 let writingResultController = require('../controllers/WritingResultController');
 let fcmTokenController = require('../controllers/FcmTokenController');
+let notificationController = require('../controllers/NotificationController');
 
 // Rules
 let requestValidation = require('../validators/RequestValidation');
@@ -143,5 +144,11 @@ router.post('/fcm-token', checkTokenMiddleware, fcmTokenController.createFcmToke
 
 // Get FCM Token by user id
 router.get('/fcm-token', checkTokenMiddleware, fcmTokenController.getByUser);
+
+// Create notification
+router.post('/notification', checkTokenMiddleware, notificationController.createNotify);
+
+// Get notification by type
+router.get('/notifications', checkTokenMiddleware, notificationController.getByType);
 
 module.exports = router;
