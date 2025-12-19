@@ -1,0 +1,15 @@
+Hệ thống gửi thông báo
+- Xây dựng hệ thống quản lí nội dung thông báo từ CMS cho cả ba loại thông báo (Thiết kế database, code thêm sửa xóa nội dung thông báo) -> 0h (17-12-2025) -> Tùng
+- Tích hợp API Google Firebase Notify (Backend và Mobile) -> 10h  (17-12-2025) Hòa Tiến Danh
+- Thêm code API lưu FCM Token từ mobile gửi về BE (Backend) -> 4h (20-12-2025) Hòa (Done)
+- Thêm code API lấy thông tin FCM Token (Backend) -> 4h (20-12-2025) Hòa (Done)
+- Thêm code API lấy nội dung thông báo (Backend) -> 4h (20-12-2025) Hòa (Done)
+- Thêm code crontab thực hiện việc nhắc học hàng ngày (Backend) -> 5h  (20-12-2025) Hòa
+- Thêm code crontab thực hiện việc nhắc quay lại sau khi không hoạt động trong 3 ngày (Backend) -> 5h  (20-12-2025) Tiến
+- Thêm code crontab thực hiện việc nhắc quay lại sau khi không hoạt động trong 7 ngày (Backend) -> 5h  (20-12-2025) Tiến
+
+- Xử lí cập nhật code khi click notify nhắc học hằng ngày (Mobile) -> 0h  (20-12-2025) Danh
+- Xử lí cập nhật code khi click notify nhắc quay lại sau khi không hoạt động (Mobile) -> 0h  (20-12-2025) Danh
+- Sửa code xử lí gửi thông báo khi chấm bài và có feedback của giáo viên (CMS và Backend) -> 10h (17-12-2025) Tiến - Tùng
+- Xử lí cập nhật code khi click thông báo khi chấm bài và có feedback của giáo viên (Mobile) -> 0h  (20-12-2025)  Danh
+- Xử lí thêm code Pop-up xin quyền thông báo (Notification Permission) (Mobile) -> 0h  (20-12-2025) Danh
