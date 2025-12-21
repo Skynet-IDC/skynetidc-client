@@ -37,7 +37,6 @@ module.exports = {
 
         // 3. Send the message using the Admin SDK
         try {
-            const response = await admin.messaging().send(message);
             // Send a message to the device corresponding to the provided registration token.
             admin.messaging().send(message)
                 .then((response) => {
