@@ -41,13 +41,11 @@ module.exports = {
             // Send a message to the device corresponding to the provided registration token.
             admin.messaging().send(message)
                 .then((response) => {
-                    // Response is a message ID string.
                     console.log('Successfully sent message:', response);
                 })
                 .catch((error) => {
                     console.error('Error sending message:', error);
                 });
-            console.log('Successfully sent message:', response);
         } catch (error) {
             console.error('Error sending message:', error);
         }
