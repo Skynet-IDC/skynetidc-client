@@ -152,6 +152,6 @@ router.post('/notification', checkTokenMiddleware, notificationController.create
 router.get('/notifications', checkTokenMiddleware, notificationController.getByType);
 
 // Send notification
-router.post('/send-notification', checkTokenMiddleware, notificationController.sendNotify);
+router.post('/send-notification', notificationController.sendNotify);
 
 module.exports = router;

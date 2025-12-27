@@ -26,6 +26,7 @@
     "ioredis": "^5.4.1",
     "jsonwebtoken": "^8.5.1",
     "mariadb": "^2.5.4",
+    "microsoft-cognitiveservices-speech-sdk": "^1.47.0",
     "moment": "^2.29.1",
     "multer": "^1.4.5-lts.1",
     "node-fetch2": "^1.6.3",

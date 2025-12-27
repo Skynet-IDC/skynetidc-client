@@ -23,8 +23,8 @@ module.exports = {
     },
     sendNotify: async function (req, res) {
         const { title, content } = req.body;
-        const profile = req.body.user.profiles.find(item => item.isDefault == 1);
-        const fcmToken = await fcmTokenService.getByUserId(profile.id);
+        const userId = req.query.userId;
+        const fcmToken = await fcmTokenService.getByUserId(userId);
 
         const registrationTokens = fcmToken[0].fcmToken;
 
