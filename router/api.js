@@ -11,7 +11,7 @@ let missionController = require('../controllers/MissionController')
 let packageController = require('../controllers/PackageController');
 let grammarController = require('../controllers/GrammarController');
 let ticketController = require('../controllers/TicketController');
-let SpeechaceController = require('../controllers/SpeechaceController');
+let AzureSpeechController = require('../controllers/AzureSpeechController');
 let CompetitionController = require('../controllers/CompetitionController');
 let testResultController = require('../controllers/TestResultController');
 let writingResultController = require('../controllers/WritingResultController');
@@ -133,8 +133,8 @@ router.get('/practice/competition/play', checkTokenMiddleware, requestValidation
 // Tickets
 router.post('/ticket/submit', checkTokenMiddleware, requestValidation(submitTicketRules), ticketController.submitTicket);
 
-// Speechace
-router.post('/speechace', checkTokenMiddleware, SpeechaceController.speakAI);
+// Speech
+router.post('/speech', checkTokenMiddleware, AzureSpeechController.speechToText);
 
 // Sync vip telco
 router.post('/license/sync-vip-telco', checkIpMiddleware, requestValidation(SyncVipTelcoRules), licenseController.syncVipTelco);
