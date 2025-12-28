@@ -24,14 +24,20 @@ module.exports = {
     sendNotify: async function (req, res) {
         const { title, content } = req.body;
         const userId = req.query.userId;
-        const fcmToken = await fcmTokenService.getByUserId(userId);
 
-        const registrationTokens = fcmToken[0].fcmToken;
-
-        if (registrationTokens.length === 0) {
-            return res.status(404).send('No tokens found for user');
+        try {
+            const fcmToken = await fcmTokenService.getByUserId(userId);
+            const registrationTokens = fcmToken[0].fcmToken;
+            if (registrationTokens.length === 0) {
+                return res.status(404).send('No tokens found for user');
+            }
+            let response = await notificationService.sendNotify(title, content, registrationTokens);
+            res.json(response);
+        } catch (e) {
+            res.json({
+                success: false,
+                message: 'Send notify fail!',
+            });
         }
-        let response = await notificationService.sendNotify(title, content, registrationTokens);
-        res.json(response);
     }
 }
