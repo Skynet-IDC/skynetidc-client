@@ -22,8 +22,9 @@ module.exports = {
         res.json(response);
     },
     sendNotify: async function (req, res) {
-        const { title, content } = req.body;
+        const { title, content, data } = req.body;
         const userId = req.query.userId;
+        console.log('Request body to send notify: ' + JSON.stringify(req.body));
 
         try {
             const fcmToken = await fcmTokenService.getByUserId(userId);
@@ -31,7 +32,7 @@ module.exports = {
             if (registrationTokens.length === 0) {
                 return res.status(404).send('No tokens found for user');
             }
-            let response = await notificationService.sendNotify(title, content, registrationTokens);
+            let response = await notificationService.sendNotify(title, content, data, registrationTokens);
             res.json(response);
         } catch (e) {
             res.json({

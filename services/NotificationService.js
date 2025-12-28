@@ -25,13 +25,14 @@ module.exports = {
         return notifications;
     },
 
-    sendNotify: async function (title, content, registrationTokens) {
+    sendNotify: async function (title, content, data, registrationTokens) {
         // 2. Construct the notification payload
         const message = {
             notification: {
                 title: title,
                 body: content,
             },
+            data: data,
             token: registrationTokens
         };
 
