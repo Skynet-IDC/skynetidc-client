@@ -6,6 +6,7 @@
 # Node artifact files
 node_modules/
 dist/
+keys/serviceAccountKey.json
 
 # Compiled Java class files
 *.class
