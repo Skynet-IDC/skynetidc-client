@@ -4,7 +4,7 @@ const ErrorCode = require("../constants/ErrorCode");
 
 module.exports = {
     createFcmToken: async function (userId, fcmToken, deviceId, deviceType) {
-        const fcmTokens = await fcmTokenRepository.findAllByUserId(userId);
+        const fcmTokens = await fcmTokenRepository.findAllByUserIdAndDeviceId(userId, deviceId);
 
         if (fcmTokens.length === 0) {
             const result = await fcmTokenRepository.save({
@@ -15,6 +15,13 @@ module.exports = {
             });
             if (result) {
                 return {errorCode: ErrorCode.SUCCESS, message: 'Lưu token thành công'};
+            }
+        } else {
+            const result = await fcmTokenRepository.updateByUserId(userId, deviceId,{
+                fcmToken: fcmToken
+            });
+            if (result) {
+                return {errorCode: ErrorCode.SUCCESS, message: 'Sửa token thành công'};
             }
         }
         return {errorCode: ErrorCode.COMMON_FAIL, message: 'Lưu token thất bại'};

@@ -1,7 +1,7 @@
 import { readFileSync, createReadStream } from "fs";
 import { SpeechConfig, AudioConfig, ConversationTranscriber, AudioInputStream } from "microsoft-cognitiveservices-speech-sdk";
 // This example requires environment variables named "ENDPOINT" and "SPEECH_KEY"
-const speechConfig = SpeechConfig.fromEndpoint(new URL(process.env.ENDPOINT), process.env.SPEECH_KEY);
+const speechConfig = SpeechConfig.fromEndpoint(new URL('https://southeastasia.stt.speech.microsoft.com'), 'BbXMypFJfKo39uZoBKpq1vWINDKARPOm1BBq4HefQssdsDcMMOfEJQQJ99BLACqBBLyXJ3w3AAAAACOGcezL');
 function fromFile() {
     const filename = "harvard.wav";
     const audioConfig = AudioConfig.fromWavFileInput(readFileSync(filename));

@@ -20,13 +20,29 @@ module.exports = {
             },
         });
     },
-    findAllByUserId: async function (userId) {
+    findAllByUserIdAndDeviceId: async function (userId, deviceId) {
         return await FcmToken.findAll({
             where: {
                 is_active: true,
-                user_id: userId
+                user_id: userId,
+                device_id: deviceId
             },
             order: [['id']]
+        });
+    },
+    updateByUserId: async function (userId, deviceId, fields) {
+        return new Promise(async resolve => {
+            FcmToken.update(fields, {
+                where: {
+                    user_id: userId,
+                    device_id: deviceId
+                }
+            }).then(result => {
+                resolve(result);
+            }).catch((e) => {
+                utils.log(`[FcmTokenRepository] Error when executing "update", detail: ${e}`);
+                resolve(false);
+            });
         });
     },
 }
