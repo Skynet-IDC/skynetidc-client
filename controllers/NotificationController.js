@@ -28,13 +28,14 @@ module.exports = {
 
         try {
             const fcmToken = await fcmTokenService.getByUserId(userId);
-            const registrationTokens = fcmToken[0].fcmToken;
+            const registrationTokens = fcmToken.fcmToken;
             if (registrationTokens.length === 0) {
                 return res.status(404).send('No tokens found for user');
             }
             let response = await notificationService.sendNotify(title, content, data, registrationTokens);
             res.json(response);
         } catch (e) {
+            console.log('Error when send notify: ' + e.message);
             res.json({
                 success: false,
                 message: 'Send notify fail!',

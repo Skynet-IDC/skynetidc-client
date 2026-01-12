@@ -20,14 +20,13 @@ module.exports = {
             },
         });
     },
-    findAllByUserIdAndDeviceId: async function (userId, deviceId) {
-        return await FcmToken.findAll({
+    findAllByUserId: async function (userId) {
+        return await FcmToken.findOne({
             where: {
                 is_active: true,
-                user_id: userId,
-                device_id: deviceId
+                user_id: userId
             },
-            order: [['id']]
+            order: [['createdAt', 'DESC']]
         });
     },
     updateByUserId: async function (userId, deviceId, fields) {
