@@ -5,7 +5,7 @@ import _ from "lodash";
 // pronunciation assessment with audio file
 function pronunciationAssessment() {
     var audioConfig = sdk.AudioConfig.fromWavFileInput(fs.readFileSync('harvard.wav'));
-    var speechConfig = sdk.SpeechConfig.fromSubscription('BbXMypFJfKo39uZoBKpq1vWINDKARPOm1BBq4HefQssdsDcMMOfEJQQJ99BLACqBBLyXJ3w3AAAAACOGcezL', 'southeastasia');
+    var speechConfig = sdk.SpeechConfig.fromSubscription('6zp3X703LTCAtwWoSAASaeWOMEOZy0gN9zHHjWuCoofOEzbot4BoJQQJ99CAACqBBLyXJ3w3AAAYACOGAWSR', 'southeastasia');
 
     var reference_text = "What's the weather like?";
     // create pronunciation assessment config, set grading system, granularity and if enable miscue based on your requirement.
@@ -31,6 +31,7 @@ function pronunciationAssessment() {
     function onRecognizedResult(result) {
         console.log("pronunciation assessment for: ", result.text);
         var pronunciation_result = sdk.PronunciationAssessmentResult.fromResult(result);
+        console.log("pronunciation_result: " + JSON.stringify(pronunciation_result))
         console.log(" Accuracy score: ", pronunciation_result.accuracyScore, '\n',
             "pronunciation score: ", pronunciation_result.pronunciationScore, '\n',
             "completeness score : ", pronunciation_result.completenessScore, '\n',
