@@ -27,7 +27,7 @@ export const speechToText = (req, res) => {
     speechConfig.speechRecognitionLanguage = 'en-US';
 
     // create the speech recognizer.
-    var reco = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+    const reco = new sdk.SpeechRecognizer(speechConfig, audioConfig);
     // (Optional) get the session ID
     reco.sessionStarted = (_s, e) => {
         console.log(`SESSION ID: ${e.sessionId}`);
@@ -36,7 +36,7 @@ export const speechToText = (req, res) => {
 
     function onRecognizedResult(result) {
         console.log("pronunciation assessment for: ", result.text);
-        var pronunciation_result = sdk.PronunciationAssessmentResult.fromResult(result);
+        const pronunciation_result = sdk.PronunciationAssessmentResult.fromResult(result);
         console.log("pronunciation_result: " + JSON.stringify(pronunciation_result))
         console.log(" Accuracy score: ", pronunciation_result.accuracyScore, '\n',
             "pronunciation score: ", pronunciation_result.pronunciationScore, '\n',
@@ -44,7 +44,7 @@ export const speechToText = (req, res) => {
             "fluency score: ", pronunciation_result.fluencyScore, '\n',
             "prosody score: ", pronunciation_result.prosodyScore
         );
-        console.log("  Word-level details:");
+        console.log("Word-level details:");
         _.forEach(pronunciation_result.detailResult.Words, (word, idx) => {
             console.log("    ", idx + 1, ": word: ", word.Word, "\taccuracy score: ", word.PronunciationAssessment.AccuracyScore, "\terror type: ", word.PronunciationAssessment.ErrorType, ";");
         });
