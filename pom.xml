@@ -76,7 +76,7 @@
     <module>generator</module>
     <module>common</module>
     <module>quartz</module>
-    <module>client</module>
+    <module>skynetidc</module>
   </modules>
 
   <dependencies>
