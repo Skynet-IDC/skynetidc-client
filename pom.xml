@@ -7,19 +7,19 @@
   <version>0.0.1</version>
   <packaging>pom</packaging>
 
-  <name>skynet-idc</name>
-  <url>https://skynetidc.vn/</url>
+  <name>Skynet IDC</name>
+  <url>https://skynetidc.com/</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <project.build.outputTimestamp>2025-03-25T07:42:50Z</project.build.outputTimestamp>
-    <java.version>17</java.version>
-    <spring-boot.version>3.4.4</spring-boot.version>
-    <spring-framework.version>6.2.5</spring-framework.version>
+    <project.build.outputTimestamp>2026-03-25T07:42:50Z</project.build.outputTimestamp>
+    <java.version>21</java.version>
+    <spring-boot.version>4.0.2</spring-boot.version>
+    <spring-framework.version>7.0.2</spring-framework.version>
     <skynetidc.version>0.0.1</skynetidc.version>
-    <jacoco.version>0.8.11</jacoco.version>
-    <spring-format.version>0.0.40</spring-format.version>
+    <jacoco.version>0.8.14</jacoco.version>
+    <spring-format.version>0.0.47</spring-format.version>
   </properties>
   <dependencyManagement>
     <dependencies>
