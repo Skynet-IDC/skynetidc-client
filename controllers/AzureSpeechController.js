@@ -1,5 +1,6 @@
 import sdk from "microsoft-cognitiveservices-speech-sdk"
 import _ from "lodash"
+import * as pronunciationAssessmentService from './../services/PronunciationAssessmentService.js';
 
 export const speechToText = (req, res) => {
     // if (!req.files || Object.keys(req.files).length === 0) {
@@ -9,6 +10,7 @@ export const speechToText = (req, res) => {
     //     res.json({errorCode: ErrorCode.COMMON_FAIL, message: 'No Words were uploaded.'});
     // }
     let uploadedFile = req.files.file;
+    const formData = req.body;
 
     const audioConfig = sdk.AudioConfig.fromWavFileInput(uploadedFile.data);
     const speechConfig = sdk.SpeechConfig.fromSubscription(process.env.SPEECH_KEY, process.env.SPEECH_REGION);
@@ -34,6 +36,8 @@ export const speechToText = (req, res) => {
     };
     pronunciationAssessmentConfig.applyTo(reco);
 
+    const profile = req.body.user.profiles.find(item => item.isDefault == 1);
+
     function onRecognizedResult(result) {
         console.log("pronunciation assessment for: ", result.text);
         const pronunciation_result = sdk.PronunciationAssessmentResult.fromResult(result);
@@ -48,12 +52,27 @@ export const speechToText = (req, res) => {
         _.forEach(pronunciation_result.detailResult.Words, (word, idx) => {
             console.log("    ", idx + 1, ": word: ", word.Word, "\taccuracy score: ", word.PronunciationAssessment.AccuracyScore, "\terror type: ", word.PronunciationAssessment.ErrorType, ";");
         });
+
+        pronunciationAssessmentService.savePronunciationAssessment({
+            profileId: profile.id,
+            activityId: formData.activityId,
+            levelId: formData.levelId,
+            score: {
+                accuracy: pronunciation_result.accuracyScore,
+                fluency: pronunciation_result.fluencyScore,
+                prosody: pronunciation_result.prosodyScore,
+                completeness: pronunciation_result.completenessScore,
+                pron: pronunciation_result.pronunciationScore,
+            },
+        }).then(r => console.log(r));
         reco.close();
     }
 
-    reco.recognizeOnceAsync(
+    var result = reco.recognizeOnceAsync(
         function (successfulResult) {
             onRecognizedResult(successfulResult);
         }
     )
+
+    res.json({errorCode: "Success", message: 'No Words were uploaded.', data: result});
 }

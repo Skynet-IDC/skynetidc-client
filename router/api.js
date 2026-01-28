@@ -135,7 +135,7 @@ router.get('/practice/competition/play', checkTokenMiddleware, requestValidation
 router.post('/ticket/submit', checkTokenMiddleware, requestValidation(submitTicketRules), ticketController.submitTicket);
 
 // Speech
-router.post('/speech', AzureSpeechController.speechToText);
+router.post('/speech', checkTokenMiddleware, AzureSpeechController.speechToText);
 
 // Speechace
 router.post('/speechace', checkTokenMiddleware, SpeechaceController.speakAI);
