@@ -2,45 +2,37 @@ package com.skynetidc.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/hosting")
 class HostingController {
 
-	@GetMapping("/shared-hosting.html")
+	@GetMapping("/shared-hosting")
 	public String shared() {
-		return "hosting/shared-hosting";
+		return "pages/hosting/shared-hosting";
 	}
 
-	@GetMapping("/wp-hosting.html")
+	@GetMapping("/wordpress-hosting")
 	public String wp() {
-		return "hosting/wp-hosting";
+		return "pages/hosting/wordpress-hosting";
 	}
 
-	@GetMapping("/joomla-hosting.html")
-	public String joomla() {
-		return "hosting/joomla-hosting";
+	@GetMapping("/cloud-hosting")
+	public String cloud() {
+		return "pages/hosting/cloud-hosting";
 	}
 
-	@GetMapping("/magento-hosting.html")
-	public String magento() {
-		return "hosting/joomla-hosting";
+	@GetMapping("/dedicated-hosting")
+	public String dedicated() {
+		return "pages/hosting/dedicated-hosting";
 	}
 
-	@GetMapping("/opencart-hosting.html")
-	public String opencart() {
-		return "hosting/opencart-hosting";
+	@GetMapping("/vps-hosting")
+	public String vps() {
+		return "pages/hosting/vps-hosting";
 	}
 
-	@GetMapping("/prestashop-hosting.html")
-	public String prestashop() {
-		return "hosting/prestashop-hosting";
+	@GetMapping("/reseller-hosting")
+	public String reseller() {
+		return "pages/hosting/reseller-hosting";
 	}
-
-	@GetMapping("/drupal-hosting.html")
-	public String drupal() {
-		return "hosting/drupal-hosting";
-	}
-
 }
