@@ -35,4 +35,5 @@ class HostingController {
 	public String reseller() {
 		return "pages/hosting/reseller-hosting";
 	}
+
 }

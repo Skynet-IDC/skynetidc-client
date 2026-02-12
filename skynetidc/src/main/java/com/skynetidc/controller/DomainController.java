@@ -25,4 +25,5 @@ class DomainController {
 	public String whois() {
 		return "pages/domain/whois";
 	}
+
 }

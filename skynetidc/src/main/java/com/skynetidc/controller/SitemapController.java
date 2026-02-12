@@ -38,4 +38,5 @@ public class SitemapController {
 	private void create(XmlUrlSet xmlUrlSet, String link, XmlUrl.Priority priority) {
 		xmlUrlSet.addUrl(new XmlUrl("https://skynetidc.com" + link, priority));
 	}
+
 }

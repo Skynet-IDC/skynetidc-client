@@ -8,7 +8,6 @@ import lombok.Getter;
 
 import java.time.LocalDateTime;
 
-
 @Getter
 @XmlAccessorType(value = XmlAccessType.NONE)
 @XmlRootElement(name = "url")
