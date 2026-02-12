@@ -1,0 +1,42 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://103.90.226.13:3306/portal?useSSL=false&zeroDateTimeBehavior=convertToNull
+    username: portal
+    password: ?B!Sz93*yH
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: true
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQLDialect
+#    sql:
+#    init:
+#      schema-locations: classpath*:db/${database}/schema.sql
+#      data-locations: classpath*:db/${database}/data.sql
+  thymeleaf:
+    mode: HTML
+  messages:
+    basename: messages/messages
+  main:
+    allow-bean-definition-overriding: true
+
+logging:
+  level:
+    org:
+      springframework: INFO
+      web: DEBUG
+      context:
+        annotation: TRACE
+
+whmcs:
+  api-endpoint: http://portal.skynetidc.vn/includes/api.php
+  identifier: ugkdQUSmO3y9rNOlJckD5ZNC8yVlcVXc
+  secret: eWHMlZv8cK0g6z3HN0lFo6YuutUJWDN9
+
+trumvps:
+  api-endpoint: https://support.trumvps.vn/api
+  token: aG9hZHFAc2t5bmV0aWRjLmNvbTo/QiFTejkzKnlI

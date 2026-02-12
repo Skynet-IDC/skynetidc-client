@@ -1,0 +1,28 @@
+package com.skynetidc.client.payload.m;
+
+import com.skynetidc.client.payload.Payload;
+
+/***
+ * This class and its methods directly relate to the API documentation. API documentation
+ * can be found at the following URL:
+ * https://developers.whmcs.com/api-reference/modulesuspend/
+ */
+public class ModuleSuspendPayload extends Payload {
+
+	/***
+	 * @param serviceID The service ID to run the action for
+	 */
+	public ModuleSuspendPayload(long serviceID) {
+		super("ModuleSuspend");
+		put("serviceid", serviceID);
+	}
+
+	/***
+	 * @param suspendReason A reason for the suspension
+	 */
+	public ModuleSuspendPayload withSuspendReason(String suspendReason) {
+		put("suspendreason", suspendReason);
+		return this;
+	}
+
+}

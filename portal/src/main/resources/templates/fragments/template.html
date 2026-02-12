@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:fragment="layout (template, menu, css, js)" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+  <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+  <meta content="index,follow" name="robots"/>
+  <meta content="1 days" name="revisit-after"/>
+  <meta name='dmca-site-verification' content='ZEYraUR1ZGQ5Rmwrd2hhMk5hRFVQUT090' />
+
+  <title>Đăng ký mua tên miền, Domain, Thuê Hosting, Server, VPS, Email chuyên nghiệp SKYNET IDC</title>
+  <meta content="SKYNET IDC là nhà đăng ký tên miền Quốc tế và tên miền Việt Nam. SKYNET IDC đồng thời cung cấp dịch vụ cho thuê máy chủ (Cloud Hosting, Cloud Server, Cloud VPS) trên nền tảng điện toán đám mây, đặt website, phát triển ứng dụng quản lý, cung cấp hạ tầng web, các giải pháp về phát triển website và ứng dụng trên nền web."
+        name="description"/>
+  <meta content="SKYNET IDC, cong ty SKYNET IDC, nha cung cap SKYNET IDC, công ty SKYNET IDC, SKYNET IDC, gia ten mien, giá tên miền, bảng giá tên miền, đăng kí tên miền, Đăng ký tên miền, Domain, dang ki ten mien, tên miền giá rẻ, mua tên miền, mua domain, mua ten mien, mua domain gia re, mua ten mien gia re, mua tên miền giá rẻ, ten mien gia re, ten mien dep, domain gia re, tên miền đẹp, mua domain giá rẻ, mua tên miền ở đâu, tên miền quốc tế, ban ten mien dep, ten mien quoc te, mua bán tên miền, bảng giá hosting, mua host, bang gia hosting, mua hosting, đăng ký hosting, dang ky hosting, mua hosting gia re, mua hosting giá rẻ, host gia re, hosting ssd, hosting giá rẻ, hosting web, host giá rẻ, hosting, dang ky host, dịch vụ email, dịch vụ email doanh nghiệp, email tên miền riêng, email cho doanh nghiệp, đăng ký email công ty, tạo email tên miền riêng, email 365, email theo tên miền, tạo email doanh nghiệp, dịch vụ email cho doanh nghiệp, email theo ten mien, tạo email với tên miền riêng, email doanh nghiep, thuê cloud server, cloud server giá rẻ, thuê máy chủ vps, cho thue server, cho thuê server giá rẻ, cho thuê máy chủ, thuê server giá rẻ, thuê máy chủ giá rẻ, thuê máy chủ, server giá rẻ, dịch vụ cho thuê máy chủ, cloud server, cloud server tốt nhất"
+        name="keywords"/>
+  <meta content="Đăng ký mua tên miền, Domain, Thuê Hosting, Server, VPS, Email chuyên nghiệp SKYNET IDC"
+        name="twitter:title"/>
+  <meta content="SKYNET IDC là nhà đăng ký tên miền Quốc tế và tên miền Việt Nam. SKYNET IDC đồng thời cung cấp dịch vụ cho thuê máy chủ (Cloud Hosting, Cloud Server, Cloud VPS) trên nền tảng điện toán đám mây, đặt website, phát triển ứng dụng quản lý, cung cấp hạ tầng web, các giải pháp về phát triển website và ứng dụng trên nền web."
+        name="twitter:description"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="Đăng ký mua tên miền, Domain, Thuê Hosting, Server, VPS, Email chuyên nghiệp, Chữ ký số SKYNET IDC - CA"
+        property="og:title"/>
+  <meta content="SKYNET IDC là nhà đăng ký tên miền Quốc tế và tên miền Việt Nam. SKYNET IDC đồng thời cung cấp dịch vụ cho thuê máy chủ (Cloud Hosting, Cloud Server, Cloud VPS) trên nền tảng điện toán đám mây, đặt website, phát triển ứng dụng quản lý, cung cấp hạ tầng web, các giải pháp về phát triển website và ứng dụng trên nền web."
+        property="og:description"/>
+  <meta content="https://skynetidc.com/assets/img/og.png" property="og:image"/>
+  <meta content="https://www.skynetidc.com/" property="og:url"/>
+  <meta content="article" name="og:type"/>
+  <meta content="skynetidc.com" name="og:site_name"/>
+  <meta content="vi_VN" property="og:locale"/>
+  <meta content="Đăng ký mua tên miền, Domain, Thuê Hosting, Server, VPS, Email chuyên nghiệp SKYNET IDC" itemprop="name"/>
+  <meta content="SKYNET IDC là nhà đăng ký tên miền Quốc tế. SKYNET IDC đồng thời cung cấp dịch vụ cho thuê máy chủ (Cloud Hosting, Cloud Server, Cloud VPS) trên nền tảng điện toán đám mây, đặt website, phát triển ứng dụng quản lý, cung cấp hạ tầng web, các giải pháp về phát triển website và ứng dụng trên nền web."
+        itemprop="description"/>
+  <meta content="https://skynetidc.com/assets/img/logo_facebook.jpg" itemprop="image"/>
+  <meta content='https://www.facebook.com/skynetidc' property='article:author'/>
+  <meta content="origin" name="referrer"/>
+  <meta content="Công ty TNHH SKYNET IDC" name="copyright"/>
+  <meta content="Công ty TNHH SKYNET IDC" name="author"/>
+  <meta content="Global" name="distribution"/>
+  <meta content="Ha Noi City" name="geo.placename"/>
+  <meta content="VN-SG" name="geo.region"/>
+  <meta content="Đăng ký mua tên miền, Domain, Thuê Hosting, Server, VPS, Email chuyên nghiệp SKYNET IDC" name="DC.title"/>
+  <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+  <meta content="true" name="HandheldFriendly"/>
+  <meta content="on" http-equiv="x-dns-prefetch-control">
+  <meta content="Công ty TNHH SKYNET IDC" name="GENERATOR"/>
+  <meta content="General" http-equiv="audience"/>
+  <meta content="Document" name="resource-type"/>
+  <meta content="m7-dKszP_-rlCFlKwBkHN9sCqN26vapJMkhoLx_DTlM" name="google-site-verification">
+  <!--favicon icon-->
+  <link th:href="@{/img/favicon.ico}" rel="icon" sizes="16x16" type="image/png"/>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <link rel="stylesheet" th:href="@{/skote/sweetalert2.min.css}"/>
+  <link rel="stylesheet" th:href="@{/skote/bootstrap.min.css}"/>
+  <link rel="stylesheet" th:href="@{/css/icons.min.css}"/>
+  <link rel="stylesheet" th:href="@{/css/app.min.css}"/>
+  <link rel="stylesheet" th:href="@{/css/custom.min.css}"/>
+</head>
+<div th:fragment="css"></div>
+<body data-sidebar="dark" cz-shortcut-listen="true">
+
+<!-- Begin page -->
+<div id="layout-wrapper">
+  <header id="page-topbar">
+    <div class="navbar-header">
+      <div class="d-flex">
+        <!-- LOGO -->
+        <div class="navbar-brand-box">
+          <a th:href="@{/}" class="logo logo-dark">
+            <span class="logo-sm">
+                <img th:src="@{/img/logo-sm.png}" height="40">
+            </span>
+            <span class="logo-lg">
+                <img th:src="@{/img/logo-dark.png}" height="40">
+            </span>
+          </a>
+          <a th:href="@{/}" class="logo logo-light">
+            <span class="logo-sm">
+                <img th:src="@{/img/favicon_light.png}" alt="" height="50">
+            </span>
+            <span class="logo-lg">
+                <img th:src="@{/assets/images/logo.png}" alt="" height="50">
+            </span>
+          </a>
+        </div>
+
+        <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect" id="vertical-menu-btn">
+          <i class="fa fa-fw fa-bars"></i>
+        </button>
+
+        <!-- App Search-->
+        <form class="app-search d-none d-lg-block">
+          <div class="position-relative">
+            <input type="text" class="form-control" placeholder="Search...">
+            <span class="bx bx-search-alt"></span>
+          </div>
+        </form>
+
+        <div class="dropdown dropdown-mega d-none d-lg-block ms-2">
+          <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="false"
+                  aria-expanded="false">
+            <span key="t-megamenu">All Services</span>
+            <i class="mdi mdi-chevron-down"></i>
+          </button>
+          <div class="dropdown-menu dropdown-megamenu">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-md-3">
+                    <h5 class="font-size-14" key="t-ui-components">Servers</h5>
+                    <ul class="list-unstyled megamenu-list">
+                      <li>
+                        <a href="javascript:void(0);" key="t-lightbox">VPS</a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0);" key="t-range-slider">Cloud Compute</a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0);" key="t-range-slider">Dedicated Server</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-md-3">
+                    <h5 class="font-size-14" key="t-applications">Hosting</h5>
+                    <ul class="list-unstyled megamenu-list">
+                      <li>
+                        <a href="javascript:void(0);" key="t-ecommerce">Shared Hosting Cpanel</a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0);" key="t-calendar">Wordpress Hosting</a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0);" key="t-email">Email Hosting</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-md-3">
+                    <h5 class="font-size-14" key="t-extra-pages">Domain</h5>
+                    <ul class="list-unstyled megamenu-list">
+                      <li>
+                        <a href="javascript:void(0);" key="t-light-sidebar">Register New Domain</a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0);" key="t-compact-sidebar">Transfer Domain</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-md-3">
+                    <h5 class="font-size-14" key="t-ui-components">Security</h5>
+                    <ul class="list-unstyled megamenu-list">
+                      <li>
+                        <a href="javascript:void(0);" key="t-lightbox">WAF</a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0);" key="t-range-slider">ESign</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex">
+
+        <div class="dropdown d-inline-block d-lg-none ms-2">
+          <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
+                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="mdi mdi-magnify"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+               aria-labelledby="page-header-search-dropdown">
+
+            <form class="p-3">
+              <div class="form-group m-0">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search ..."
+                         aria-label="Recipient&#39;s username">
+                  <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="dropdown d-inline-block">
+          <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false">
+            <img id="header-lang-img" th:src="@{/img/vietnam.png}" alt="Header Language" height="16">
+          </button>
+          <div class="dropdown-menu dropdown-menu-end">
+            <!-- item-->
+            <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="vi">
+              <img th:src="@{/img/vietnam.png}" alt="user-image"
+                   class="me-1" height="12"> <span class="align-middle">Vietnamese</span>
+            </a>
+
+            <!-- item-->
+            <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="en">
+              <img th:src="@{/img/us.jpg}" alt="user-image" class="me-1"
+                   height="12"> <span class="align-middle">English</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="dropdown d-none d-lg-inline-block ms-1">
+          <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+            <i class="bx bx-customize"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end" style="">
+            <div class="px-lg-2">
+              <div class="row g-0">
+                <div class="col">
+                  <a class="dropdown-icon-item" th:href="@{/order/vm}">
+                    <img th:src="@{/img/vps.png}" alt="VPS">
+                    <span>VPS</span>
+                  </a>
+                </div>
+                <div class="col">
+                  <a class="dropdown-icon-item" href="#">
+                    <img th:src="@{/img/cloud-server.png}" alt="SkyNode">
+                    <span>S2 Compute</span>
+                  </a>
+                </div>
+                <div class="col">
+                  <a class="dropdown-icon-item" href="#">
+                    <img th:src="@{/img/hosting.png}" alt="Hosting">
+                    <span>Hosting</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="row g-0">
+                <div class="col">
+                  <a class="dropdown-icon-item" href="#">
+                    <img th:src="@{/img/domain.png}" alt="Domain">
+                    <span>Domain</span>
+                  </a>
+                </div>
+                <div class="col">
+                  <a class="dropdown-icon-item" href="#">
+                    <img th:src="@{/img/email.png}" alt="Email">
+                    <span>Email</span>
+                  </a>
+                </div>
+                <div class="col">
+                  <a class="dropdown-icon-item" href="#">
+                    <img th:src="@{/img/WAF.png}" alt="WAF">
+                    <span>WAF</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dropdown d-inline-block">
+          <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
+                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="bx bx-bell bx-tada"></i>
+            <span class="badge bg-danger rounded-pill">3</span>
+          </button>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+               aria-labelledby="page-header-notifications-dropdown">
+            <div class="p-3">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h6 class="m-0" key="t-notifications"> Notifications </h6>
+                </div>
+                <div class="col-auto">
+                  <a href="#!" class="small" key="t-view-all"> View
+                    All</a>
+                </div>
+              </div>
+            </div>
+            <div data-simplebar="init" style="max-height: 230px;">
+              <div class="simplebar-wrapper" style="margin: 0px;">
+                <div class="simplebar-height-auto-observer-wrapper">
+                  <div class="simplebar-height-auto-observer"></div>
+                </div>
+                <div class="simplebar-mask">
+                  <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                    <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content"
+                         style="height: auto; overflow: hidden;">
+                      <div class="simplebar-content" style="padding: 0px;">
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                          <div class="d-flex">
+                            <div class="avatar-xs me-3">
+                                                <span class="avatar-title bg-primary rounded-circle font-size-16">
+                                                    <i class="bx bx-cart"></i>
+                                                </span>
+                            </div>
+                            <div class="flex-grow-1">
+                              <h6 class="mb-1" key="t-your-order">Your order is placed</h6>
+                              <div class="font-size-12 text-muted">
+                                <p class="mb-1" key="t-grammer">If several languages coalesce the grammar</p>
+                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span
+                                  key="t-min-ago">3 min ago</span></p>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                          <div class="d-flex">
+                            <img th:src="@{/img/avatar-3.jpg}"
+                                 class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                            <div class="flex-grow-1">
+                              <h6 class="mb-1">James Lemire</h6>
+                              <div class="font-size-12 text-muted">
+                                <p class="mb-1" key="t-simplified">It will seem like simplified English.</p>
+                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-hours-ago">1 hours ago</span>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                          <div class="d-flex">
+                            <div class="avatar-xs me-3">
+                                                <span class="avatar-title bg-success rounded-circle font-size-16">
+                                                    <i class="bx bx-badge-check"></i>
+                                                </span>
+                            </div>
+                            <div class="flex-grow-1">
+                              <h6 class="mb-1" key="t-shipped">Your item is shipped</h6>
+                              <div class="font-size-12 text-muted">
+                                <p class="mb-1" key="t-grammer">If several languages coalesce the grammar</p>
+                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span
+                                  key="t-min-ago">3 min ago</span></p>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                          <div class="d-flex">
+                            <img th:src="@{/img/avatar-4.jpg}"
+                                 class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                            <div class="flex-grow-1">
+                              <h6 class="mb-1">Salena Layfield</h6>
+                              <div class="font-size-12 text-muted">
+                                <p class="mb-1" key="t-occidental">As a skeptical Cambridge friend of mine
+                                  occidental.</p>
+                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-hours-ago">1 hours ago</span>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div>
+              </div>
+              <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+                <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
+              </div>
+              <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
+                <div class="simplebar-scrollbar" style="height: 0px; display: none;"></div>
+              </div>
+            </div>
+            <div class="p-2 border-top d-grid">
+              <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
+                <i class="mdi mdi-arrow-right-circle me-1"></i> <span key="t-view-more">View More..</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="dropdown d-inline-block">
+          <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="rounded-circle header-profile-user" th:src="@{/img/avatar-1.jpg}" alt="Header Avatar">
+            <span class="d-none d-xl-inline-block ms-1">
+              <span sec:authentication="principal.firstName"></span> <span sec:authentication="principal.lastName"></span>
+            </span>
+            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-end">
+            <!-- item-->
+            <a class="dropdown-item" th:href="@{/profile}">
+              <i class="bx bx-user font-size-16 align-middle me-1"></i>
+              <span key="t-profile">Profile</span>
+            </a>
+            <a class="dropdown-item" href="#">
+              <i class="mdi mdi-security font-size-16 align-middle me-1"></i>
+              <span key="t-my-wallet">Account Security</span>
+            </a>
+            <a class="dropdown-item d-block"  th:href="@{/account-setting.html}">
+              <i class="mdi mdi-tools font-size-16 align-middle me-1"></i>
+              <span key="t-settings">Account Settings</span>
+            </a>
+            <a class="dropdown-item d-block"  th:href="@{/account-setting.html}">
+              <i class="bx bx-mail-send font-size-16 align-middle me-1"></i>
+              <span key="t-settings">Email history</span>
+            </a>
+            <a class="dropdown-item" href="#"><i
+              class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span
+              key="t-lock-screen">Lock screen</span></a>
+            <div class="dropdown-divider"></div>
+            <a sec:authorize="isAuthenticated()" class="dropdown-item text-danger" th:href="@{/logout}">
+              <i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="dropdown d-inline-block">
+          <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+            <i class="bx bx-cog bx-spin"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== Left Sidebar Start ========== -->
+  <div class="vertical-menu">
+
+    <div data-simplebar="init" class="h-100 simplebar-scrollable-y">
+      <div class="simplebar-wrapper" style="margin: 0px;">
+        <div class="simplebar-height-auto-observer-wrapper">
+          <div class="simplebar-height-auto-observer"></div>
+        </div>
+        <div class="simplebar-mask">
+          <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+            <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content"
+                 style="height: 100%; overflow: hidden scroll;">
+              <div class="simplebar-content" style="padding: 0px;">
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu" class="mm-active">
+                  <!-- Left Menu Start -->
+                  <ul class="metismenu list-unstyled mm-show" id="side-menu">
+                    <li class="menu-title" key="t-menu">Menu</li>
+
+                    <li class="mm-active">
+                      <a th:href="@{/}" class="waves-effect mm-active">
+                        <i class="bx bx-home-circle"></i>
+                        <span key="t-layouts">Dashboards</span>
+                      </a>
+                    </li>
+                    <li class="menu-title" key="t-apps">Service</li>
+                    <li>
+                      <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="mdi mdi-server-security"></i>
+                        <span key="t-dashboards">VM Instances</span>
+                      </a>
+                      <ul class="sub-menu mm-collapse" aria-expanded="false">
+<!--                        <li><a th:href="@{/compute}" key="t-full-calendar">Cloud Compute</a></li>-->
+                        <li><a th:href="@{/vm}" key="t-tui-calendar">VPS</a></li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a th:href="@{/website}" class="waves-effect" aria-expanded="false">
+                        <i class="fab fa-internet-explorer"></i>
+                        <span key="t-jobs">Websites</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fas fa-passport"></i>
+                        <span key="t-email">Domains</span>
+                      </a>
+                      <ul class="sub-menu mm-collapse" aria-expanded="false">
+                        <li><a th:href="@{/domains/checker}">Đăng kí tên miền</a></li>
+                        <li><a th:href="@{/domains/transfer}">Chuyển tên miền</a></li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="mdi mdi-access-point-network"></i>
+                        <span key="t-email">Network</span>
+                      </a>
+                      <ul class="sub-menu mm-collapse" aria-expanded="false">
+                        <li><a href="https://themesbrand.com/skote/layouts/email-inbox.html">DNS</a></li>
+                        <li><a href="https://themesbrand.com/skote/layouts/email-read.html">Firewall</a></li>
+                        <li><a href="https://themesbrand.com/skote/layouts/email-read.html">VPC</a></li>
+                      </ul>
+                    </li>
+                    <li class="menu-title">Account</li>
+                    <li>
+                      <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-receipt"></i>
+                        <span key="t-invoices">Billing</span>
+                      </a>
+                      <ul class="sub-menu mm-collapse" aria-expanded="false">
+                        <li><a th:href="@{/invoices}">Invoices</a></li>
+                        <li><a th:href="@{/quotes}">My Quotes</a></li>
+                        <li><a th:href="@{/mass-payment}">Mass Payment</a></li>
+                        <li><a th:href="@{/add-funds}">Add Funds</a></li>
+                      </ul>
+                    </li>
+                    <li class="">
+                      <a th:href="@{/settings/ssh-keys}" class="waves-effect" aria-expanded="false">
+                        <i class="mdi mdi-account-key"></i>
+                        <span key="t-jobs">SSH Keys</span>
+                      </a>
+                    </li>
+                    <li class="">
+                      <a th:href="@{/settings/api-docs}" class="waves-effect" aria-expanded="false">
+                        <i class="mdi mdi-api"></i>
+                        <span key="t-jobs">API</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a th:href="@{/referral}" class="waves-effect">
+                        <i class="fas fa-handshake"></i>
+                        <span key="t-utility">Affiliates</span>
+                      </a>
+                    </li>
+                    <li class="menu-title" key="t-pages">Support</li>
+                    <li>
+                      <a href="javascript: void(0);" class="waves-effect">
+                        <i class="fas fa-thumbs-up"></i>
+                        <span key="t-utility">Tickets</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript: void(0);" class="waves-effect">
+                        <i class="fa fa-envelope"></i>
+                        <span key="t-utility">Contact Us</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript: void(0);" class="waves-effect">
+                        <i class="fa fa-book"></i>
+                        <span key="t-utility">Knowledgebase</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript: void(0);" class="waves-effect">
+                        <i class="fa fa-download"></i>
+                        <span key="t-utility">Downloads</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <!-- Sidebar -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="simplebar-placeholder" style="width: 250px; height: 1398px;"></div>
+      </div>
+      <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+        <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
+      </div>
+      <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
+        <div class="simplebar-scrollbar"
+             style="height: 505px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
+      </div>
+    </div>
+  </div>
+  <!-- Left Sidebar End -->
+
+
+  <!-- ============================================================== -->
+  <!-- Start right Content here -->
+  <!-- ============================================================== -->
+  <div class="main-content">
+
+    <div class="page-content">
+      <!-- container-fluid -->
+      <th:block th:insert="${template}"/>
+      <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+    <footer class="footer">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-6">
+            2021 - <script>document.write(new Date().getFullYear())</script> © Skynet IDC Team.
+          </div>
+          <div class="col-sm-6">
+            <div class="text-sm-end d-none d-sm-block">
+              All Rights Reserved.
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <!-- end main content-->
+
+</div>
+<!-- END layout-wrapper -->
+
+<!-- Right Sidebar -->
+<div class="right-bar">
+  <div data-simplebar="init" class="h-100 simplebar-scrollable-y">
+    <div class="simplebar-wrapper" style="margin: 0px;">
+      <div class="simplebar-height-auto-observer-wrapper">
+        <div class="simplebar-height-auto-observer"></div>
+      </div>
+      <div class="simplebar-mask">
+        <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+          <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content"
+               style="height: 100%; overflow: hidden scroll;">
+            <div class="simplebar-content" style="padding: 0px;">
+              <div class="rightbar-title d-flex align-items-center px-3 py-4">
+
+                <h5 class="m-0 me-2">Settings</h5>
+
+                <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+                  <i class="mdi mdi-close noti-icon"></i>
+                </a>
+              </div>
+
+              <!-- Settings -->
+              <hr class="mt-0">
+              <h6 class="text-center mb-0">Choose Layouts</h6>
+
+              <div class="p-4">
+                <div class="mb-2">
+                  <img th:src="@{/img/layout-1.jpg}" class="img-thumbnail" alt="layout images">
+                </div>
+                <div class="form-check form-switch mb-3">
+                  <input class="form-check-input theme-choice" type="checkbox" id="light-mode-switch" checked="">
+                  <label class="form-check-label" for="light-mode-switch">Light Mode</label>
+                </div>
+                <div class="mb-2">
+                  <img th:src="@{/img/layout-2.jpg}" class="img-thumbnail" alt="layout images">
+                </div>
+                <div class="form-check form-switch mb-3">
+                  <input class="form-check-input theme-choice" type="checkbox" id="dark-mode-switch">
+                  <label class="form-check-label" for="dark-mode-switch">Dark Mode</label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="simplebar-placeholder" style="width: 280px; height: 1065px;"></div>
+    </div>
+    <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+      <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
+    </div>
+    <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
+      <div class="simplebar-scrollbar"
+           style="height: 779px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
+    </div>
+  </div> <!-- end slimscroll-menu-->
+</div>
+<!-- /Right-bar -->
+
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>
+
+<!-- JAVASCRIPT -->
+<script th:src="@{/skote/jquery.min.js}"></script>
+<script th:src="@{/skote/apexcharts.min.js}"></script>
+<script th:src="@{/skote/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/skote/metisMenu.min.js}"></script>
+<script th:src="@{/skote/simplebar.min.js}"></script>
+<script th:src="@{/skote/waves.min.js}"></script>
+
+<script th:src="@{/js/bootstrap-datepicker.min.js}"></script>
+<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+<script th:src="@{/js/dataTables.bootstrap4.min.js}"></script>
+<script th:src="@{/skote/dashboard.init.js}"></script>
+<script th:src="@{/skote/sweetalert2.min.js}"></script>
+<script th:src="@{/skote/app.js}"></script>
+<script type="text/javascript">
+  let token = $("meta[name='_csrf']").attr("content");
+  let baseUrl = "https://console.skynetidc.com";
+</script>
+
+<th:block th:insert="${js}"/>
+<svg id="SvgjsSvg1213" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1"
+     style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;">
+  <defs id="SvgjsDefs1214"></defs>
+  <polyline id="SvgjsPolyline1215" points="0,0"></polyline>
+  <path id="SvgjsPath1216" d="M0 0 "></path>
+</svg>
+<div id="quick-start-container"></div>
+</body>
+</html>
