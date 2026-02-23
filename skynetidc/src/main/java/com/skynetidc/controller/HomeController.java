@@ -13,4 +13,19 @@ class HomeController {
 		return "pages/home";
 	}
 
+	@GetMapping("/about")
+	public String about() {
+		return "pages/about";
+	}
+
+	@GetMapping("/blog")
+	public String blog() {
+		return "pages/blog";
+	}
+
+	@GetMapping("/affiliate")
+	public String affiliate() {
+		return "pages/affiliate";
+	}
+
 }

@@ -6,26 +6,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping
-class HelpCenterController {
+class TechnologyController {
 
-	@GetMapping("/faq")
-	public String faq() {
-		return "pages/help/faq";
+	@GetMapping("/technology")
+	public String technology() {
+		return "pages/technology/technology";
 	}
 
-	@GetMapping("/support")
-	public String support() {
-		return "pages/help/support";
-	}
-
-	@GetMapping("/contact")
-	public String contact() {
-		return "pages/help/contact";
-	}
-
-	@GetMapping("/knowledgebase")
-	public String knowledgebase() {
-		return "pages/help/knowledgebase";
+	@GetMapping("/data-centers")
+	public String dataCenters() {
+		return "pages/technology/data-center";
 	}
 
 }

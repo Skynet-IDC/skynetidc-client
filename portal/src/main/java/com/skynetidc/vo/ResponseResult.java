@@ -1,13 +1,11 @@
 package com.skynetidc.vo;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializerProvider;
 import com.skynetidc.enums.ResultEnum;
 
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 public class ResponseResult<T> implements Serializable {
 
@@ -143,12 +141,7 @@ public class ResponseResult<T> implements Serializable {
 	}
 
 	public boolean isSuccess() {
-		return ResultEnum.SUCCESS.getCode() == this.code;
-	}
-
-	public String toJson() throws JsonProcessingException {
-		ObjectMapper objectMapper = new ObjectMapper();
-		return objectMapper.writeValueAsString(this);
+		return Objects.equals(ResultEnum.SUCCESS.getCode(), this.code);
 	}
 
 }
