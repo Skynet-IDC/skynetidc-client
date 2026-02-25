@@ -1,62 +1,56 @@
 import sdk from "microsoft-cognitiveservices-speech-sdk"
-import _ from "lodash"
 import * as pronunciationAssessmentService from './../services/PronunciationAssessmentService.js';
+import * as practiceService from "./../services/PracticeService.js";
 
-export const speechToText = (req, res) => {
-    // if (!req.files || Object.keys(req.files).length === 0) {
-    //     res.json({errorCode: ErrorCode.COMMON_FAIL, message: 'No files were uploaded.'});
-    // }
-    // if (!req.body.text) {
-    //     res.json({errorCode: ErrorCode.COMMON_FAIL, message: 'No Words were uploaded.'});
-    // }
-    let uploadedFile = req.files.file;
-    const formData = req.body;
+export const speechToText = async (req, res) => {
+    try {
+        let uploadedFile = req.files.file;
+        const formData = req.body;
 
-    const audioConfig = sdk.AudioConfig.fromWavFileInput(uploadedFile.data);
-    const speechConfig = sdk.SpeechConfig.fromSubscription(process.env.SPEECH_KEY, process.env.SPEECH_REGION);
+        const audioConfig = sdk.AudioConfig.fromWavFileInput(uploadedFile.data);
+        const speechConfig = sdk.SpeechConfig.fromSubscription(process.env.SPEECH_KEY, process.env.SPEECH_REGION);
+        const reference_text = "What's the weather like?";
 
-    const reference_text = "What's the weather like?";
-    // create pronunciation assessment config, set grading system, granularity and if enable miscue based on your requirement.
-    const pronunciationAssessmentConfig = new sdk.PronunciationAssessmentConfig(
-        reference_text,
-        sdk.PronunciationAssessmentGradingSystem.HundredMark,
-        sdk.PronunciationAssessmentGranularity.Phoneme,
-        true
-    );
-    pronunciationAssessmentConfig.enableProsodyAssessment = true;
-
-    // setting the recognition language to English.
-    speechConfig.speechRecognitionLanguage = 'en-US';
-
-    // create the speech recognizer.
-    const reco = new sdk.SpeechRecognizer(speechConfig, audioConfig);
-    // (Optional) get the session ID
-    reco.sessionStarted = (_s, e) => {
-        console.log(`SESSION ID: ${e.sessionId}`);
-    };
-    pronunciationAssessmentConfig.applyTo(reco);
-
-    const profile = req.body.user.profiles.find(item => item.isDefault == 1);
-
-    function onRecognizedResult(result) {
-        console.log("pronunciation assessment for: ", result.text);
-        const pronunciation_result = sdk.PronunciationAssessmentResult.fromResult(result);
-        console.log("pronunciation_result: " + JSON.stringify(pronunciation_result))
-        console.log(" Accuracy score: ", pronunciation_result.accuracyScore, '\n',
-            "pronunciation score: ", pronunciation_result.pronunciationScore, '\n',
-            "completeness score : ", pronunciation_result.completenessScore, '\n',
-            "fluency score: ", pronunciation_result.fluencyScore, '\n',
-            "prosody score: ", pronunciation_result.prosodyScore
+        const pronunciationAssessmentConfig = new sdk.PronunciationAssessmentConfig(
+            reference_text,
+            sdk.PronunciationAssessmentGradingSystem.HundredMark,
+            sdk.PronunciationAssessmentGranularity.Phoneme,
+            true
         );
-        console.log("Word-level details:");
-        _.forEach(pronunciation_result.detailResult.Words, (word, idx) => {
-            console.log("    ", idx + 1, ": word: ", word.Word, "\taccuracy score: ", word.PronunciationAssessment.AccuracyScore, "\terror type: ", word.PronunciationAssessment.ErrorType, ";");
-        });
+        pronunciationAssessmentConfig.enableProsodyAssessment = true;
+        speechConfig.speechRecognitionLanguage = 'en-US';
 
-        pronunciationAssessmentService.savePronunciationAssessment({
+        const recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+        pronunciationAssessmentConfig.applyTo(recognizer);
+
+        const getRecognitionResult = () => {
+            return new Promise((resolve, reject) => {
+                recognizer.recognizeOnceAsync(
+                    (result) => {
+                        resolve(result);
+                        recognizer.close();
+                    },
+                    (err) => {
+                        recognizer.close();
+                        reject(err);
+                    }
+                );
+            });
+        };
+
+        // Đợi cho đến khi có kết quả từ Azure
+        const result = await getRecognitionResult();
+
+        // Xử lý kết quả sau khi đã "await" xong
+        const pronunciation_result = sdk.PronunciationAssessmentResult.fromResult(result);
+        const profile = req.body.user.profiles.find(item => item.isDefault == 1);
+
+        const responseData = {
             profileId: profile.id,
-            activityId: formData.activityId,
-            levelId: formData.levelId,
+            activityId: formData.activity_id,
+            levelId: formData.level_id,
+            startTime: formData.start_time,
+            timeSpent: formData.time_spent,
             score: {
                 accuracy: pronunciation_result.accuracyScore,
                 fluency: pronunciation_result.fluencyScore,
@@ -64,15 +58,26 @@ export const speechToText = (req, res) => {
                 completeness: pronunciation_result.completenessScore,
                 pron: pronunciation_result.pronunciationScore,
             },
-        }).then(r => console.log(r));
-        reco.close();
-    }
-
-    var result = reco.recognizeOnceAsync(
-        function (successfulResult) {
-            onRecognizedResult(successfulResult);
+            isPracticeConversation: req.body.is_practice_conversation ? 1 : 0,
+            createdAt: new Date()
         }
-    )
 
-    res.json({errorCode: "Success", message: 'No Words were uploaded.', data: result});
+        // Lưu vào DB (đợi lưu xong nếu cần)
+        if (req.body.is_practice_conversation) {
+            await practiceService.savePracticeConversationScore(responseData);
+        } else {
+            await pronunciationAssessmentService.savePronunciationAssessment(responseData);
+        }
+
+        // Trả về response JSON thực tế cho client
+        res.json({
+            errorCode: "Success",
+            message: 'Assessment completed',
+            data: responseData
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ errorCode: "Fail", message: error.message });
+    }
 }
