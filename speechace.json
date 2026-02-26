@@ -1,0 +1,87 @@
+{
+    "status": "success",
+    "quota_remaining": -1,
+    "text_score": {
+        "text": "apple",
+        "word_score_list": [
+            {
+                "word": "apple",
+                "quality_score": 93,
+                "quality_class": "pass",
+                "phone_score_list": [
+                    {
+                        "phone": "ae",
+                        "stress_level": 1,
+                        "extent": [
+                            8,
+                            25
+                        ],
+                        "quality_score": 94.88235294117646,
+                        "word_extent": [
+                            0,
+                            1
+                        ],
+                        "sound_most_like": "ae"
+                    },
+                    {
+                        "phone": "p",
+                        "stress_level": null,
+                        "extent": [
+                            25,
+                            36
+                        ],
+                        "quality_score": 100,
+                        "word_extent": [
+                            1,
+                            3
+                        ],
+                        "sound_most_like": "p"
+                    },
+                    {
+                        "phone": "l",
+                        "stress_level": null,
+                        "extent": [
+                            36,
+                            55
+                        ],
+                        "quality_score": 82.78947368421052,
+                        "word_extent": [
+                            3,
+                            5
+                        ],
+                        "sound_most_like": "l"
+                    }
+                ],
+                "syllable_score_list": [
+                    {
+                        "phone_count": 3,
+                        "stress_level": 1,
+                        "letters": "apple",
+                        "quality_score": 93,
+                        "extent": [
+                            8,
+                            55
+                        ]
+                    }
+                ]
+            }
+        ],
+        "ielts_score": {
+            "pronunciation": 8.5
+        },
+        "pte_score": {
+            "pronunciation": 90
+        },
+        "speechace_score": {
+            "pronunciation": 93
+        },
+        "toeic_score": {
+            "pronunciation": 190
+        },
+        "cefr_score": {
+            "pronunciation": "C2"
+        }
+    },
+    "version": "9.14",
+    "request_id": "cac0b56e6951e5f24460b7d640764801"
+}
