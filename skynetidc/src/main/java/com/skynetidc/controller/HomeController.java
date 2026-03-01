@@ -28,4 +28,29 @@ class HomeController {
 		return "pages/affiliate";
 	}
 
+	@GetMapping("/pricing")
+	public String pricing() {
+		return "pages/pricing";
+	}
+
+	@GetMapping("/hosting-pricing")
+	public String hostingPricing() {
+		return "pages/hosting-pricing";
+	}
+
+	@GetMapping("/vps-pricing")
+	public String vpsPricing() {
+		return "pages/vps-pricing";
+	}
+
+	@GetMapping("/dedicated-pricing")
+	public String dedicatedPricing() {
+		return "pages/dedicated-pricing";
+	}
+
+	@GetMapping("/reseller-pricing")
+	public String resellerPricing() {
+		return "pages/reseller-pricing";
+	}
+
 }

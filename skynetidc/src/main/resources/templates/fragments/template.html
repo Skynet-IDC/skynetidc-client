@@ -62,6 +62,46 @@
 <body class="">
 <!-- HEADER AREA -->
 <header class="rts-header style-six header__default">
+  <!-- HEADER TOP AREA -->
+  <div class="rts-ht rts-ht__bg">
+    <div class="container">
+      <div class="row">
+        <div class="rts-ht__wrapper">
+          <div class="rts-ht__email">
+            <a href="mailto:info@skynetidc.vn"><img th:src="@{/images/icon/email.svg}" alt="" class="icon">contact@skynetidc.vn</a>
+          </div>
+          <div class="rts-ht__promo">
+            <p><img class="icon" th:src="@{/images/icon/tag--group.svg}" alt=""> Hosting Flash Sale: Starting at <strong>$2.59/mo</strong> for a limited time</p>
+          </div>
+          <div class="rts-ht__links">
+            <div class="live-chat-has-dropdown">
+              <a href="#" class="live__chat"><img th:src="@{/images/icon/forum.svg}" alt="" class="icon">Live Chat</a>
+            </div>
+            <div class="login-btn-has-dropdown">
+              <a href="#" class="login__link"><img th:src="@{/images/icon/person.svg}" alt="" class="icon">Login</a>
+              <div class="login-submenu">
+                <form action="#">
+                  <div class="form-inner">
+                    <div class="single-wrapper">
+                      <input type="email" placeholder="Your email" required>
+                    </div>
+                    <div class="single-wrapper">
+                      <input type="password" placeholder="Password" required>
+                    </div>
+                    <div class="form-btn">
+                      <button type="submit" class="primary__btn">Log In</button>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot your password?</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- HEADER TOP AREA END -->
   <div class="container">
     <div class="row">
       <div class="rts-header__wrapper">
@@ -76,7 +116,7 @@
           <div class="hostie-menu">
             <ul class="list-unstyled hostie-desktop-menu">
               <li class="menu-item">
-                <a href="#" class="hostie-dropdown-main-element">Trang chủ</a>
+                <a th:href="@{/}" class="hostie-dropdown-main-element">Trang chủ</a>
               </li>
               <li class="menu-item hostie-has-dropdown mega-menu">
                 <a href="#" class="hostie-dropdown-main-element">Hosting</a>
@@ -181,9 +221,20 @@
         <!-- FOR HEADER RIGHT -->
         <div class="rts-header__right">
           <div class="button-area">
-            <a href="https://portal.skynetidc.vn/" target="_blank" class="login__btn"><i class="fa-regular fa-user"></i>Login</a>
-            <a href="https://portal.skynetidc.vn/register.php" target="_blank" class="get-started__btn">Get Started</a>
-
+<!--            <div class="lang-dropdown">-->
+<!--              <span class="lang-dropbtn">-->
+<!--                <i class="fa fa-globe"></i>-->
+<!--              </span>-->
+<!--              <div class="lang-dropdown-content">-->
+<!--                <a th:href="@{/(lang='vi')}" th:classappend="${#locale.language == 'vi' ? 'active' : ''}">-->
+<!--                  <img src="https://flagcdn.com/w20/vn.png" alt="VN"> Tiếng Việt-->
+<!--                </a>-->
+<!--                <a th:href="@{/(lang='en')}" th:classappend="${#locale.language == 'en' ? 'active' : ''}">-->
+<!--                  <img src="https://flagcdn.com/w20/us.png" alt="EN"> English-->
+<!--                </a>-->
+<!--              </div>-->
+<!--            </div>-->
+            <a href="https://portal.skynetidc.vn" target="_blank" class="get-started__btn"><i class="fa-regular fa-user"></i> Get started</a>
           </div>
           <button id="menu-btn" class="mobile__active menu-btn"><i class="fa-sharp fa-solid fa-bars"></i></button>
         </div>
@@ -196,7 +247,6 @@
 <main>
   <th:block th:insert="${template}"/>
 </main>
-
 
 <!-- FOOTER AREA -->
 <footer class="rts-footer site-footer-six">

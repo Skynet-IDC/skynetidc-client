@@ -2,11 +2,17 @@ server:
   port: 8080
 
 spring:
-  thymeleaf:
-    mode: HTML
   messages:
     basename: messages/messages
-
+    encoding: UTF-8
+  thymeleaf:
+    mode: HTML
+    encoding: UTF-8
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
 logging:
   level:
     org:
