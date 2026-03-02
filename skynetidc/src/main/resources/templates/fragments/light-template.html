@@ -76,26 +76,10 @@
           </div>
           <div class="rts-ht__links">
             <div class="live-chat-has-dropdown">
-              <a href="#" class="live__chat"><img th:src="@{/images/icon/forum.svg}" alt="" class="icon">Live Chat</a>
+              <a href="#" class="live__chat"><img th:src="@{/images/icon/forum.svg}" alt="" class="icon" th:text="#{live.chat}">Live Chat</a>
             </div>
             <div class="login-btn-has-dropdown">
-              <a href="#" class="login__link"><img th:src="@{/images/icon/person.svg}" alt="" class="icon">Login</a>
-              <div class="login-submenu">
-                <form action="#">
-                  <div class="form-inner">
-                    <div class="single-wrapper">
-                      <input type="email" placeholder="Your email" required>
-                    </div>
-                    <div class="single-wrapper">
-                      <input type="password" placeholder="Password" required>
-                    </div>
-                    <div class="form-btn">
-                      <button type="submit" class="primary__btn">Log In</button>
-                    </div>
-                    <a href="#" class="forgot-password">Forgot your password?</a>
-                  </div>
-                </form>
-              </div>
+              <a href="https://portal.skynetidc.vn/" target="_blank" class="login__link"><img th:src="@{/images/icon/person.svg}" alt="Skynet IDC Login" class="icon"><span th:text="#{login}">Login</span></a>
             </div>
           </div>
         </div>
@@ -115,13 +99,13 @@
         </div>
         <!-- FOR NAVIGATION MENU -->
         <nav class="rts-header__menu" id="mobile-menu">
-          <div class="hostie-menu">
-            <ul class="list-unstyled hostie-desktop-menu">
+          <div class="skynetidc-menu">
+            <ul class="list-unstyled skynetidc-desktop-menu">
               <li class="menu-item">
-                <a href="/" class="hostie-dropdown-main-element">Trang chủ</a>
+                <a href="/" class="skynetidc-dropdown-main-element" th:text="#{home}">Home</a>
               </li>
-              <li class="menu-item hostie-has-dropdown mega-menu">
-                <a href="#" class="hostie-dropdown-main-element">Hosting</a>
+              <li class="menu-item skynetidc-has-dropdown mega-menu">
+                <a href="#" class="skynetidc-dropdown-main-element">Hosting</a>
                 <div class="rts-mega-menu">
                   <div class="wrapper">
                     <div class="row g-0">
@@ -131,8 +115,8 @@
                             <a href="/shared-hosting">
                               <img th:src="@{/images/mega-menu/22.svg}" alt="icon">
                               <div class="info">
-                                <p>Shared Hosting</p>
-                                <span>Manage Shared Hosting</span>
+                                <p th:text="#{shared.hosting}">Shared Hosting</p>
+                                <span th:text="#{performance.meets.affordability}">Performance meets affordability.</span>
                               </div>
                             </a>
                           </li>
@@ -140,8 +124,8 @@
                             <a href="/wordpress-hosting">
                               <img th:src="@{/images/mega-menu/23.svg}" alt="icon">
                               <div class="info">
-                                <p>WordPress Hosting</p>
-                                <span>WordPress Hosting speed</span>
+                                <p th:text="#{wordpress.hosting}">WordPress Hosting</p>
+                                <span th:text="#{tailored.solutions.wordpress.websites}">Tailored solutions for Wordpress websites</span>
                               </div>
                             </a>
                           </li>
@@ -149,8 +133,8 @@
                             <a href="/vps-hosting">
                               <img th:src="@{/images/mega-menu/24.svg}" alt="icon">
                               <div class="info">
-                                <p>VPS Hosting</p>
-                                <span>Dedicated resources</span>
+                                <p th:text="#{vps.hosting}">VPS Hosting</p>
+                                <span th:text="#{power.performance.combined}">Power and performance combined</span>
                               </div>
                             </a>
                           </li>
@@ -162,8 +146,8 @@
                             <a href="/reseller-hosting">
                               <img th:src="@{/images/mega-menu/25.svg}" alt="icon">
                               <div class="info">
-                                <p>Reseller Hosting</p>
-                                <span>Earn additional revenue</span>
+                                <p th:text="#{reseller.hosting}">Reseller Hosting</p>
+                                <span th:text="#{earn.additional.revenue}">Boost your income with reseller services</span>
                               </div>
                             </a>
                           </li>
@@ -171,8 +155,8 @@
                             <a href="/dedicated-hosting">
                               <img th:src="@{/images/mega-menu/27.svg}" alt="icon">
                               <div class="info">
-                                <p>Dedicated Hosting</p>
-                                <span>Hosting that gives you tools</span>
+                                <p th:text="#{dedicated.hosting}">Dedicated Hosting</p>
+                                <span th:text="#{maximize.control.reliability}">Maximize control and reliability</span>
                               </div>
                             </a>
                           </li>
@@ -180,8 +164,8 @@
                             <a href="/cloud-hosting">
                               <img th:src="@{/images/mega-menu/29.svg}" alt="icon">
                               <div class="info">
-                                <p>Cloud Hosting</p>
-                                <span>Manage Cloud Hosting</span>
+                                <p th:text="#{cloud.hosting}">Cloud Hosting</p>
+                                <span th:text="#{manage.cloud.hosting}">Manage Cloud Hosting</span>
                               </div>
                             </a>
                           </li>
@@ -191,29 +175,24 @@
                   </div>
                 </div>
               </li>
-              <li class="menu-item hostie-has-dropdown">
-                <a href="#" class="hostie-dropdown-main-element">Domain</a>
-                <ul class="hostie-submenu list-unstyled menu-pages">
-                  <li class="nav-item"><a class="nav-link" href="domain-checker">Domain Checker</a></li>
-                  <li class="nav-item"><a class="nav-link" href="domain-transfer">Domain Transfer</a></li>
-                  <li class="nav-item"><a class="nav-link" href="domain-registration">Domain Resigtration</a></li>
-                  <li class="nav-item"><a class="nav-link" href="whois">Whois</a></li>
+              <li class="menu-item skynetidc-has-dropdown">
+                <a href="#" class="skynetidc-dropdown-main-element" th:text="#{domain}">Domain</a>
+                <ul class="skynetidc-submenu list-unstyled menu-pages">
+                  <li class="nav-item"><a class="nav-link" th:href="@{/domain-checker}" th:text="#{domain.checker}">Domain Checker</a></li>
+                  <li class="nav-item"><a class="nav-link" th:href="@{/domain-transfer}" th:text="#{domain.transfer}">Domain Transfer</a></li>
+                  <li class="nav-item"><a class="nav-link" th:href="@{/domain-registration}" th:text="#{domain.registration}">Domain Registration</a></li>
+                  <li class="nav-item"><a class="nav-link" th:href="@{/whois}" th:text="#{whois}">Whois</a></li>
                 </ul>
               </li>
-              <li class="menu-item hostie-has-dropdown">
-                <a href="#" class="hostie-dropdown-main-element">Technology</a>
-                <ul class="hostie-submenu list-unstyled menu-pages">
-                  <li class="nav-item"><a class="nav-link" href="technology">Technology</a></li>
-                  <li class="nav-item"><a class="nav-link" href="data-center">Data Centers</a></li>
-                </ul>
-              </li>
-              <li class="menu-item hostie-has-dropdown">
-                <a href="#" class="hostie-dropdown-main-element">Help Center</a>
-                <ul class="hostie-submenu list-unstyled menu-pages">
-                  <li class="nav-item"><a class="nav-link" href="faq">FAQ</a></li>
-                  <li class="nav-item"><a class="nav-link" href="support">Support</a></li>
-                  <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
-                  <li class="nav-item"><a class="nav-link" href="knowledgebase">Knowledgebase</a></li>
+              <li class="menu-item skynetidc-has-dropdown">
+                <a href="#" class="skynetidc-dropdown-main-element" th:text="#{company}">Company</a>
+                <ul class="skynetidc-submenu list-unstyled menu-pages">
+                  <li class="nav-item"><a class="nav-link" th:href="@{/about}" th:text="#{about.us}">About Us</a></li>
+                  <li class="nav-item"><a class="nav-link" th:href="@{/support}" th:text="#{support}">Support</a></li>
+                  <li class="nav-item"><a class="nav-link" th:href="@{/contact}" th:text="#{contact}">Contact</a></li>
+                  <li class="nav-item"><a class="nav-link" th:href="@{/technology}" th:text="#{our.technology}">Technology</a></li>
+                  <li class="nav-item"><a class="nav-link" th:href="@{/data-centers}" th:text="#{data.centers}">Data Centers</a></li>
+                  <li class="nav-item"><a class="nav-link" th:href="@{/knowledgebase}" th:text="#{knowledge.base}">Knowledgebase</a></li>
                 </ul>
               </li>
             </ul>
@@ -255,14 +234,15 @@
       <!-- widget -->
       <div class="col-lg-3 col-md-3 col-sm-6 rts-footer__widget--column">
         <div class="rts-footer__widget footer__widget extra-padding">
-          <h5 class="widget-title">Company</h5>
+          <h5 class="widget-title" th:text="#{company}">Company</h5>
           <div class="rts-footer__widget--menu ">
             <ul>
-              <li><a href="/about">About Us</a></li>
-              <li><a href="/blog">News Feed</a></li>
-              <li><a href="/contact">Contact</a></li>
-              <li><a href="/affiliate">Affiliate Program</a></li>
-              <li><a href="/technology">Our Technology</a></li>
+              <li><a href="/about" th:text="#{about.us}">About Us</a></li>
+              <li><a href="/blog" th:text="#{news.feed}">News Feed</a></li>
+              <li><a href="/contact" th:text="#{contact}">Contact</a></li>
+              <li><a href="/affiliate" th:text="#{affiliate.program}">Affiliate Program</a></li>
+              <li><a href="/technology" th:text="#{our.technology}">Our Technology</a></li>
+              <li><a href="/faq">FAQ</a></li>
             </ul>
           </div>
         </div>
@@ -274,11 +254,11 @@
           <h5 class="widget-title">Hosting</h5>
           <div class="rts-footer__widget--menu">
             <ul>
-              <li><a href="/domain-checker">Domain Checker</a></li>
-              <li><a href="/domain-transfer">Domain Transfer</a></li>
-              <li><a href="/domain-registration">Domain Registration</a></li>
-              <li><a href="/data-centers">Data Centers</a></li>
-              <li><a href="/whois">Whois</a></li>
+              <li><a href="/domain-checker" th:text="#{domain.checker}">Domain Checker</a></li>
+              <li><a href="/domain-transfer" th:text="#{domain.transfer}">Domain Transfer</a></li>
+              <li><a href="/domain-registration" th:text="#{domain.registration}">Domain Registration</a></li>
+              <li><a href="/data-centers" th:text="#{data.centers}">Data Centers</a></li>
+              <li><a href="/whois" th:text="#{whois}">Whois</a></li>
             </ul>
           </div>
         </div>
@@ -287,10 +267,12 @@
       <!-- widget -->
       <div class="col-lg-3 col-md-6 col-sm-6 rts-footer__widget--column">
         <div class="rts-footer__widget footer__widget">
-          <h5 class="widget-title">Join Our Newsletter</h5>
-          <p>We'll send you news and offers.</p>
+          <h5 class="widget-title" th:text="#{join.our.newsletter}">Join Our Newsletter</h5>
+          <p th:text="#{join.our.newsletter.subtitle}">We'll send you news and offers.</p>
           <form action="#" class="newsletter">
-            <input type="email" name="email" placeholder="Enter mail" required>
+            <label>
+              <input type="email" name="email" placeholder="Enter mail" required />
+            </label>
             <span class="icon"><i class="fa-regular fa-envelope-open"></i></span>
             <button type="submit"><i class="fa-regular fa-arrow-right"></i></button>
           </form>
@@ -339,40 +321,41 @@
     <nav class="nav-main mainmenu-nav mt--30">
       <ul class="mainmenu metismenu" id="mobile-menu-active">
         <li>
-          <a href="#" class="main">Home</a>
+          <a href="/" class="main">Home</a>
         </li>
         <li class="has-droupdown">
           <a href="#" class="main">Hosting</a>
           <ul class="submenu mm-collapse">
-            <li><a class="mobile-menu-link" href="/shared-hosting">Shared Hosting</a></li>
-            <li><a class="mobile-menu-link" href="/wordpress-hosting">WordPress Hosting</a></li>
-            <li><a class="mobile-menu-link" href="/vps-hosting">VPS Hosting</a></li>
-            <li><a class="mobile-menu-link" href="/reseller-hosting">Reseller Hosting</a></li>
-            <li><a class="mobile-menu-link" href="/dedicated-hosting">Dedicated Hosting</a></li>
-            <li><a class="mobile-menu-link" href="/cloud-hosting">Cloud Hosting</a></li>
+            <li><a class="mobile-menu-link" href="/shared-hosting" th:text="#{shared.hosting}">Shared Hosting</a></li>
+            <li><a class="mobile-menu-link" href="/wordpress-hosting" th:text="#{wordpress.hosting}">WordPress Hosting</a></li>
+            <li><a class="mobile-menu-link" href="/vps-hosting" th:text="#{vps.hosting}">VPS Hosting</a></li>
+            <li><a class="mobile-menu-link" href="/reseller-hosting" th:text="#{reseller.hosting}">Reseller Hosting</a></li>
+            <li><a class="mobile-menu-link" href="/dedicated-hosting" th:text="#{dedicated.hosting}">Dedicated Hosting</a></li>
+            <li><a class="mobile-menu-link" href="/cloud-hosting" th:text="#{cloud.hosting}">Cloud Hosting</a></li>
           </ul>
         </li>
         <li class="has-droupdown">
-          <a href="#" class="main">Domain</a>
+          <a href="#" class="main" th:text="#{domain}">Domain</a>
           <ul class="submenu mm-collapse">
-            <li><a class="mobile-menu-link" href="/domain-checker">Domain Checker</a></li>
-            <li><a class="mobile-menu-link" href="/domain-transfer">Domain Transfer</a></li>
+            <li><a class="mobile-menu-link" href="/domain-checker" th:text="#{domain.checker}">Domain Checker</a></li>
+            <li><a class="mobile-menu-link" href="/domain-transfer" th:text="#{domain.transfer}">Domain Transfer</a></li>
           </ul>
         </li>
         <li class="has-droupdown">
-          <a href="#" class="main">Technology</a>
+          <a href="#" class="main" th:text="#{technology}">Technology</a>
           <ul class="submenu mm-collapse">
-            <li><a class="mobile-menu-link" href="/technology">Technology</a></li>
-            <li><a class="mobile-menu-link" href="/data-center">Data Center</a></li>
+            <li><a class="mobile-menu-link" href="/technology" th:text="#{technology}">Technology</a></li>
+            <li><a class="mobile-menu-link" href="/data-center" th:text="#{data.centers}">Data Center</a></li>
           </ul>
         </li>
         <li class="has-droupdown">
-          <a href="#" class="main">Help Center</a>
+          <a href="#" class="main" th:text="#{company}">Company</a>
           <ul class="submenu mm-collapse">
-            <li><a class="mobile-menu-link" href="/knowledgebase">Knowledgebase</a></li>
-            <li><a class="mobile-menu-link" href="/whois">Whois</a></li>
-            <li><a class="mobile-menu-link" href="/support">Support</a></li>
-            <li><a class="mobile-menu-link" href="/contact">Contact</a></li>
+            <li><a class="mobile-menu-link" href="/knowledgebase" th:text="#{knowledge.base}">Knowledgebase</a></li>
+            <li><a class="mobile-menu-link" href="/whois" th:text="#{whois}">Whois</a></li>
+            <li><a class="mobile-menu-link" href="/support" th:text="#{support}">Support</a></li>
+            <li><a class="mobile-menu-link" href="/support" th:text="#{about.us}">About Us</a></li>
+            <li><a class="mobile-menu-link" href="/contact" th:text="#{contact}">Contact</a></li>
           </ul>
         </li>
       </ul>
