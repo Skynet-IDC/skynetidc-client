@@ -76,7 +76,7 @@ public class VPSServiceImpl implements VPSService {
 	@Override
 	public ResponseResult listAllVpsByOwner() {
 		List<Hosting> hostings = hostingRepository.findByUserid(securityUtil.userIdAuth(), List.of("default"));
-		ResponseResult resultVO = ResponseResult.instance();
+		ResponseResult<Hosting> resultVO = ResponseResult.instance();
 		resultVO.setItems(hostings);
 		return resultVO;
 	}
