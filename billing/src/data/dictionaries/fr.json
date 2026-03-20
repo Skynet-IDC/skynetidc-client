@@ -4,6 +4,11 @@
     "crm": "GRC",
     "analytics": "Analytique",
     "eCommerce": "commerce électronique",
+    "billing": "Billing",
+    "api_docs": "API Docs",
+    "affiliate": "Affiliate",
+    "ssh_keys": "SSH Keys",
+    "domains": "domains",
     "academy": "Académie",
     "logistics": "Logistique",
     "frontPages": "Premières pages",
@@ -13,6 +18,9 @@
     "checkout": "Vérifier",
     "helpCenter": "Centre d'aide",
     "appsPages": "Applications et pages",
+    "service": "Service",
+    "account": "Account",
+    "support": "Support",
     "apps": "Apps",
     "dashboard": "Tableau de bord",
     "products": "Produits",
@@ -101,5 +109,23 @@
     "menuLevel2": "Niveau menu 2",
     "menuLevel3": "Niveau menu 3",
     "disabledMenu": "Menu désactivé"
+  },
+  "cloud": {
+    "vm_instance": "VM Instances",
+    "database": "Database",
+    "network": "Network",
+    "crm": "CRM"
+  },
+  "domain": {
+    "domains": "Domains"
+  },
+  "hosting": {
+    "websites": "Websites"
+  },
+  "support": {
+    "tickets": "Tickets",
+    "contact_us": "Contact Us",
+    "documents": "Documents",
+    "downloads": "Downloads"
   }
 }

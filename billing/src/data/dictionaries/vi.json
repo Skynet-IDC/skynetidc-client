@@ -4,6 +4,10 @@
     "crm": "CRM",
     "analytics": "Analytics",
     "eCommerce": "eCommerce",
+    "billing": "Thanh Toán",
+    "api_docs": "Tài Liệu API",
+    "affiliate": "Affiliate",
+    "ssh_keys": "SSH Keys",
     "academy": "Academy",
     "logistics": "Logistics",
     "frontPages": "Front Pages",
@@ -13,6 +17,10 @@
     "checkout": "Checkout",
     "helpCenter": "Help Center",
     "appsPages": "Apps & Pages",
+    "service": "Dịch Vụ",
+    "account": "Tài Khoản",
+    "support": "Hỗ Trợ",
+    "domains": "Tên Miền",
     "apps": "Apps",
     "dashboard": "Dashboard",
     "products": "Products",
@@ -101,5 +109,23 @@
     "menuLevel2": "Menu Level 2",
     "menuLevel3": "Menu Level 3",
     "disabledMenu": "Disabled Menu"
+  },
+  "cloud": {
+    "vm_instance": "VM Instances",
+    "database": "Database",
+    "network": "Network",
+    "crm": "CRM"
+  },
+  "domain": {
+    "domains": "Tên Miền"
+  },
+  "hosting": {
+    "websites": "Trang Web"
+  },
+  "support": {
+    "tickets": "Yêu Cầu Hỗ Trợ",
+    "contact_us": "Liên Hệ",
+    "documents": "Tài Liệu",
+    "downloads": "Tải Về"
   }
 }
