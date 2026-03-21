@@ -3,17 +3,12 @@
 // React Imports
 import { useEffect, useRef } from 'react'
 
-// Next Imports
-import Link from 'next/link'
-import { useParams } from 'next/navigation'
-
 // MUI Imports
 import { styled, useColorScheme, useTheme } from '@mui/material/styles'
 
 // Type Imports
 import type { getDictionary } from '@/utils/getDictionary'
 import type { Mode } from '@core/types'
-import type { Locale } from '@configs/i18n'
 
 // Component Imports
 import VerticalNav, { NavHeader, NavCollapseIcons } from '@menu/vertical-menu'
@@ -23,9 +18,6 @@ import Logo from '@components/layout/shared/Logo'
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
 import { useSettings } from '@core/hooks/useSettings'
-
-// Util Imports
-import { getLocalizedUrl } from '@/utils/i18n'
 
 // Style Imports
 import navigationCustomStyles from '@core/styles/vertical/navigationCustomStyles'
@@ -60,7 +52,6 @@ const Navigation = (props: Props) => {
   // Hooks
   const verticalNavOptions = useVerticalNav()
   const { updateSettings, settings } = useSettings()
-  const { lang: locale } = useParams()
   const { mode: muiMode, systemMode: muiSystemMode } = useColorScheme()
   const theme = useTheme()
 

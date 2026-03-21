@@ -11,15 +11,8 @@ import RadarSalesChart from '@views/dashboards/crm/RadarSalesChart'
 import SalesByCountries from '@views/dashboards/crm/SalesByCountries'
 import ProjectStatus from '@views/dashboards/crm/ProjectStatus'
 import ActiveProjects from '@views/dashboards/crm/ActiveProjects'
-import LastTransaction from '@views/dashboards/crm/LastTransaction'
-import ActivityTimeline from '@views/dashboards/crm/ActivityTimeline'
-
-// Server Action Imports
-import { getServerMode } from '@core/utils/serverHelpers'
 
 const DashboardCRM = async () => {
-  // Vars
-  const serverMode = await getServerMode()
 
   return (
     <Grid container spacing={6}>

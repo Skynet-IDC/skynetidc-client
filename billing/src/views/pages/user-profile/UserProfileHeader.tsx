@@ -3,7 +3,6 @@ import Card from '@mui/material/Card'
 import CardMedia from '@mui/material/CardMedia'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
 
 // Type Imports
 import type { ProfileHeaderType } from '@/types/pages/profileTypes'
