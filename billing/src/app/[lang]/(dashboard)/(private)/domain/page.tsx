@@ -1,11 +1,9 @@
 // MUI Imports
 import Grid from '@mui/material/Grid2'
 
-// Component Imports
-import InvoiceList from '@views/apps/invoice/list'
-
 // Data Imports
-import { getInvoiceData } from '@/app/server/actions'
+import { getDomainData } from '@/app/server/actions'
+import DomainList from "@views/apps/domain/list";
 
 /**
  * ! If you need data using an API call, uncomment the below API code, update the `process.env.API_URL` variable in the
@@ -14,7 +12,7 @@ import { getInvoiceData } from '@/app/server/actions'
  * ! because we've used the server action for getting our static data.
  */
 
-/* const getInvoiceData = async () => {
+/* const getDomainData = async () => {
   // Vars
   const res = await fetch(`${process.env.API_URL}/apps/invoice`)
 
@@ -25,17 +23,17 @@ import { getInvoiceData } from '@/app/server/actions'
   return res.json()
 } */
 
-const InvoiceApp = async () => {
+const DomainApp = async () => {
   // Vars
-  const data = await getInvoiceData()
+  const data = await getDomainData()
 
   return (
     <Grid container>
       <Grid size={{ xs: 12 }}>
-        <InvoiceList invoiceData={data} />
+        <DomainList domainData={data} />
       </Grid>
     </Grid>
   )
 }
 
-export default InvoiceApp
+export default DomainApp

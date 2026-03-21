@@ -33,6 +33,14 @@ export const getInvoiceData = async () => {
   return invoiceData
 }
 
+export const getSshKeyData = async () => {
+  return invoiceData
+}
+
+export const getDomainData = async () => {
+  return invoiceData
+}
+
 export const getUserData = async () => {
   return userData
 }
