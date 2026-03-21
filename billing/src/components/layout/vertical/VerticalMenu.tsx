@@ -13,9 +13,6 @@ import type { VerticalMenuContextProps } from '@menu/components/vertical-menu/Me
 
 // Component Imports
 import { Menu, SubMenu, MenuItem, MenuSection } from '@menu/vertical-menu'
-import CustomChip from '@core/components/mui/Chip'
-
-// import { GenerateVerticalMenu } from '@components/GenerateMenu'
 
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
@@ -115,24 +112,20 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
             {dictionary['hosting'].websites}
           </MenuItem>
           <SubMenu label={dictionary['navigation'].domains} icon={<i className='tabler-file-dollar' />}>
-            <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
-            <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
-            <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
-            <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
+            <MenuItem href={`/${locale}/domain`}>{dictionary['domain'].domains}</MenuItem>
+            <MenuItem href={`/${locale}/domain/register`}>{dictionary['domain'].register}</MenuItem>
+            <MenuItem href={`/${locale}/domain/transfer`}>{dictionary['domain'].transfer}</MenuItem>
+            <MenuItem href={`/${locale}/domain/whois`}>{dictionary['domain'].who_is}</MenuItem>
           </SubMenu>
           <SubMenu label={dictionary['cloud'].network} icon={<i className='tabler-network' />}>
-            <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
-            <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
-            <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
-            <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
+            <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['network'].firewall}</MenuItem>
           </SubMenu>
         </MenuSection>
         <MenuSection label={dictionary['navigation'].account}>
           <SubMenu label={dictionary['navigation'].billing} icon={<i className='tabler-file-dollar' />}>
-            <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
-            <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
-            <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
-            <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
+            <MenuItem href={`/${locale}/billing/invoice`}>{dictionary['billing'].invoice}</MenuItem>
+            <MenuItem href={`/${locale}/billing/invoice`}>{dictionary['billing'].quotes}</MenuItem>
+            <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['billing'].credits}</MenuItem>
           </SubMenu>
           <MenuItem
             href={`/${locale}/ssh-keys`}
@@ -161,34 +154,34 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
         </MenuSection>
         <MenuSection label={dictionary['navigation'].support}>
           <MenuItem
-            href={`/${locale}/vm/instances`}
-            icon={<i className='tabler-server' />}
+            href={`/${locale}/tickets`}
+            icon={<i className='tabler-ticket' />}
             exactMatch={false}
-            activeUrl='/vm/instances'
+            activeUrl='/tickets'
           >
             {dictionary['support'].tickets}
           </MenuItem>
           <MenuItem
-            href={`/${locale}/serverless`}
+            href={`/${locale}/contact`}
             icon={<i className='tabler-address-book' />}
             exactMatch={false}
-            activeUrl='/serverless'
+            activeUrl='/contact'
           >
             {dictionary['support'].contact_us}
           </MenuItem>
           <MenuItem
-            href={`/${locale}/hosting`}
+            href={`/${locale}/documents`}
             icon={<i className='tabler-file' />}
             exactMatch={false}
-            activeUrl='/hosting'
+            activeUrl='/documents'
           >
             {dictionary['support'].documents}
           </MenuItem>
           <MenuItem
-            href={`/${locale}/domains`}
+            href={`/${locale}/downloads`}
             icon={<i className='tabler-download' />}
             exactMatch={false}
-            activeUrl='/domains'
+            activeUrl='/downloads'
           >
             {dictionary['support'].downloads}
           </MenuItem>

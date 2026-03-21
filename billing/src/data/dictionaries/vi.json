@@ -1,6 +1,6 @@
 {
   "navigation": {
-    "dashboards": "Dashboards",
+    "dashboards": "Bảng Điều Khiển",
     "crm": "CRM",
     "analytics": "Analytics",
     "eCommerce": "eCommerce",
@@ -111,13 +111,24 @@
     "disabledMenu": "Disabled Menu"
   },
   "cloud": {
-    "vm_instance": "VM Instances",
-    "database": "Database",
+    "vm_instance": "Máy Ảo",
+    "database": "Cơ Sở Dữ Liệu",
     "network": "Network",
     "crm": "CRM"
   },
+  "network": {
+    "firewall": "Tường Lửa"
+  },
+  "billing": {
+    "invoice": "Hóa Đơn",
+    "quotes": "Báo Giá",
+    "credits": "Tín dụng"
+  },
   "domain": {
-    "domains": "Tên Miền"
+    "domains": "Danh Sách Tên Miền",
+    "register": "Đăng Ký Tên Miền",
+    "transfer": "Chuyển Tên Miền",
+    "who_is": "Whois"
   },
   "hosting": {
     "websites": "Trang Web"

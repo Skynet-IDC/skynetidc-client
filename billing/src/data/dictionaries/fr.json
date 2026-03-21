@@ -116,8 +116,19 @@
     "network": "Network",
     "crm": "CRM"
   },
+  "network": {
+    "firewall": "Firewall"
+  },
+  "billing": {
+    "invoice": "Invoices",
+    "quotes": "Quotes",
+    "credits": "Credits"
+  },
   "domain": {
-    "domains": "Domains"
+    "domains": "Domains",
+    "register": "Domain Registration",
+    "transfer": "Domain Transfer",
+    "who_is": "Whois"
   },
   "hosting": {
     "websites": "Websites"

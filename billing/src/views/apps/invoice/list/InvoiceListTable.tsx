@@ -171,7 +171,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData?: InvoiceType[] }) => {
         cell: ({ row }) => (
           <Typography
             component={Link}
-            href={getLocalizedUrl(`/apps/invoice/preview/${row.original.id}`, locale as Locale)}
+            href={getLocalizedUrl(`/billing/invoice/preview/${row.original.id}`, locale as Locale)}
             color='primary.main'
           >{`#${row.original.id}`}</Typography>
         )
@@ -245,7 +245,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData?: InvoiceType[] }) => {
             </IconButton>
             <IconButton>
               <Link
-                href={getLocalizedUrl(`/apps/invoice/preview/${row.original.id}`, locale as Locale)}
+                href={getLocalizedUrl(`/billing/invoice/preview/${row.original.id}`, locale as Locale)}
                 className='flex'
               >
                 <i className='tabler-eye text-textSecondary' />
@@ -263,7 +263,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData?: InvoiceType[] }) => {
                 {
                   text: 'Edit',
                   icon: 'tabler-pencil',
-                  href: getLocalizedUrl(`/apps/invoice/edit/${row.original.id}`, locale as Locale),
+                  href: getLocalizedUrl(`/billing/invoice/edit/${row.original.id}`, locale as Locale),
                   linkProps: {
                     className: 'flex items-center is-full plb-2 pli-4 gap-2 text-textSecondary'
                   }
@@ -358,7 +358,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData?: InvoiceType[] }) => {
             variant='contained'
             component={Link}
             startIcon={<i className='tabler-plus' />}
-            href={getLocalizedUrl('apps/invoice/add', locale as Locale)}
+            href={getLocalizedUrl('billing/invoice/add', locale as Locale)}
             className='max-sm:is-full'
           >
             Create Invoice

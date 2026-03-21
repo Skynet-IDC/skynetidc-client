@@ -45,7 +45,7 @@ const Footer = ({ mode }: { mode: Mode }) => {
             <Grid size={{ xs: 12, lg: 5 }}>
               <div className='flex flex-col items-start gap-6'>
                 <Link href='/front-pages/landing-page'>
-                  <Logo color='var(--mui-palette-common-white)' />
+                  <Logo />
                 </Link>
                 <Typography color='white' className='md:max-is-[390px] opacity-[0.78]'>
                   Most Powerful & Comprehensive 🤩 React NextJS Admin Template with Elegant Material Design & Unique

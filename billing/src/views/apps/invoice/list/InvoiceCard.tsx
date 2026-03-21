@@ -17,8 +17,8 @@ import classnames from 'classnames'
 const data = [
   {
     title: 24,
-    subtitle: 'Clients',
-    icon: 'tabler-user'
+    subtitle: 'Apps',
+    icon: 'tabler-apps'
   },
   {
     title: 165,

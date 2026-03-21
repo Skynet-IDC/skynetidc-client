@@ -46,29 +46,11 @@ const UserProfile = ({ tabContentList, data }: { tabContentList: { [key: string]
               <Tab
                 label={
                   <div className='flex items-center gap-1.5'>
-                    <i className='tabler-users text-lg' />
-                    Teams
-                  </div>
-                }
-                value='teams'
-              />
-              <Tab
-                label={
-                  <div className='flex items-center gap-1.5'>
                     <i className='tabler-layout-grid text-lg' />
                     Projects
                   </div>
                 }
                 value='projects'
-              />
-              <Tab
-                label={
-                  <div className='flex items-center gap-1.5'>
-                    <i className='tabler-link text-lg' />
-                    Connections
-                  </div>
-                }
-                value='connections'
               />
             </CustomTabList>
 

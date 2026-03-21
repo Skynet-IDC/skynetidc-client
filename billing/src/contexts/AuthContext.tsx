@@ -80,6 +80,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
           body: JSON.stringify({ email, password })
         })
 
+
+
+
         const data = await res.json()
 
         if (res.status === 401 || !res.ok) {

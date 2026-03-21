@@ -75,12 +75,6 @@ const DashboardCRM = async () => {
       <Grid size={{ xs: 12, md: 6, lg: 4 }}>
         <ActiveProjects />
       </Grid>
-      <Grid size={{ xs: 12, md: 6 }}>
-        <LastTransaction serverMode={serverMode} />
-      </Grid>
-      <Grid size={{ xs: 12, md: 6 }}>
-        <ActivityTimeline />
-      </Grid>
     </Grid>
   )
 }

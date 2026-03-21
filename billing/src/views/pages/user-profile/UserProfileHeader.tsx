@@ -34,10 +34,6 @@ const UserProfileHeader = ({ data }: { data?: ProfileHeaderType }) => {
               </div>
             </div>
           </div>
-          <Button variant='contained' className='flex gap-2'>
-            <i className='tabler-user-check !text-base'></i>
-            <span>Connected</span>
-          </Button>
         </div>
       </CardContent>
     </Card>
