@@ -124,7 +124,7 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
         <MenuSection label={dictionary['navigation'].account}>
           <SubMenu label={dictionary['navigation'].billing} icon={<i className='tabler-file-dollar' />}>
             <MenuItem href={`/${locale}/billing/invoice`}>{dictionary['billing'].invoice}</MenuItem>
-            <MenuItem href={`/${locale}/billing/invoice`}>{dictionary['billing'].quotes}</MenuItem>
+            <MenuItem href={`/${locale}/billing/quotes`}>{dictionary['billing'].quotes}</MenuItem>
             <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['billing'].credits}</MenuItem>
           </SubMenu>
           <MenuItem
@@ -145,7 +145,7 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
           </MenuItem>
           <MenuItem
             href={`/${locale}/affiliates`}
-            icon={<i className='tabler-network' />}
+            icon={<i className='tabler-affiliate' />}
             exactMatch={false}
             activeUrl='/affiliates'
           >

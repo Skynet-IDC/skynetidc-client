@@ -2,87 +2,40 @@
 import Grid from '@mui/material/Grid2'
 
 // Component Imports
-import DistributedBarChartOrder from '@views/dashboards/crm/DistributedBarChartOrder'
-import LineAreaYearlySalesChart from '@views/dashboards/crm/LineAreaYearlySalesChart'
-import CardStatVertical from '@/components/card-statistics/Vertical'
-import BarChartRevenueGrowth from '@views/dashboards/crm/BarChartRevenueGrowth'
-import EarningReportsWithTabs from '@views/dashboards/crm/EarningReportsWithTabs'
-import RadarSalesChart from '@views/dashboards/crm/RadarSalesChart'
-import SalesByCountries from '@views/dashboards/crm/SalesByCountries'
-import ProjectStatus from '@views/dashboards/crm/ProjectStatus'
-import ActiveProjects from '@views/dashboards/crm/ActiveProjects'
-import LastTransaction from '@views/dashboards/crm/LastTransaction'
-import ActivityTimeline from '@views/dashboards/crm/ActivityTimeline'
+import InvoiceList from '@views/apps/invoice/list'
 
-// Server Action Imports
-import { getServerMode } from '@core/utils/serverHelpers'
+// Data Imports
+import { getInvoiceData } from '@/app/server/actions'
 
-const DashboardCRM = async () => {
+/**
+ * ! If you need data using an API call, uncomment the below API code, update the `process.env.API_URL` variable in the
+ * ! `.env` file found at root of your project and also update the API endpoints like `/apps/invoice` in below example.
+ * ! Also, remove the above server action import and the action itself from the `src/app/server/actions.ts` file to clean up unused code
+ * ! because we've used the server action for getting our static data.
+ */
+
+/* const getInvoiceData = async () => {
   // Vars
-  const serverMode = await getServerMode()
+  const res = await fetch(`${process.env.API_URL}/apps/invoice`)
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch invoice data')
+  }
+
+  return res.json()
+} */
+
+const InvoiceApp = async () => {
+  // Vars
+  const data = await getInvoiceData()
 
   return (
-    <Grid container spacing={6}>
-      <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2 }}>
-        <DistributedBarChartOrder />
-      </Grid>
-      <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2 }}>
-        <LineAreaYearlySalesChart />
-      </Grid>
-      <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2 }}>
-        <CardStatVertical
-          title='Total Profit'
-          subtitle='Last Week'
-          stats='1.28k'
-          avatarColor='error'
-          avatarIcon='tabler-credit-card'
-          avatarSkin='light'
-          avatarSize={44}
-          chipText='-12.2%'
-          chipColor='error'
-          chipVariant='tonal'
-        />
-      </Grid>
-      <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2 }}>
-        <CardStatVertical
-          title='Total Sales'
-          subtitle='Last Week'
-          stats='24.67k'
-          avatarColor='success'
-          avatarIcon='tabler-currency-dollar'
-          avatarSkin='light'
-          avatarSize={44}
-          chipText='+24.67%'
-          chipColor='success'
-          chipVariant='tonal'
-        />
-      </Grid>
-      <Grid size={{ xs: 12, md: 8, lg: 4 }}>
-        <BarChartRevenueGrowth />
-      </Grid>
-      <Grid size={{ xs: 12, lg: 8 }}>
-        <EarningReportsWithTabs />
-      </Grid>
-      <Grid size={{ xs: 12, md: 6, lg: 4 }}>
-        <RadarSalesChart />
-      </Grid>
-      <Grid size={{ xs: 12, md: 6, lg: 4 }}>
-        <SalesByCountries />
-      </Grid>
-      <Grid size={{ xs: 12, md: 6, lg: 4 }}>
-        <ProjectStatus />
-      </Grid>
-      <Grid size={{ xs: 12, md: 6, lg: 4 }}>
-        <ActiveProjects />
-      </Grid>
-      <Grid size={{ xs: 12, md: 6 }}>
-        <LastTransaction serverMode={serverMode} />
-      </Grid>
-      <Grid size={{ xs: 12, md: 6 }}>
-        <ActivityTimeline />
+    <Grid container>
+      <Grid size={{ xs: 12 }}>
+        <InvoiceList invoiceData={data} />
       </Grid>
     </Grid>
   )
 }
 
-export default DashboardCRM
+export default InvoiceApp
