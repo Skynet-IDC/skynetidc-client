@@ -52,6 +52,19 @@ export type ProductType = {
   productBrand: string
 }
 
+export type InstanceType = {
+  id: number
+  instanceName: string
+  category: string
+  stock: boolean
+  sku: number
+  price: string
+  qty: number
+  status: string
+  image: string
+  instanceBrand: string
+}
+
 export type OrderType = {
   id: number
   order: string

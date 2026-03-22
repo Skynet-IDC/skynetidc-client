@@ -118,14 +118,14 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
             <MenuItem href={`/${locale}/domain/whois`}>{dictionary['domain'].who_is}</MenuItem>
           </SubMenu>
           <SubMenu label={dictionary['cloud'].network} icon={<i className='tabler-network' />}>
-            <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['network'].firewall}</MenuItem>
+            <MenuItem href={`/${locale}/network/firewall`}>{dictionary['network'].firewall}</MenuItem>
           </SubMenu>
         </MenuSection>
         <MenuSection label={dictionary['navigation'].account}>
           <SubMenu label={dictionary['navigation'].billing} icon={<i className='tabler-file-dollar' />}>
             <MenuItem href={`/${locale}/billing/invoice`}>{dictionary['billing'].invoice}</MenuItem>
             <MenuItem href={`/${locale}/billing/quotes`}>{dictionary['billing'].quotes}</MenuItem>
-            <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['billing'].credits}</MenuItem>
+            <MenuItem href={`/${locale}/billing/credit`}>{dictionary['billing'].credits}</MenuItem>
           </SubMenu>
           <MenuItem
             href={`/${locale}/ssh-keys`}

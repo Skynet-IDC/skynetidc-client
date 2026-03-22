@@ -17,6 +17,10 @@ import { db as faqData } from '@/fake-db/pages/faq'
 import { db as pricingData } from '@/fake-db/pages/pricing'
 import { db as statisticsData } from '@/fake-db/pages/widgetExamples'
 
+export const getInstanceData = async () => {
+  return eCommerceData
+}
+
 export const getEcommerceData = async () => {
   return eCommerceData
 }
