@@ -19,7 +19,7 @@ const getInstanceData = async () => {
   if (!res.ok) {
     throw new Error('Failed to fetch ecommerce data')
   }
-  // return res.json();
+
   return [
     {
       id: 1,
