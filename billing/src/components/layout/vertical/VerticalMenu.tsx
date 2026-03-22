@@ -57,7 +57,6 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
 
   return (
     // eslint-disable-next-line lines-around-comment
-    /* Custom scrollbar instead of browser scroll, remove if you want browser scroll only */
     <ScrollWrapper
       {...(isBreakpointReached
         ? {
@@ -69,7 +68,6 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
             onScrollY: container => scrollMenu(container, true)
           })}
     >
-      {/* Incase you also want to scroll NavHeader to scroll with Vertical Menu, remove NavHeader from above and paste it below this comment */}
       {/* Vertical Menu */}
       <Menu
         popoutMenuOffset={{ mainAxis: 23 }}
@@ -111,7 +109,7 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
           >
             {dictionary['hosting'].websites}
           </MenuItem>
-          <SubMenu label={dictionary['navigation'].domains} icon={<i className='tabler-file-dollar' />}>
+          <SubMenu label={dictionary['navigation'].domains} icon={<i className='tabler-world-www' />}>
             <MenuItem href={`/${locale}/domain`}>{dictionary['domain'].domains}</MenuItem>
             <MenuItem href={`/${locale}/domain/register`}>{dictionary['domain'].register}</MenuItem>
             <MenuItem href={`/${locale}/domain/transfer`}>{dictionary['domain'].transfer}</MenuItem>

@@ -54,7 +54,8 @@ export type ProductType = {
 
 export type InstanceType = {
   id: number
-  instanceName: string
+  hostname: string
+  serviceName: string
   category: string
   stock: boolean
   sku: number

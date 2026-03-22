@@ -14,8 +14,6 @@ import Button from '@mui/material/Button'
 import Chip from '@mui/material/Chip'
 import Checkbox from '@mui/material/Checkbox'
 import Divider from '@mui/material/Divider'
-import IconButton from '@mui/material/IconButton'
-import Switch from '@mui/material/Switch'
 import MenuItem from '@mui/material/MenuItem'
 import TablePagination from '@mui/material/TablePagination'
 import Typography from '@mui/material/Typography'
@@ -179,16 +177,16 @@ const InstanceListTable = ({ instanceData }: { instanceData?: InstanceType[] }) 
           />
         )
       },
-      columnHelper.accessor('instanceName', {
+      columnHelper.accessor('hostname', {
         header: 'instance',
         cell: ({ row }) => (
           <div className='flex items-center gap-4'>
             <img src={row.original.image} width={38} height={38} className='rounded bg-actionHover' />
             <div className='flex flex-col'>
               <Typography className='font-medium' color='text.primary'>
-                {row.original.instanceName}
+                {row.original.hostname}
               </Typography>
-              <Typography variant='body2'>{row.original.instanceBrand}</Typography>
+              <Typography variant='body2'>{row.original.serviceName}</Typography>
             </div>
           </div>
         )
@@ -204,22 +202,9 @@ const InstanceListTable = ({ instanceData }: { instanceData?: InstanceType[] }) 
           </div>
         )
       }),
-      columnHelper.accessor('stock', {
-        header: 'Stock',
-        cell: ({ row }) => <Switch defaultChecked={row.original.stock} />,
-        enableSorting: false
-      }),
-      columnHelper.accessor('sku', {
-        header: 'SKU',
-        cell: ({ row }) => <Typography>{row.original.sku}</Typography>
-      }),
       columnHelper.accessor('price', {
         header: 'Price',
         cell: ({ row }) => <Typography>{row.original.price}</Typography>
-      }),
-      columnHelper.accessor('qty', {
-        header: 'QTY',
-        cell: ({ row }) => <Typography>{row.original.qty}</Typography>
       }),
       columnHelper.accessor('status', {
         header: 'Status',
@@ -236,20 +221,20 @@ const InstanceListTable = ({ instanceData }: { instanceData?: InstanceType[] }) 
         header: 'Actions',
         cell: ({ row }) => (
           <div className='flex items-center'>
-            <IconButton>
-              <i className='tabler-edit text-textSecondary' />
-            </IconButton>
             <OptionMenu
               iconButtonProps={{ size: 'medium' }}
               iconClassName='text-textSecondary'
               options={[
-                { text: 'Download', icon: 'tabler-download' },
+                {
+                  text: 'Detail',
+                  icon: 'tabler-eye',
+                  menuItemProps: { onClick: () => setData(data?.filter(instance => instance.id !== row.original.id)) }
+                },
                 {
                   text: 'Delete',
                   icon: 'tabler-trash',
                   menuItemProps: { onClick: () => setData(data?.filter(instance => instance.id !== row.original.id)) }
-                },
-                { text: 'Duplicate', icon: 'tabler-copy' }
+                }
               ]}
             />
           </div>
@@ -326,7 +311,7 @@ const InstanceListTable = ({ instanceData }: { instanceData?: InstanceType[] }) 
               variant='contained'
               component={Link}
               className='max-sm:is-full is-auto'
-              href={getLocalizedUrl('/apps/ecommerce/instances/add', locale as Locale)}
+              href={getLocalizedUrl(`/order/service/4987`, locale as Locale)}
               startIcon={<i className='tabler-plus' />}
             >
               Add Instance
