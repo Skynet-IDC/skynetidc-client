@@ -32,6 +32,10 @@ logging:
       context:
         annotation: TRACE
 
+jwt:
+  secret: FXKJPrq5qP659X4VspApWiOhPbqP8aL23aOOAgRDoBV5bOT4Ch3BJPklk7F
+  expiration: 86400000  # 24 hours in milliseconds
+
 whmcs:
   api-endpoint: http://portal.skynetidc.vn/includes/api.php
   identifier: ugkdQUSmO3y9rNOlJckD5ZNC8yVlcVXc

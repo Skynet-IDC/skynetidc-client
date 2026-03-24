@@ -1,42 +1,66 @@
 // Next Imports
 import { NextResponse } from 'next/server'
 
-import type { UserTable } from './users'
-
-type ResponseUser = Omit<UserTable, 'password'> & { accessToken: string }
-
-// Mock data for demo purpose
-import { users } from './users'
-
 export async function POST(req: Request) {
-  // Vars
-  const { email, password } = await req.json()
-  const user = users.find(u => u.email === email && u.password === password)
-  let response: null | ResponseUser = null
+  try {
+    // Vars
+    const { email, password } = await req.json()
 
-  if (user) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { password: _, ...filteredUserData } = user
-
-    // Generate access token for custom auth
-    const accessToken = `token_${Date.now()}_${user.id}`
-
-    response = {
-      ...filteredUserData,
-      accessToken
+    // Validate input
+    if (!email || !password) {
+      return NextResponse.json(
+        {
+          message: ['Email and Password are required']
+        },
+        {
+          status: 400,
+          statusText: 'Bad Request'
+        }
+      )
     }
 
-    return NextResponse.json(response)
-  } else {
-    // We return 401 status code and error message if user is not found
+    // Fetch from portal backend API
+    const res = await fetch('http://localhost:8080/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        email,
+        password
+      })
+    })
+
+    console.log('Response login: => ' + JSON.stringify({ status: res.status, statusText: res.statusText }))
+
+    // Parse response
+    const data = await res.json()
+
+    // If response is successful, return the data
+    if (res.ok) {
+      return NextResponse.json(data, {
+        status: res.status,
+        statusText: res.statusText
+      })
+    } else {
+      // Return error response from portal
+      return NextResponse.json(data, {
+        status: res.status,
+        statusText: res.statusText
+      })
+    }
+  } catch (error) {
+    console.error('Login API Error:', error)
+
+    // Return error response if fetch fails
     return NextResponse.json(
       {
-        // We create object here to separate each error message for each field in case of multiple errors
-        message: ['Email or Password is invalid']
+        message: ['Failed to connect to authentication service']
       },
       {
-        status: 401,
-        statusText: 'Unauthorized Access'
+        status: 500,
+        statusText: 'Internal Server Error'
       }
     )
   }
