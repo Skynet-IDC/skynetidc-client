@@ -1,6 +1,7 @@
 package com.skynetidc.controller.client;
 
 import com.skynetidc.services.VPSService;
+import com.skynetidc.util.SecurityUtil;
 import com.skynetidc.vo.ResponseResult;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -13,8 +14,10 @@ class VmController extends BaseController {
 
 	private final VPSService vpsService;
 
-	public VmController(VPSService vpsService) {
+	private final SecurityUtil securityUtil;
+	public VmController(VPSService vpsService, SecurityUtil securityUtil) {
 		this.vpsService = vpsService;
+		this.securityUtil = securityUtil;
 	}
 
 	@GetMapping("/{id}")
@@ -32,13 +35,13 @@ class VmController extends BaseController {
 
 	@GetMapping
 	public String vps(Model model) {
-		model.addAttribute("result", vpsService.listAllVpsByOwner().getItems());
+		model.addAttribute("result", vpsService.listAllVpsByOwner(securityUtil.userIdAuth()).getItems());
 		return "vm/list";
 	}
 
 	@GetMapping("/node")
 	public String node(Model model) {
-		model.addAttribute("result", vpsService.listAllVpsByOwner().getItems());
+		model.addAttribute("result", vpsService.listAllVpsByOwner(securityUtil.userIdAuth()).getItems());
 		return "vm/list";
 	}
 

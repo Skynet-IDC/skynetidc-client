@@ -1,23 +1,27 @@
 'use server'
 
 export const getInstanceData = async (email: string, password: string) => {
+  try {
+    // Vars
+    const res = await fetch(`${process.env.BACKEND_URL}/api/vm/owner?ownerId=49`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        email,
+        password
+      })
+    });
 
-  // Fetch from portal backend API
-  const res = await fetch(`${process.env.BACKEND_URL}/api/auth/login`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    credentials: 'include',
-    body: JSON.stringify({
-      email,
-      password
-    })
-  });
+    const data = await res.json();
 
-  const data = await res.json();
+    console.log('Response login: => ' + JSON.stringify({ status: res.status, statusText: res.statusText, data: data }))
 
-  console.log('Response login: => ' + JSON.stringify({ status: res.status, statusText: res.statusText, data: data }))
+  } catch (error) {
+    console.error('getInstanceData Error:', error)
+  }
 
   return [
     {
