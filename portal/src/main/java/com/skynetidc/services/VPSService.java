@@ -10,7 +10,7 @@ public interface VPSService {
 
 	void suspendById(long id);
 
-	ResponseResult<Hosting> listAllVpsByOwner(long ownerId);
+	ResponseResult<Hosting> listAllVpsByOwner();
 
 	void createVPS(OrderRequest request);
 

@@ -35,13 +35,13 @@ class VmController extends BaseController {
 
 	@GetMapping
 	public String vps(Model model) {
-		model.addAttribute("result", vpsService.listAllVpsByOwner(securityUtil.userIdAuth()).getItems());
+		model.addAttribute("result", vpsService.listAllVpsByOwner().getItems());
 		return "vm/list";
 	}
 
 	@GetMapping("/node")
 	public String node(Model model) {
-		model.addAttribute("result", vpsService.listAllVpsByOwner(securityUtil.userIdAuth()).getItems());
+		model.addAttribute("result", vpsService.listAllVpsByOwner().getItems());
 		return "vm/list";
 	}
 
