@@ -33,6 +33,7 @@ public class AuthApiController {
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		String token = jwtService.generateToken(userDetails);
 
+		assert userDetails != null;
 		return ResponseEntity
 			.ok(new AuthResponse(userDetails.getUsername(), userDetails.getUsername(), "/images/avatars/1.png", token));
 	}

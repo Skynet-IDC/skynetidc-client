@@ -30,7 +30,7 @@ class RestVmController extends BaseController {
 	}
 
 	@GetMapping("/owner")
-	public ResponseEntity<?> getVmByOwner(@RequestParam long ownerId) {
-		return ResponseEntity.ok(vpsService.listAllVpsByOwner(ownerId).getItems());
+	public ResponseEntity<?> getVmByOwner() {
+		return ResponseEntity.ok(vpsService.listAllVpsByOwner(49).getItems());
 	}
 }
